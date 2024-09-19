@@ -1,5 +1,5 @@
 # NESTFUL
-This the official repository for `NESTFUL`.
+This is the official repository for `NESTFUL`.
 - Paper Title: **_NESTFUL: A Benchmark for Evaluating LLMs on Nested Sequences of API Calls_**
 - Link: https://arxiv.org/abs/2409.03797
 
