@@ -1,0 +1,1497 @@
+[
+    {
+        "input": "Search for a rental car in San Diego for 3 days starting from 10/05/2023 10:00 AM and reserve it.",
+        "output": [
+            {
+                "name": "RentalCars.GetCarsAvailable",
+                "arguments": {
+                    "pickup_city": "San Diego",
+                    "pickup_date": "10/05/2023",
+                    "dropoff_date": "10/08/2023",
+                    "pickup_time": "10:00 AM",
+                    "type": "Standard"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "RentalCars.ReserveCar",
+                "arguments": {
+                    "pickup_location": "$var1.pickup_location$",
+                    "pickup_date": "10/05/2023",
+                    "dropoff_date": "10/08/2023",
+                    "type": "$var1.type$",
+                    "pickup_time": "10:00 AM"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "available_cars": "$var1$",
+                    "reservation_details": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find a bus from New York to Boston on 01/15/2024 and buy me a ticket.",
+        "output": [
+            {
+                "name": "Buses.FindBus",
+                "arguments": {
+                    "origin": "New York",
+                    "destination": "Boston",
+                    "departure_date": "01/15/2024",
+                    "fare_type": "Economy",
+                    "group_size": "1"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Buses.BuyBusTicket",
+                "arguments": {
+                    "origin": "New York",
+                    "destination": "Boston",
+                    "departure_date": "01/15/2024",
+                    "departure_time": "$var1.departure_time$",
+                    "group_size": "1",
+                    "fare_type": "Economy"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "bus_options": "$var1$",
+                    "ticket_details": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find me a 4-bedroom apartment in San Francisco and schedule a visit to tour the home on 11/02/2024.",
+        "output": [
+            {
+                "name": "Homes.FindApartment",
+                "arguments": {
+                    "area": "San Francisco",
+                    "number_of_beds": "4"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Homes.ScheduleVisit",
+                "arguments": {
+                    "property_name": "$var1.property_name$",
+                    "visit_date": "11/02/2024"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "apartment_options": "$var1$",
+                    "visit_details": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find me a bus from New York to Washington on 11/02/2024 and book a ticket for myself.",
+        "output": [
+            {
+                "name": "Buses.FindBus",
+                "arguments": {
+                    "origin": "New York",
+                    "destination": "Washington",
+                    "departure_date": "11/02/2024",
+                    "fare_type": "Economy",
+                    "group_size": "1"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Buses.BuyBusTicket",
+                "arguments": {
+                    "origin": "New York",
+                    "destination": "Washington",
+                    "departure_date": "11/02/2024",
+                    "departure_time": "$var1.departure_time$",
+                    "group_size": "1",
+                    "fare_type": "Economy"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "bus_options": "$var1$",
+                    "ticket_details": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find me a 4-star hotel in San Francisco for 2 nights starting from July 15th 2023 and then book a taxi for me from the hotel to Alcatraz Island on July 16th.",
+        "output": [
+            {
+                "name": "Hotels.SearchHotel",
+                "arguments": {
+                    "destination": "San Francisco",
+                    "star_rating": "4"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Hotels.ReserveHotel",
+                "arguments": {
+                    "hotel_name": "$var1.hotel_name$",
+                    "check_in_date": "2023-07-15",
+                    "number_of_days": "2",
+                    "destination": "San Francisco",
+                    "number_of_rooms": "1"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "RideSharing.GetRide",
+                "arguments": {
+                    "destination": "Alcatraz Island",
+                    "number_of_seats": "1",
+                    "ride_type": "Regular"
+                },
+                "label": "var3"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "hotel_details": "$var2$",
+                    "ride_details": "$var3$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find a 5-star hotel in Paris for 3 nights starting from August 1st 2023 and then book a taxi for just myself that will take me from the hotel to the Eiffel Tower on August 2nd.",
+        "output": [
+            {
+                "name": "Hotels.SearchHotel",
+                "arguments": {
+                    "destination": "Paris",
+                    "star_rating": "5"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Hotels.ReserveHotel",
+                "arguments": {
+                    "hotel_name": "$var1.hotel_name$",
+                    "check_in_date": "2023-08-01",
+                    "number_of_days": "3",
+                    "destination": "Paris",
+                    "number_of_rooms": "1"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "RideSharing.GetRide",
+                "arguments": {
+                    "destination": "Eiffel Tower",
+                    "number_of_seats": "1",
+                    "ride_type": "Regular"
+                },
+                "label": "var3"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "hotel_details": "$var2$",
+                    "ride_details": "$var3$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "I want to travel from San Francisco to Los Angeles by bus on 12/12/2023. Get me a bus ticket for myself.",
+        "output": [
+            {
+                "name": "Buses.FindBus",
+                "arguments": {
+                    "origin": "San Francisco",
+                    "destination": "Los Angeles",
+                    "departure_date": "12/12/2023",
+                    "fare_type": "Economy",
+                    "group_size": "1"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Buses.BuyBusTicket",
+                "arguments": {
+                    "origin": "San Francisco",
+                    "destination": "Los Angeles",
+                    "departure_date": "12/12/2023",
+                    "departure_time": "$var1.departure_time$",
+                    "group_size": "1",
+                    "fare_type": "Economy"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "bus_options": "$var1$",
+                    "ticket_details": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find a hotel in Paris that has wifi and is rated 4 or 5 stars and reserve a room for 2 nights starting from 05/01/2024.",
+        "output": [
+            {
+                "name": "Hotels.SearchHotel",
+                "arguments": {
+                    "destination": "Paris",
+                    "star_rating": "4 or 5",
+                    "has_wifi": "True"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Hotels.ReserveHotel",
+                "arguments": {
+                    "hotel_name": "$var1.hotel_name$",
+                    "location": "Paris",
+                    "check_in_date": "05/01/2024",
+                    "number_of_days": "2",
+                    "number_of_rooms": "1"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "hotel_options": "$var1$",
+                    "hotel_reservation": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Get me a rental car reservation for a car in Chicago. I will pick it up on 01/01/2024 at 7:00 AM and return it on 01/10/2024.",
+        "output": [
+            {
+                "name": "RentalCars.GetCarsAvailable",
+                "arguments": {
+                    "pickup_city": "Chicago",
+                    "pickup_date": "01/01/2024",
+                    "pickup_time": "7:00 AM",
+                    "dropoff_date": "01/10/2024",
+                    "type": "Standard"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "RentalCars.ReserveCar",
+                "arguments": {
+                    "pickup_location": "$var1.pickup_location$",
+                    "pickup_date": "01/01/2024",
+                    "pickup_time": "7:00 AM",
+                    "dropoff_date": "01/10/2024",
+                    "type": "$var1.type$"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "cars_available": "$var1$",
+                    "car_reservation": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find a bus from Boston to New York on 5/1/2023 and book 2 tickets for me.",
+        "output": [
+            {
+                "name": "Buses.FindBus",
+                "arguments": {
+                    "origin": "Boston",
+                    "destination": "New York",
+                    "departure_date": "5/1/2023",
+                    "fare_type": "Economy",
+                    "group_size": "2"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Buses.BuyBusTicket",
+                "arguments": {
+                    "origin": "$var1.origin$",
+                    "destination": "$var1.destination$",
+                    "departure_date": "$var1.departure_date$",
+                    "departure_time": "$var1.departure_time$",
+                    "group_size": "2",
+                    "fare_type": "Economy"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "buses_available": "$var1$",
+                    "bus_tickets": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Reserve a rental car for a compact car in Los Angeles from 03/01/2023 to 03/05/2023.",
+        "output": [
+            {
+                "name": "RentalCars.GetCarsAvailable",
+                "arguments": {
+                    "pickup_city": "Los Angeles",
+                    "pickup_date": "03/01/2023",
+                    "dropoff_date": "03/05/2023",
+                    "type": "Compact"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "RentalCars.ReserveCar",
+                "arguments": {
+                    "pickup_location": "$var1.pickup_location$",
+                    "pickup_date": "03/01/2023",
+                    "pickup_time": "$var1.pickup_time$",
+                    "dropoff_date": "03/05/2023",
+                    "type": "Compact"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "cars_available": "$var1$",
+                    "car_reservation": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find a Mexican restaurant in New York City and book a table for 4 at 7 PM on 1/2/2023.",
+        "output": [
+            {
+                "name": "Restaurants.FindRestaurants",
+                "arguments": {
+                    "cuisine": "Mexican",
+                    "city": "New York City"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Restaurants.ReserveRestaurant",
+                "arguments": {
+                    "restaurant_name": "$var1.restaurant_name$",
+                    "city": "New York City",
+                    "time": "7 PM",
+                    "date": "1/2/2023",
+                    "party_size": "4"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "restaurant_reservation": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find a bus that goes from Atlanta to Charlotte on January 1st 2024 and get me a ticket for it.",
+        "output": [
+            {
+                "name": "Buses.FindBus",
+                "arguments": {
+                    "origin": "Atlanta",
+                    "destination": "Charlotte",
+                    "departure_date": "1st January 2024",
+                    "fare_type": "Economy",
+                    "group_size": "1"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Buses.BuyBusTicket",
+                "arguments": {
+                    "origin": "$var1.origin$",
+                    "destination": "$var1.destination$",
+                    "departure_date": "$var1.departure_date$",
+                    "departure_time": "$var1.departure_time$",
+                    "group_size": "1",
+                    "fare_type": "Economy"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "buses_available": "$var1$",
+                    "bus_tickets": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Please buy me two tickets for the Metallica concert happening in New York City on October 10th 2023",
+        "output": [
+            {
+                "name": "Events.FindEvents",
+                "arguments": {
+                    "category": "Music",
+                    "city_of_event": "New York City",
+                    "date": "10th October 2023"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Events.BuyEventTickets",
+                "arguments": {
+                    "event_name": "$var1.event_name$",
+                    "date": "10th October 2023",
+                    "city_of_event": "New York City",
+                    "number_of_seats": "2"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "concert_tickets": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Please find me a 4-star hotel in Los Angeles with wifi for 2 adults and make the reservation for a room from 2024-02-12 to 2024-02-14.",
+        "output": [
+            {
+                "name": "Hotels.SearchHotel",
+                "arguments": {
+                    "destination": "Los Angeles",
+                    "number_of_rooms": "1",
+                    "has_wifi": "True",
+                    "star_rating": "4"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Hotels.ReserveHotel",
+                "arguments": {
+                    "hotel_name": "$var1.hotel_name$",
+                    "destination": "Los Angeles",
+                    "check_in_date": "2024-02-12",
+                    "number_of_days": "2",
+                    "number_of_rooms": "1"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "hotel_options": "$var1$",
+                    "hotel_reservation": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "I want to find a movie playing in Chicago on 2024-03-19 and buy 3 tickets for it.",
+        "output": [
+            {
+                "name": "Movies.FindMovies",
+                "arguments": {
+                    "location": "Chicago"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Movies.GetTimesForMovie",
+                "arguments": {
+                    "movie_name": "$var1.movie_name$",
+                    "location": "Chicago",
+                    "show_date": "2024-03-19"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "Movies.BuyMovieTickets",
+                "arguments": {
+                    "movie_name": "$var1.movie_name$",
+                    "number_of_tickets": "3",
+                    "location": "Chicago",
+                    "show_date": "2024-03-19",
+                    "show_time": "$var2.show_time$",
+                    "show_type": "$var2.show_type$"
+                },
+                "label": "var3"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "movie_options": "$var1$",
+                    "movie_times": "$var2$",
+                    "movie_tickets": "$var3$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find me a restaurant in Miami that serves Mexican food and reserve a table for 4 people on 2024-04-22 at 7 PM.",
+        "output": [
+            {
+                "name": "Restaurants.FindRestaurants",
+                "arguments": {
+                    "cuisine": "Mexican",
+                    "city": "Miami"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Restaurants.ReserveRestaurant",
+                "arguments": {
+                    "restaurant_name": "$var1.restaurant_name$",
+                    "city": "Miami",
+                    "time": "7 PM",
+                    "date": "2024-04-22",
+                    "party_size": "4"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "restaurant_options": "$var1$",
+                    "restaurant_reservation": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find me a 3-day music festival in Atlanta starting from 2024-10-10 and get me two tickets.",
+        "output": [
+            {
+                "name": "Events.FindEvents",
+                "arguments": {
+                    "category": "Music",
+                    "city_of_event": "Atlanta",
+                    "date": "2024-10-10",
+                    "subcategory": "festival",
+                    "number_of_days": "3"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Events.BuyEventTickets",
+                "arguments": {
+                    "event_name": "$var1.event_name$",
+                    "number_of_seats": "2",
+                    "city_of_event": "Atlanta",
+                    "date": "2024-10-10"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "event_options": "$var1$",
+                    "event_tickets": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Please find me the times for a movie playing in theatres in San Francisco on 2023-10-10 and purchase me a ticket.",
+        "output": [
+            {
+                "name": "Movies.FindMovies",
+                "arguments": {
+                    "location": "San Francisco"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Movies.GetTimesForMovie",
+                "arguments": {
+                    "movie_name": "$var1.movie_name$",
+                    "location": "San Francisco",
+                    "show_date": "2023-10-10"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "Movies.BuyMovieTickets",
+                "arguments": {
+                    "movie_name": "$var1.movie_name$",
+                    "number_of_tickets": "1",
+                    "location": "San Francisco",
+                    "show_date": "$var2.show_date$",
+                    "show_time": "$var2.show_time$",
+                    "show_type": "$var2.show_type$"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "movie_times": "$var2$",
+                    "movie_tickets": "$var3$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Book a table at a Chinese restaurant in Boston for 6 people at 9:00pm on 2023-05-20.",
+        "output": [
+            {
+                "name": "Restaurants.FindRestaurants",
+                "arguments": {
+                    "cuisine": "Chinese",
+                    "city": "Boston"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Restaurants.ReserveRestaurant",
+                "arguments": {
+                    "restaurant_name": "$var1.restaurant_name$",
+                    "city": "Boston",
+                    "time": "9:00pm",
+                    "date": "2023-05-20",
+                    "party_size": "6"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "restaurant_reservation": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find me a hotel room with wifi in New York City for 2 nights starting from 2023-05-10 and reserve the room.",
+        "output": [
+            {
+                "name": "Hotels.SearchHotel",
+                "arguments": {
+                    "destination": "New York City",
+                    "number_of_rooms": "1",
+                    "has_wifi": "True"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Hotels.ReserveHotel",
+                "arguments": {
+                    "hotel_name": "$var1.hotel_name$",
+                    "check_in_date": "2023-05-10",
+                    "destination": "New York City",
+                    "number_of_days": "2",
+                    "number_of_rooms": "1"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "hotel_reservation": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find a bus from Chicago to New York on 10/01/2023 and buy me a ticket.",
+        "output": [
+            {
+                "name": "Buses.FindBus",
+                "arguments": {
+                    "origin": "Chicago",
+                    "destination": "New York",
+                    "departure_date": "10/01/2023",
+                    "fare_type": "Economy",
+                    "group_size": "1"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Buses.BuyBusTicket",
+                "arguments": {
+                    "origin": "$var1.origin$",
+                    "destination": "$var1.destination$",
+                    "departure_date": "$var1.departure_date$",
+                    "departure_time": "$var1.departure_time$",
+                    "group_size": "1",
+                    "fare_type": "Economy"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "bus_options": "$var1$",
+                    "bus_tickets": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find a play happening in San Francisco on 11/02/2024 and buy me a ticket for just myself.",
+        "output": [
+            {
+                "name": "Events.FindEvents",
+                "arguments": {
+                    "category": "Theater",
+                    "city_of_event": "San Francisco",
+                    "date": "11/02/2024"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Events.BuyEventTickets",
+                "arguments": {
+                    "event_name": "$var1.event_name$",
+                    "number_of_seats": "1",
+                    "date": "$var1.date$",
+                    "city_of_event": "$var1.city_of_event$"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "play_options": "$var1$",
+                    "play_tickets": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find me a 3-bedroom apartment in San Francisco and schedule a visit  to tour the home on 2024-04-15.",
+        "output": [
+            {
+                "name": "Homes.FindApartment",
+                "arguments": {
+                    "area": "San Francisco",
+                    "number_of_beds": "3"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Homes.ScheduleVisit",
+                "arguments": {
+                    "property_name": "$var1.property_name$",
+                    "visit_date": "2024-04-15"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "apartment_options": "$var1$",
+                    "home_vist": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "I want to find a house in San Francisco that has laundry service and is rated 4 or 5 stars. Reserve the house for 2 adults from 2024-04-10 to 2024-04-12.",
+        "output": [
+            {
+                "name": "Hotels.SearchHouse",
+                "arguments": {
+                    "where_to": "San Francisco",
+                    "rating": "4 or 5",
+                    "has_laundry_service": "True"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Hotels.BookHouse",
+                "arguments": {
+                    "where_to": "$var1.where_to$",
+                    "number_of_adults": "2",
+                    "check_in_date": "2024-04-10",
+                    "check_out_date": "2024-04-12"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "house_options": "$var1$",
+                    "house_reservation": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Schedule me a dentist appointment in Los Angeles for 2024-02-20 at 10:00 AM.",
+        "output": [
+            {
+                "name": "Services_Dentist.FindProvider",
+                "arguments": {
+                    "city": "Los Angeles"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Services_Dentist.BookAppointment",
+                "arguments": {
+                    "dentist_name": "$var1.dentist_name$",
+                    "appointment_time": "10:00 AM",
+                    "appointment_date": "2024-02-20"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "dentist_appointment": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find a 4-star hotel in London and reserve a room for 4 adults from 2022-01-01 to 2022-01-05.",
+        "output": [
+            {
+                "name": "Hotels.SearchHotel",
+                "arguments": {
+                    "destination": "London",
+                    "star_rating": "4"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Hotels.ReserveHotel",
+                "arguments": {
+                    "hotel_name": "$var1.hotel_name$",
+                    "destination": "$var1.destination$",
+                    "check_in_date": "2022-01-01",
+                    "number_of_days": "4",
+                    "number_of_rooms": "1"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "hotel_reservation": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "I want you to book a round trip flight from New York to Los Angeles that departs on April 5, 2022 and returns on April 12, 2022.",
+        "output": [
+            {
+                "name": "Flights.SearchRoundtripFlights",
+                "arguments": {
+                    "origin_city": "New York",
+                    "destination_city": "Los Angeles",
+                    "departure_date": "2022-04-05",
+                    "return_date": "2022-04-12",
+                    "passengers": "1",
+                    "seating_class": "Economy"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Flights.ReserveRoundtripFlights",
+                "arguments": {
+                    "origin_city": "$var1.origin_city$",
+                    "destination_city": "$var1.destination_city$",
+                    "departure_date": "$var1.departure_date$",
+                    "return_date": "$var1.return_date$",
+                    "outbound_departure_time": "$var1.outbound_departure_time$",
+                    "inbound_departure_time": "$var1.inbound_departure_time$",
+                    "passengers": "1",
+                    "seating_class": "Economy"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "flight_reservation": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "I want to rent a car from San Francisco on 2022-12-01 at 10:00 AM and drop it off on 2022-12-05.",
+        "output": [
+            {
+                "name": "RentalCars.GetCarsAvailable",
+                "arguments": {
+                    "pickup_city": "San Francisco",
+                    "pickup_date": "2022-12-01",
+                    "pickup_time": "10:00 AM",
+                    "dropoff_date": "2022-12-05",
+                    "type": "Standard"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "RentalCars.ReserveCar",
+                "arguments": {
+                    "type": "$var1.type$",
+                    "pickup_location": "$var1.pickup_location$",
+                    "pickup_date": "$var1.pickup_date$",
+                    "pickup_time": "$var1.pickup_time$",
+                    "dropoff_date": "2022-12-05"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "car_reservation": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "I want to find a house for rent in San Francisco for 7 days, starting from 2024-02-01 and book it.",
+        "output": [
+            {
+                "name": "Hotels.SearchHouse",
+                "arguments": {
+                    "where_to": "San Francisco"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Hotels.BookHouse",
+                "arguments": {
+                    "where_to": "$var1.where_to$",
+                    "check_in_date": "2024-02-01",
+                    "check_out_date": "2024-02-08"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "home_reservation": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "I want to find a round-trip flight from London to New York departing on April 1st, 2022 and returning on April 10th, 2022. Please also ensure the flight is refundable.",
+        "output": [
+            {
+                "name": "Flights.SearchRoundtripFlights",
+                "arguments": {
+                    "origin_city": "London",
+                    "destination_city": "New York",
+                    "departure_date": "2022-04-01",
+                    "return_date": "2022-04-10",
+                    "refundable": "True",
+                    "passengers": "1",
+                    "seating_class": "Economy"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Flights.ReserveRoundtripFlights",
+                "arguments": {
+                    "origin_city": "$var1.origin_city$",
+                    "destination_city": "$var1.destination_city$",
+                    "departure_date": "$var1.departure_date$",
+                    "return_date": "$var1.return_date$",
+                    "outbound_departure_time": "$var1.outbound_departure_time$",
+                    "inbound_departure_time": "$var1.inbound_departure_time$",
+                    "refundable": "True",
+                    "passengers": "1",
+                    "seating_class": "Economy"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "flight_reservations": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "I want to find a song by AC/DC and play it on my TV.",
+        "output": [
+            {
+                "name": "Music.LookupSong",
+                "arguments": {
+                    "artist": "AC/DC"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Music.PlaySong",
+                "arguments": {
+                    "song_name": "$var1.song_name$",
+                    "playback_device": "TV"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "song": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Buy me tickets for a Sports event happening in Los Angeles on 11/11/2024.",
+        "output": [
+            {
+                "name": "Events.FindEvents",
+                "arguments": {
+                    "city_of_event": "Los Angeles",
+                    "date": "11/11/2024",
+                    "category": "Sports"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Events.BuyEventTickets",
+                "arguments": {
+                    "event_name": "$var1.event_name$",
+                    "number_of_seats": "1",
+                    "date": "11/11/2024",
+                    "city_of_event": "Los Angeles"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "event_options": "$var1$",
+                    "event_tickets": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "I need help finding a 3-bedroom apartment in San Francisco that was wifi and allows pets. Please help me find a place and shedule me a visit at the to tour the apartment",
+        "output": [
+            {
+                "name": "Homes.FindApartment",
+                "arguments": {
+                    "area": "San Francisco",
+                    "number_of_beds": "3",
+                    "pets_allowed": "True"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Homes.ScheduleVisit",
+                "arguments": {
+                    "property_name": "$var1.property_name$",
+                    "visit_date": "2023-03-10"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "apartment_options": "$var1$",
+                    "apartment_vist": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Help me find a dentist in New York who offers cosmetic services and book me an appointment with the destist for 2024-03-10 at 10:00 AM.",
+        "output": [
+            {
+                "name": "Services_Dentist.FindProvider",
+                "arguments": {
+                    "city": "New York",
+                    "offers_cosmetic_services": "True"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Services_Dentist.BookAppointment",
+                "arguments": {
+                    "dentist_name": "$var1.dentist_name$",
+                    "appointment_date": "2024-03-10",
+                    "appointment_time": "10:00"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "dentist_provider": "$var1$",
+                    "dentist_appointment": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Can you book a round trip flight from New York to Los Angeles that departs on July 5, 2024 and returns on July 12, 2024?",
+        "output": [
+            {
+                "name": "Flights.SearchRoundtripFlights",
+                "arguments": {
+                    "origin_city": "New York",
+                    "destination_city": "Los Angeles",
+                    "departure_date": "2024-07-05",
+                    "return_date": "2024-07-12",
+                    "passengers": "1",
+                    "seating_class": "Economy"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Flights.ReserveRoundtripFlights",
+                "arguments": {
+                    "origin_city": "$var1.origin_city$",
+                    "destination_city": "$var1.destination_city$",
+                    "departure_date": "$var1.departure_date$",
+                    "return_date": "$var1.return_date$",
+                    "outbound_departure_time": "$var1.outbound_departure_time$",
+                    "inbound_departure_time": "$var1.inbound_departure_time$",
+                    "passengers": "1",
+                    "seating_class": "Economy"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "flight_reservation": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Book me a table for 4 people at an Italian restaurant in New York City. The restaurant must serve alcohol and I need this reservation for 2024-02-10 at 7pm.",
+        "output": [
+            {
+                "name": "Restaurants.FindRestaurants",
+                "arguments": {
+                    "city": "New York City",
+                    "cuisine": "Italian",
+                    "serves_alcohol": "True"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Restaurants.ReserveRestaurant",
+                "arguments": {
+                    "restaurant_name": "$var1.restaurant_name$",
+                    "date": "2024-02-10",
+                    "time": "7pm",
+                    "party_size": "4"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "restaurant_reservation": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Please buy 3 tickets for the basketball game happening in Chicago on 2024-10-12.",
+        "output": [
+            {
+                "name": "Events.FindEvents",
+                "arguments": {
+                    "category": "Sports",
+                    "city_of_event": "Chicago",
+                    "date": "2024-10-12"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Events.BuyEventTickets",
+                "arguments": {
+                    "event_name": "$var1.event_name$",
+                    "number_of_seats": "3",
+                    "date": "2023-03-12",
+                    "city_of_event": "Chicago"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "ticket_details": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find an Italian place to eat in San Francisco that has live music and reserve a table for 3 adults and 2 kids for 11/02/2024 at 6 PM.",
+        "output": [
+            {
+                "name": "Restaurants.FindRestaurants",
+                "arguments": {
+                    "cuisine": "Italian",
+                    "city": "San Francisco",
+                    "has_live_music": "True"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Restaurants.ReserveRestaurant",
+                "arguments": {
+                    "restaurant_name": "$var1.restaurant_name$",
+                    "city": "San Francisco",
+                    "date": "11/02/2024",
+                    "time": "6 PM",
+                    "party_size": "3 adults and 2 kids"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "restaurant_reservation": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find me tickets for a comedy movie in San Francisco for 10/10/2024 and tell me what the show times are.",
+        "output": [
+            {
+                "name": "Movies.FindMovies",
+                "arguments": {
+                    "location": "San Francisco",
+                    "genre": "Comedy"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Movies.GetTimesForMovie",
+                "arguments": {
+                    "movie_name": "$var1.movie_name$",
+                    "location": "San Francisco",
+                    "show_date": "10/10/2024"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "ticket_details": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Find me a movie theater playing a 3D movie on 10/10/2023 in New York and book 3 tickets for the movie.",
+        "output": [
+            {
+                "name": "Movies.FindMovies",
+                "arguments": {
+                    "location": "New York",
+                    "show_type": "3D"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Movies.GetTimesForMovie",
+                "arguments": {
+                    "movie_name": "$var1.movie_name$",
+                    "location": "New York",
+                    "show_date": "10/10/2023"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "Movies.BuyMovieTickets",
+                "arguments": {
+                    "movie_name": "$var1.movie_name$",
+                    "number_of_tickets": "3",
+                    "location": "New York",
+                    "show_date": "$var2.show_date$",
+                    "show_time": "$var2.show_time$",
+                    "show_type": "$var2.show_type$"
+                },
+                "label": "var3"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "ticket_details": "$var3$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "I'm looking for a movie to watch, can you find me a romance movie and play the movie?",
+        "output": [
+            {
+                "name": "Media.FindMovies",
+                "arguments": {
+                    "genre": "romance"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Media.PlayMovie",
+                "arguments": {
+                    "title": "$var1.title$",
+                    "subtitles": "False"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "movie_options": "$var1$",
+                    "play_movie": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "I want you to to find a 4-star hotel in New York City for 2 nights starting from 2022-12-20 and make a reservation, and also find a bus that can take me from the hotel to a Broadway show.",
+        "output": [
+            {
+                "name": "Hotels.SearchHotel",
+                "arguments": {
+                    "destination": "New York City",
+                    "star_rating": "4"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Hotels.ReserveHotel",
+                "arguments": {
+                    "hotel_name": "$var1.hotel_name$",
+                    "check_in_date": "2022-12-20",
+                    "number_of_days": "2",
+                    "destination": "New York City",
+                    "number_of_rooms": "1"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "Buses.FindBus",
+                "arguments": {
+                    "origin": "New York City",
+                    "destination": "Broadway",
+                    "departure_date": "2022-12-20",
+                    "fare_type": "Economy",
+                    "group_size": "1"
+                },
+                "label": "var3"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "hotel_reservation": "$var1$",
+                    "play_movie": "$var2$",
+                    "bus_options": "$var3$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "I want to schedule an appointment with a dermatologist in New York City on 2024-06-10 at 11:00 AM",
+        "output": [
+            {
+                "name": "Services_Medical.FindProvider",
+                "arguments": {
+                    "city": "New York City",
+                    "type": "Dermatologist"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Services_Medical.BookAppointment",
+                "arguments": {
+                    "doctor_name": "$var1.doctor_name$",
+                    "appointment_date": "2024-06-10",
+                    "appointment_time": "11:00 AM"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "appointment": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "Schedule a visit to a salon for a haircut in Boston the 20th March.",
+        "output": [
+            {
+                "name": "Services_Salon.FindProvider",
+                "arguments": {
+                    "city": "Boston"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Services_Salon.BookAppointment",
+                "arguments": {
+                    "stylist_name": "$var1.stylist_name$",
+                    "appointment_date": "2019-03-20"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "appointment": "$var2$"
+                }
+            }
+        ]
+    },
+    {
+        "input": "I want to play a romantic song by Queen on my TV.",
+        "output": [
+            {
+                "name": "Music.LookupSong",
+                "arguments": {
+                    "artist": "Queen",
+                    "genre": "Romantic"
+                },
+                "label": "var1"
+            },
+            {
+                "name": "Music.PlaySong",
+                "arguments": {
+                    "song_name": "$var1.song_name$",
+                    "playback_device": "TV"
+                },
+                "label": "var2"
+            },
+            {
+                "name": "var_result",
+                "arguments": {
+                    "play_song": "$var2$"
+                }
+            }
+        ]
+    }
+]

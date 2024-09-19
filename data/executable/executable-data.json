@@ -1,0 +1,2995 @@
+[
+  {
+    "input": "Find flights from New York to London that depart on August 15, 2024, and return on August 18, 2024 and find hotels in London.",
+    "output": [
+      {
+        "name": "SkyScrapperSearchAirport",
+        "arguments": {
+          "query": "New York"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "SkyScrapperSearchAirport",
+        "arguments": {
+          "query": "London"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "SkyScrapperFlightSearch",
+        "arguments": {
+          "originSkyId": "$var1.skyId$",
+          "destinationSkyId": "$var2.skyId$",
+          "originEntityId": "$var1.entityId$",
+          "destinationEntityId": "$var2.entityId$",
+          "date": "2024-08-15",
+          "returnDate": "2024-08-18"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "TripadvisorSearchLocation",
+        "arguments": {
+          "query": "London"
+        },
+        "label": "var4"
+      },
+      {
+        "name": "TripadvisorSearchHotels",
+        "arguments": {
+          "geoId": "$var4.geoId$",
+          "checkIn": "2024-08-15",
+          "checkOut": "2024-08-18"
+        },
+        "label": "var5"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "flights": "$var3$",
+          "hotels": "$var5$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find flights from Los Angeles to Paris. I want to arrive in Paris on October 5, 2024, and I plan to leave on October 15, 2024. Find the best-rated hotel in Paris to stay for that duration.",
+    "output": [
+      {
+        "name": "SkyScrapperSearchAirport",
+        "arguments": {
+          "query": "Los Angeles"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "SkyScrapperSearchAirport",
+        "arguments": {
+          "query": "Paris"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "SkyScrapperFlightSearch",
+        "arguments": {
+          "originSkyId": "$var1.skyId$",
+          "destinationSkyId": "$var2.skyId$",
+          "originEntityId": "$var1.entityId$",
+          "destinationEntityId": "$var2.entityId$",
+          "date": "2024-10-05",
+          "returnDate": "2024-10-15"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "TripadvisorSearchLocation",
+        "arguments": {
+          "query": "Paris"
+        },
+        "label": "var4"
+      },
+      {
+        "name": "TripadvisorSearchHotels",
+        "arguments": {
+          "geoId": "$var4.geoId$",
+          "checkIn": "2024-10-05",
+          "checkOut": "2024-10-15",
+          "sort": "rating"
+        },
+        "label": "var5"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "flights": "$var3$",
+          "hotels": "$var5$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "What are the top-rated restaurants in Rome?",
+    "output": [
+      {
+        "name": "TripadvisorSearchLocation",
+        "arguments": {
+          "query": "Rome"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "TripadvisorSearchRestaurants",
+        "arguments": {
+          "geoId": "$var1.geoId$",
+          "sort": "rating"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "hotels": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find eco-friendly hotels in Costa Rica and available flights from New York to Costa Rica. I need you to find a flight that departs on December 1, 2024 and returns December 15 and hotels for the same duration.",
+    "output": [
+      {
+        "name": "TripadvisorSearchLocation",
+        "arguments": {
+          "query": "Costa Rica"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "TripadvisorSearchHotels",
+        "arguments": {
+          "geoId": "$var1.geoId$",
+          "checkIn": "2024-12-01",
+          "checkOut": "2024-12-15",
+          "style": [
+            "eco"
+          ]
+        },
+        "label": "var2"
+      },
+      {
+        "name": "SkyScrapperSearchAirport",
+        "arguments": {
+          "query": "New York"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "SkyScrapperSearchAirport",
+        "arguments": {
+          "query": "Costa Rica"
+        },
+        "label": "var4"
+      },
+      {
+        "name": "SkyScrapperFlightSearch",
+        "arguments": {
+          "originSkyId": "$var3.skyId$",
+          "destinationSkyId": "$var4.skyId$",
+          "originEntityId": "$var3.entityId$",
+          "destinationEntityId": "$var4.entityId$",
+          "date": "2024-12-01",
+          "returnDate": "2024-12-15"
+        },
+        "label": "var5"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "hotels": "$var2$",
+          "flights": "$var5$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find the latest news about COVID-19 worldwide and get related top posts from the news subreddit in the past week",
+    "output": [
+      {
+        "name": "NewsAPISearchByKeyWord",
+        "arguments": {
+          "query": "COVID-19"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "RedditTopPostsBySubreddit",
+        "arguments": {
+          "query": "$var1.title$",
+          "subreddit": "news",
+          "time": "week"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "news_articles": "$var1$",
+          "reddit_posts": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find articles about the economy in the US and get top posts about the economy from the economy subreddit in the past month",
+    "output": [
+      {
+        "name": "NewsAPISearchByKeyWord",
+        "arguments": {
+          "query": "economy",
+          "region": "US"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "RedditTopPostsBySubreddit",
+        "arguments": {
+          "query": "$var1.title$",
+          "subreddit": "economy",
+          "time": "month"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "news_articles": "$var1$",
+          "reddit_posts": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find sports news in the UK and get top posts related to sports from the sports subreddit in the past day",
+    "output": [
+      {
+        "name": "NewsAPISearchByKeyWord",
+        "arguments": {
+          "query": "sports",
+          "region": "GB"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "RedditTopPostsBySubreddit",
+        "arguments": {
+          "query": "$var1.title$",
+          "subreddit": "sports",
+          "time": "day"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "news_articles": "$var1$",
+          "reddit_posts": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Get the latest updates on politics in India and find top posts related to politics from the india subreddit in the past week",
+    "output": [
+      {
+        "name": "NewsAPISearchByKeyWord",
+        "arguments": {
+          "query": "politics",
+          "region": "IN"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "RedditTopPostsBySubreddit",
+        "arguments": {
+          "query": "$var1.title$",
+          "subreddit": "India",
+          "time": "week"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "news_articles": "$var1$",
+          "reddit_posts": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find news about the upcoming 2024 election in the United States and find subreddit posts about those topics.",
+    "output": [
+      {
+        "name": "NewsAPISearchByKeyWord",
+        "arguments": {
+          "query": "2024 election",
+          "region": "US"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "RedditTopPostsBySubreddit",
+        "arguments": {
+          "query": "$var1.title$",
+          "subreddit": "United States",
+          "time": "week"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "news_articles": "$var1$",
+          "reddit_posts": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Locate gyms in London, UK with verified status and show me the reviews",
+    "output": [
+      {
+        "name": "LocalBusinessData",
+        "arguments": {
+          "query": "Gyms in London, UK",
+          "verified": true,
+          "limit": 20,
+          "zoom": "13",
+          "language": "en",
+          "region": "us"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "LocalBusinessDataBusinessReviews",
+        "arguments": {
+          "business_id": "$var1.business_id$",
+          "limit": 20,
+          "offset": 0,
+          "sortBy": "most_relevant",
+          "region": "us",
+          "language": "en"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "business_data": "$var1$",
+          "reviews_data": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find me pet groomers near Sydney, Australia and their reviews",
+    "output": [
+      {
+        "name": "LocalBusinessData",
+        "arguments": {
+          "query": "Pet groomers near Sydney, Australia",
+          "limit": 20,
+          "zoom": "13",
+          "language": "en",
+          "region": "us"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "LocalBusinessDataBusinessReviews",
+        "arguments": {
+          "business_id": "$var1.business_id$",
+          "limit": 20,
+          "offset": 0,
+          "sortBy": "most_relevant",
+          "region": "us",
+          "language": "en"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "business_data": "$var1$",
+          "reviews_data": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Search for open bars in Manhattan, USA and display their reviews",
+    "output": [
+      {
+        "name": "LocalBusinessData",
+        "arguments": {
+          "query": "Bars in Manhattan, USA",
+          "business_status": "OPEN",
+          "limit": 20,
+          "zoom": "13",
+          "language": "en",
+          "region": "us"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "LocalBusinessDataBusinessReviews",
+        "arguments": {
+          "business_id": "$var1.business_id$",
+          "limit": 20,
+          "offset": 0,
+          "sortBy": "most_relevant",
+          "region": "us",
+          "language": "en"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "business_data": "$var1$",
+          "reviews_data": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find open nightclubs in Las Vegas with limit 100 and show their reviews",
+    "output": [
+      {
+        "name": "LocalBusinessData",
+        "arguments": {
+          "query": "Nightclubs in Las Vegas",
+          "business_status": "OPEN",
+          "limit": 100,
+          "zoom": "13",
+          "language": "en",
+          "region": "us"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "LocalBusinessDataBusinessReviews",
+        "arguments": {
+          "business_id": "$var1.business_id$",
+          "limit": 20,
+          "offset": 0,
+          "sortBy": "most_relevant",
+          "region": "us",
+          "language": "en"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "business_data": "$var1$",
+          "reviews_data": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Help me find hair salons in Paris, France with up to 50 results and their reviews",
+    "output": [
+      {
+        "name": "LocalBusinessData",
+        "arguments": {
+          "query": "Hair salons in Paris, France",
+          "limit": 50,
+          "zoom": "13",
+          "language": "en",
+          "region": "us"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "LocalBusinessDataBusinessReviews",
+        "arguments": {
+          "business_id": "$var1.business_id$",
+          "limit": 20,
+          "offset": 0,
+          "sortBy": "most_relevant",
+          "region": "us",
+          "language": "en"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "business_data": "$var1$",
+          "reviews_data": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "What is the current exchange rate from Ethereum to USD, and calculate the value of 5 ETH in USD?",
+    "output": [
+      {
+        "name": "Alpha_Vantage_CURRENCY_EXCHANGE_RATE",
+        "arguments": {
+          "function": "CURRENCY_EXCHANGE_RATE",
+          "from_currency": "ETH",
+          "to_currency": "USD"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "CipherCircuit_Math_Assistant_CalculateAllArithmeticOperations",
+        "arguments": {
+          "numbers": "5 * $var1.Exchange Rate$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "exchange_rate": "$var1.Exchange Rate$",
+          "calculated_value": "$var2.answer$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Get the conversion rate from Litecoin to USD and calculate the value of 10 LTC in USD.",
+    "output": [
+      {
+        "name": "Alpha_Vantage_CURRENCY_EXCHANGE_RATE",
+        "arguments": {
+          "function": "CURRENCY_EXCHANGE_RATE",
+          "from_currency": "LTC",
+          "to_currency": "USD"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "CipherCircuit_Math_Assistant_CalculateAllArithmeticOperations",
+        "arguments": {
+          "numbers": "10 * $var1.Exchange Rate$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "exchange_rate": "$var1.Exchange Rate$",
+          "calculated_value": "$var2.answer$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Get the conversion rate from Ripple to USD and calculate the value of 100 XRP in USD.",
+    "output": [
+      {
+        "name": "Alpha_Vantage_CURRENCY_EXCHANGE_RATE",
+        "arguments": {
+          "function": "CURRENCY_EXCHANGE_RATE",
+          "from_currency": "XRP",
+          "to_currency": "USD"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "CipherCircuit_Math_Assistant_CalculateAllArithmeticOperations",
+        "arguments": {
+          "numbers": "100 * $var1.Exchange Rate$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "exchange_rate": "$var1.Exchange Rate$",
+          "calculated_value": "$var2.answer$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "What is the current exchange rate from Bitcoin to GBP, and calculate the value of 2 BTC in GBP?",
+    "output": [
+      {
+        "name": "Alpha_Vantage_CURRENCY_EXCHANGE_RATE",
+        "arguments": {
+          "function": "CURRENCY_EXCHANGE_RATE",
+          "from_currency": "BTC",
+          "to_currency": "GBP"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "CipherCircuit_Math_Assistant_CalculateAllArithmeticOperations",
+        "arguments": {
+          "numbers": "2 * $var1.Exchange Rate$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "exchange_rate": "$var1.Exchange Rate$",
+          "calculated_value": "$var2.answer$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "What is the current ask price for Ethereum in EUR, and calculate the value of 3 ETH in EUR?",
+    "output": [
+      {
+        "name": "Alpha_Vantage_CURRENCY_EXCHANGE_RATE",
+        "arguments": {
+          "function": "CURRENCY_EXCHANGE_RATE",
+          "from_currency": "ETH",
+          "to_currency": "EUR"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "CipherCircuit_Math_Assistant_CalculateAllArithmeticOperations",
+        "arguments": {
+          "numbers": "3 * $var1.Ask Price$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "exchange_rate": "$var1.Exchange Rate$",
+          "calculated_value": "$var2.answer$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Get the conversion rate from Ripple to JPY, and calculate the value of 100 INR in JPY.",
+    "output": [
+      {
+        "name": "Alpha_Vantage_CURRENCY_EXCHANGE_RATE",
+        "arguments": {
+          "function": "CURRENCY_EXCHANGE_RATE",
+          "from_currency": "INR",
+          "to_currency": "JPY"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "CipherCircuit_Math_Assistant_CalculateAllArithmeticOperations",
+        "arguments": {
+          "numbers": "100 * $var1.Exchange Rate$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "exchange_rate": "$var1.Exchange Rate$",
+          "calculated_value": "$var2.answer$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Where can I find high-quality running shoes with good rating of atleast 4 and also let me know the reviews with offers available?",
+    "output": [
+      {
+        "name": "Real-Time_Product_Search_Search",
+        "arguments": {
+          "q": "high-quality running shoes",
+          "min_rating": 4,
+          "country": "us",
+          "language": "en",
+          "page": 1,
+          "limit": 30,
+          "sortBy": "BEST_MATCH",
+          "product_condition": "ANY"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Reviews",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "limit": 10,
+          "country": "us",
+          "language": "en"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Offers",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "page": 1,
+          "country": "us",
+          "language": "en"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "product_search": "$var1$",
+          "product_reviews": "$var2$",
+          "product_offers": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Get me details and offers for Nike Air Force One's.",
+    "output": [
+      {
+        "name": "Real-Time_Product_Search_Search",
+        "arguments": {
+          "q": "Nike Air Force One's",
+          "country": "us",
+          "language": "en",
+          "page": 1,
+          "limit": 30,
+          "sortBy": "BEST_MATCH",
+          "product_condition": "ANY",
+          "min_rating": "ANY"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Details",
+        "arguments": {
+          "product_id": "var1.product_id$",
+          "country": "us",
+          "language": "en",
+          "page": 1,
+          "limit": 30,
+          "sortBy": "BEST_MATCH",
+          "product_condition": "ANY",
+          "free_returns": false,
+          "free_shipping": false,
+          "on_sale": false,
+          "min_rating": "ANY"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Offers",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "page": 1,
+          "country": "us",
+          "language": "en"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "product_search": "$var1$",
+          "product_details": "$var2$",
+          "product_offers": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find the best offers and reviews for Sony WH-1000XM4 headphones.",
+    "output": [
+      {
+        "name": "Real-Time_Product_Search_Search",
+        "arguments": {
+          "q": "Sony WH-1000XM4 headphones",
+          "country": "us",
+          "language": "en",
+          "page": 1,
+          "limit": 30,
+          "sortBy": "BEST_MATCH",
+          "product_condition": "ANY",
+          "min_rating": "ANY"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Offers",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "page": 1,
+          "country": "us",
+          "language": "en"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Reviews",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "limit": 10,
+          "country": "us",
+          "language": "en"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "product_search": "$var1$",
+          "product_offers": "$var2$",
+          "product_reviews": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Show me the details and reviews of Apple iPhone 13 Pro Max.",
+    "output": [
+      {
+        "name": "Real-Time_Product_Search_Search",
+        "arguments": {
+          "q": "Apple iPhone 13 Pro Max",
+          "country": "us",
+          "language": "en",
+          "page": 1,
+          "limit": 30,
+          "sortBy": "BEST_MATCH",
+          "product_condition": "ANY",
+          "min_rating": "ANY"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Details",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "country": "us",
+          "language": "en",
+          "page": 1,
+          "limit": 30,
+          "sortBy": "BEST_MATCH",
+          "product_condition": "ANY",
+          "free_returns": false,
+          "free_shipping": false,
+          "on_sale": false,
+          "min_rating": "ANY"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Reviews",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "limit": 10,
+          "country": "us",
+          "language": "en"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "product_search": "$var1$",
+          "product_details": "$var2$",
+          "product_reviews": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Help me compare offers for Samsung Galaxy S21 Ultra from different stores.",
+    "output": [
+      {
+        "name": "Real-Time_Product_Search_Search",
+        "arguments": {
+          "q": "Samsung Galaxy S21 Ultra",
+          "country": "us",
+          "language": "en",
+          "page": 1,
+          "limit": 30,
+          "sortBy": "BEST_MATCH",
+          "product_condition": "ANY",
+          "min_rating": "ANY"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Offers",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "page": 1,
+          "country": "us",
+          "language": "en"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "product_search": "$var1$",
+          "product_offers": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Where can I find Bose QuietComfort 35 II with good reviews and offers?",
+    "output": [
+      {
+        "name": "Real-Time_Product_Search_Search",
+        "arguments": {
+          "q": "Bose QuietComfort 35 II",
+          "country": "us",
+          "language": "en",
+          "page": 1,
+          "limit": 30,
+          "sortBy": "BEST_MATCH",
+          "product_condition": "ANY",
+          "min_rating": "ANY"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Reviews",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "limit": 10,
+          "country": "us",
+          "language": "en"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Offers",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "page": 1,
+          "country": "us",
+          "language": "en"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "product_search": "$var1$",
+          "product_reviews": "$var2$",
+          "product_offers": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Fetch details and offers for Macbook Pro 13 inch laptop.",
+    "output": [
+      {
+        "name": "Real-Time_Product_Search_Search",
+        "arguments": {
+          "q": "Macbook Pro 13 inch",
+          "country": "us",
+          "language": "en",
+          "page": 1,
+          "limit": 30,
+          "sortBy": "BEST_MATCH",
+          "product_condition": "ANY",
+          "min_rating": "ANY"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Details",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "country": "us",
+          "language": "en",
+          "page": 1,
+          "limit": 30,
+          "sortBy": "BEST_MATCH",
+          "product_condition": "ANY",
+          "free_returns": false,
+          "free_shipping": false,
+          "on_sale": false,
+          "min_rating": "ANY"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Offers",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "page": 1,
+          "country": "us",
+          "language": "en"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "product_search": "$var1$",
+          "product_details": "$var2$",
+          "product_offers": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Show me the reviews and details of Canon G7x' camera.",
+    "output": [
+      {
+        "name": "Real-Time_Product_Search_Search",
+        "arguments": {
+          "q": "Canon G7x",
+          "country": "us",
+          "language": "en",
+          "page": 1,
+          "limit": 30,
+          "sortBy": "BEST_MATCH",
+          "product_condition": "ANY",
+          "min_rating": "ANY"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Reviews",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "limit": 10,
+          "country": "us",
+          "language": "en"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Details",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "country": "us",
+          "language": "en",
+          "page": 1,
+          "limit": 30,
+          "sortBy": "BEST_MATCH",
+          "product_condition": "ANY",
+          "free_returns": false,
+          "free_shipping": false,
+          "on_sale": false,
+          "min_rating": "ANY"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "product_search": "$var1$",
+          "product_reviews": "$var2$",
+          "product_details": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find the best deals and reviews for the Dyson Airwarp.",
+    "output": [
+      {
+        "name": "Real-Time_Product_Search_Search",
+        "arguments": {
+          "q": "Dyson Airwarp",
+          "country": "us",
+          "language": "en",
+          "page": 1,
+          "limit": 30,
+          "sortBy": "BEST_MATCH",
+          "product_condition": "ANY",
+          "min_rating": "ANY"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Offers",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "page": 1,
+          "country": "us",
+          "language": "en"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Reviews",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "limit": 10,
+          "country": "us",
+          "language": "en"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "product_search": "$var1$",
+          "product_offers": "$var2$",
+          "product_reviews": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Search for XBox One and get me details, reviews, and offers for it.",
+    "output": [
+      {
+        "name": "Real-Time_Product_Search_Search",
+        "arguments": {
+          "q": "XBox One",
+          "country": "us",
+          "language": "en",
+          "page": 1,
+          "limit": 30,
+          "sortBy": "BEST_MATCH",
+          "product_condition": "ANY",
+          "min_rating": "ANY"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Details",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "country": "us",
+          "language": "en",
+          "page": 1,
+          "limit": 30,
+          "sortBy": "BEST_MATCH",
+          "product_condition": "ANY",
+          "free_returns": false,
+          "free_shipping": false,
+          "on_sale": false,
+          "min_rating": "ANY"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Reviews",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "limit": 10,
+          "country": "us",
+          "language": "en"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Offers",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "page": 1,
+          "country": "us",
+          "language": "en"
+        },
+        "label": "var4"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "product_search": "$var1$",
+          "product_details": "$var2$",
+          "product_reviews": "$var3$",
+          "product_offers": "$var4$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Get me details, five reviews, and offers for Sony PlayStation 5.",
+    "output": [
+      {
+        "name": "Real-Time_Product_Search_Search",
+        "arguments": {
+          "q": "Sony PlayStation 5",
+          "country": "us",
+          "language": "en",
+          "page": 1,
+          "limit": 30,
+          "sortBy": "BEST_MATCH",
+          "product_condition": "ANY",
+          "min_rating": "ANY"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Details",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "country": "us",
+          "language": "en",
+          "page": 1,
+          "limit": 30,
+          "sortBy": "BEST_MATCH",
+          "product_condition": "ANY",
+          "free_returns": false,
+          "free_shipping": false,
+          "on_sale": false,
+          "min_rating": "ANY"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Reviews",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "limit": 10,
+          "country": "us",
+          "language": "en"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "Real-Time_Product_Search_Product_Offers",
+        "arguments": {
+          "product_id": "$var1.product_id$",
+          "page": 1,
+          "country": "us",
+          "language": "en"
+        },
+        "label": "var4"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "product_search": "$var1$",
+          "product_details": "$var2$",
+          "product_reviews": "$var3$",
+          "product_offers": "$var4$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Search for quotes about love and find associated books.",
+    "output": [
+      {
+        "name": "Goodreads_Search_Quotes_By_Keyword",
+        "arguments": {
+          "keyword": "love",
+          "page": 1
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Goodreads_Search_Book_By_Keyword",
+        "arguments": {
+          "keyword": "$var1.quoteText$",
+          "page": 1
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "quotes": "$var1$",
+          "books": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Who wrote the tipping point and can you find other books by the same author?",
+    "output": [
+      {
+        "name": "Goodreads_Search_Book_By_Keyword",
+        "arguments": {
+          "keyword": "the tipping point",
+          "page": 1
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Goodreads_Get_Authors_Books",
+        "arguments": {
+          "authorID": "$var1.author[0].id$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "books": "$var1.author[0]$",
+          "authors_books": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find quotes by J.K. Rowling and fetch related books.",
+    "output": [
+      {
+        "name": "Goodreads_Search_Quotes_By_Keyword",
+        "arguments": {
+          "keyword": "J.K. Rowling",
+          "page": 1
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Goodreads_Search_Book_By_Keyword",
+        "arguments": {
+          "keyword": "$var1.quoteText$",
+          "page": 1
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "quotes": "$var1$",
+          "books": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "What is the time difference between Morocco and New York?",
+    "output": [
+      {
+        "name": "WeatherAPI.com_Time_Zone_API",
+        "arguments": {
+          "q": "Morocco"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "WeatherAPI.com_Time_Zone_API",
+        "arguments": {
+          "q": "New York"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "CipherCircuit_Math_Assistant_CalculateAllArithmeticOperations",
+        "arguments": {
+          "numbers": "$var1.localtime$ - $var2.localtime$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "time_difference": "$var3.answer$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Fetch the weather forecast and current weather for Paris for the next 3 days.",
+    "output": [
+      {
+        "name": "WeatherAPI.com_Forecast_Weather_API",
+        "arguments": {
+          "q": "Paris",
+          "days": 3
+        },
+        "label": "var1"
+      },
+      {
+        "name": "WeatherAPI.com_Realtime_Weather_Api",
+        "arguments": {
+          "q": "$var1.location.name$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "forecast_details": "$var1$",
+          "realtime_weather": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Retrieve current weather, forecast for 2 days, and time zone for Tokyo.",
+    "output": [
+      {
+        "name": "WeatherAPI.com_Realtime_Weather_Api",
+        "arguments": {
+          "q": "Tokyo"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "WeatherAPI.com_Forecast_Weather_API",
+        "arguments": {
+          "q": "$var1.location.name$",
+          "days": 2
+        },
+        "label": "var2"
+      },
+      {
+        "name": "WeatherAPI.com_Time_Zone_API",
+        "arguments": {
+          "q": "$var1.location.name$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "realtime_weather": "$var1$",
+          "forecast_details": "$var2$",
+          "time_zone_details": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Fetch weather forecast for Berlin for the next 5 days and current weather.",
+    "output": [
+      {
+        "name": "WeatherAPI.com_Forecast_Weather_API",
+        "arguments": {
+          "q": "Berlin",
+          "days": 5
+        },
+        "label": "var1"
+      },
+      {
+        "name": "WeatherAPI.com_Realtime_Weather_Api",
+        "arguments": {
+          "q": "$var1.location.name$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "forecast_details": "$var1$",
+          "realtime_weather": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Get the forecast, current weather, and time zone for Cape Town.",
+    "output": [
+      {
+        "name": "WeatherAPI.com_Forecast_Weather_API",
+        "arguments": {
+          "q": "Cape Town",
+          "days": 3
+        },
+        "label": "var1"
+      },
+      {
+        "name": "WeatherAPI.com_Realtime_Weather_Api",
+        "arguments": {
+          "q": "$var1.location.name$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "WeatherAPI.com_Time_Zone_API",
+        "arguments": {
+          "q": "$var1.location.name$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "forecast_details": "$var1$",
+          "realtime_weather": "$var2$",
+          "time_zone_details": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Get the weather forecast and time zone information for Mumbai for the next 10 days.",
+    "output": [
+      {
+        "name": "WeatherAPI.com_Forecast_Weather_API",
+        "arguments": {
+          "q": "Mumbai",
+          "days": 10
+        },
+        "label": "var1"
+      },
+      {
+        "name": "WeatherAPI.com_Time_Zone_API",
+        "arguments": {
+          "q": "$var1.location.name$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "forecast_details": "$var1$",
+          "time_zone_details": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Could you provide the current weather conditions for Miami? I will be staying there for a couple of days. I need some hotel options for a check in on August 1, 2024 and check out August 6, 2024. What is the weather forecast for these dates?",
+    "output": [
+      {
+        "name": "WeatherAPI.com_Realtime_Weather_Api",
+        "arguments": {
+          "q": "Miami"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "TripadvisorSearchLocation",
+        "arguments": {
+          "query": "$var1.location.name$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "TripadvisorSearchHotels",
+        "arguments": {
+          "geoId": "$var2.geoId$",
+          "checkIn": "2024-10-01",
+          "checkOut": "2024-10-06"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "WeatherAPI.com_Forecast_Weather_API",
+        "arguments": {
+          "q": "$var1.location.name$",
+          "date": "2024-10-01"
+        },
+        "label": "var4"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "current_weather": "$var1$",
+          "hotels": "$var3$",
+          "weather_forecast": "$var4$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "What are the current weather conditions in New York City? Find flights to New York departing from Boston on July 20th and returning on July 25th. Additionally, please provide hotel recommendations for the specified dates in New York. Could you also give me the weather forecast for these dates?",
+    "output": [
+      {
+        "name": "WeatherAPI.com_Realtime_Weather_Api",
+        "arguments": {
+          "q": "New York"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "SkyScrapperSearchAirport",
+        "arguments": {
+          "query": "Boston"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "SkyScrapperSearchAirport",
+        "arguments": {
+          "query": "$var1.location.name$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "SkyScrapperFlightSearch",
+        "arguments": {
+          "originSkyId": "$var2.skyId$",
+          "destinationSkyId": "$var3.skyId$",
+          "originEntityId": "$var2.entityId$",
+          "destinationEntityId": "$var3.entityId$",
+          "date": "2024-07-20",
+          "returnDate": "2024-07-25"
+        },
+        "label": "var4"
+      },
+      {
+        "name": "TripadvisorSearchLocation",
+        "arguments": {
+          "query": "$var1.location.name$"
+        },
+        "label": "var5"
+      },
+      {
+        "name": "TripadvisorSearchHotels",
+        "arguments": {
+          "geoId": "$var5.geoId$",
+          "checkIn": "2024-07-20",
+          "checkOut": "2024-07-25"
+        },
+        "label": "var6"
+      },
+      {
+        "name": "WeatherAPI.com_Forecast_Weather_API",
+        "arguments": {
+          "q": "$var1.location.name$",
+          "date": "2024-07-20"
+        },
+        "label": "var7"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "current_weather": "$var1$",
+          "flights": "$var4$",
+          "hotels": "$var6$",
+          "weather_forecast": "$var7$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Can you check the current weather right now in Los Angeles? I'm planning on going to Chicago from August 10th to August 15th. I need hotel options for those dates. Please also provide the weather forecast for my trip.",
+    "output": [
+      {
+        "name": "WeatherAPI.com_Realtime_Weather_Api",
+        "arguments": {
+          "q": "Los Angeles"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "TripadvisorSearchLocation",
+        "arguments": {
+          "query": "Chicago"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "TripadvisorSearchHotels",
+        "arguments": {
+          "geoId": "$var2.geoId$",
+          "checkIn": "2024-08-10",
+          "checkOut": "2024-08-15"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "WeatherAPI.com_Forecast_Weather_API",
+        "arguments": {
+          "q": "Chicago",
+          "date": "2024-08-10"
+        },
+        "label": "var4"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "current_weather": "$var1$",
+          "hotels": "$var3$",
+          "weather_forecast": "$var4$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "What is the current weather like in Paris? Please find flights to from Atlanta to Paris departing on September 5th and returning on September 10th. Also, find hotels in Paris for those dates. Can you provide the weather forecast for my trip?",
+    "output": [
+      {
+        "name": "WeatherAPI.com_Realtime_Weather_Api",
+        "arguments": {
+          "q": "Paris"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "SkyScrapperSearchAirport",
+        "arguments": {
+          "query": "Atlanta"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "SkyScrapperSearchAirport",
+        "arguments": {
+          "query": "Paris"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "SkyScrapperFlightSearch",
+        "arguments": {
+          "originSkyId": "$var2.skyId$",
+          "destinationSkyId": "$var3.skyId$",
+          "originEntityId": "$var2.entityId$",
+          "destinationEntityId": "$var3.entityId$",
+          "date": "2024-09-05",
+          "returnDate": "2024-09-10"
+        },
+        "label": "var4"
+      },
+      {
+        "name": "TripadvisorSearchLocation",
+        "arguments": {
+          "query": "Paris"
+        },
+        "label": "var5"
+      },
+      {
+        "name": "TripadvisorSearchHotels",
+        "arguments": {
+          "geoId": "$var5.geoId$",
+          "checkIn": "2024-09-05",
+          "checkOut": "2024-09-10"
+        },
+        "label": "var6"
+      },
+      {
+        "name": "WeatherAPI.com_Forecast_Weather_API",
+        "arguments": {
+          "q": "$var1.location.name$",
+          "date": "2024-09-05"
+        },
+        "label": "var7"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "current_weather": "$var1$",
+          "flights": "$var4$",
+          "hotels": "$var6$",
+          "weather_forecast": "$var7$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find restaurants in New York City and show me their average ratings.",
+    "output": [
+      {
+        "name": "Tripadvisor_Search_Restaurant_Location",
+        "arguments": {
+          "query": "New York City"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Tripadvisor_Search_Restaurants",
+        "arguments": {
+          "locationId": "$var1.locationId$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "restaurants": "$var2.averageRating$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Show me details for different restaurants in Paris.",
+    "output": [
+      {
+        "name": "Tripadvisor_Search_Restaurant_Location",
+        "arguments": {
+          "query": "Paris"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Tripadvisor_Search_Restaurants",
+        "arguments": {
+          "locationId": "$var1.locationId$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Tripadvisor_Get_Restaurant_Details",
+        "arguments": {
+          "restaurantsId": "$var2.restaurantsId$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "restaurant_details": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find restaurants in Dallas.",
+    "output": [
+      {
+        "name": "Tripadvisor_Search_Restaurant_Location",
+        "arguments": {
+          "query": "Dallas"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Tripadvisor_Search_Restaurants",
+        "arguments": {
+          "locationId": "$var1.locationId$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "restaurants": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Show me details for the first restaurant on the list in Berlin.",
+    "output": [
+      {
+        "name": "Tripadvisor_Search_Restaurant_Location",
+        "arguments": {
+          "query": "Berlin"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Tripadvisor_Search_Restaurants",
+        "arguments": {
+          "locationId": "$var1.locationId$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Tripadvisor_Get_Restaurant_Details",
+        "arguments": {
+          "restaurantsId": "$var2.restaurantsId$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "restaurant_details": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Help me find a flight from New York City to London departing on August 1st and returning on August 6th. Also, recommend a good restaurant.",
+    "output": [
+      {
+        "name": "SkyScrapperSearchAirport",
+        "arguments": {
+          "query": "New York"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "SkyScrapperSearchAirport",
+        "arguments": {
+          "query": "London"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "SkyScrapperFlightSearch",
+        "arguments": {
+          "originSkyId": "$var1.skyId$",
+          "destinationSkyId": "$var2.skyId$",
+          "originEntityId": "$var1.entityId$",
+          "destinationEntityId": "$var2.entityId$",
+          "date": "2024-08-01",
+          "returnDate": "2024-08-06"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "Tripadvisor_Search_Restaurant_Location",
+        "arguments": {
+          "query": "London"
+        },
+        "label": "var4"
+      },
+      {
+        "name": "Tripadvisor_Search_Restaurants",
+        "arguments": {
+          "locationId": "$var4.locationId$"
+        },
+        "label": "var5"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "flights": "$var2$",
+          "restaurants": "$var5$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "I need to book a last-minute flight from Chicago to San Francisco that leaves on July 19,2024 and returns July 21, 2024. Also, find me some restaurant options near Union Square.",
+    "output": [
+      {
+        "name": "SkyScrapperSearchAirport",
+        "arguments": {
+          "query": "Chicago"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "SkyScrapperSearchAirport",
+        "arguments": {
+          "query": "San Francisco"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "SkyScrapperFlightSearch",
+        "arguments": {
+          "originSkyId": "$var1.skyId$",
+          "destinationSkyId": "$var2.skyId$",
+          "originEntityId": "$var1.entityId$",
+          "destinationEntityId": "$var2.entityId$",
+          "date": "2024-07-19",
+          "returnDate": "2024-07-21"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "Tripadvisor_Search_Restaurant_Location",
+        "arguments": {
+          "query": "Union Square, San Francisco"
+        },
+        "label": "var4"
+      },
+      {
+        "name": "Tripadvisor_Search_Restaurants",
+        "arguments": {
+          "locationId": "$var2.locationId$"
+        },
+        "label": "var5"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "flights": "$var3$",
+          "restaurants": "$var5$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Retrieve COVID-19 statistics for Italy and get the latest news related to COVID-19 in Italy.",
+    "output": [
+      {
+        "name": "Get_Country_Details_By_Country_Name",
+        "arguments": {
+          "name": "Italy"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetStats",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetNews",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "statistics": "$var2$",
+          "news": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find COVID-19 news for Brazil and get the total number of confirmed cases.",
+    "output": [
+      {
+        "name": "Get_Country_Details_By_Country_Name",
+        "arguments": {
+          "name": "Brazil"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetNews",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetStats",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "news": "$var2$",
+          "cases": "$var3.stats.totalConfirmedCases$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find the total number of deaths for COVID-19 Spain and list the titles of news articles about COVID-19 in Spain.",
+    "output": [
+      {
+        "name": "Get_Country_Details_By_Country_Name",
+        "arguments": {
+          "name": "Spain"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetStats",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetNews",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "deaths": "$var2.stats.totalDeath$",
+          "news": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "How many total people recovered from COVID-19 in Australia and give me websites that have the latest news related to COVID-19 in Australia.",
+    "output": [
+      {
+        "name": "Get_Country_Details_By_Country_Name",
+        "arguments": {
+          "name": "Australia"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetStats",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetNews",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "recovered_people": "$var2.stats.totalRecoveredCases$",
+          "news_websites": "$var3.news.webUrl$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Retrieve COVID-19 statistics for Germany and get news excerpts related to COVID-19 in Germany.",
+    "output": [
+      {
+        "name": "Get_Country_Details_By_Country_Name",
+        "arguments": {
+          "name": "Germany"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetStats",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetNews",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "statistics": "$var2.stats$",
+          "news_excerpts": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Get me the number of new COVID-19 deaths for Japan and get the latest news related to COVID-19 in Japan.",
+    "output": [
+      {
+        "name": "Get_Country_Details_By_Country_Name",
+        "arguments": {
+          "name": "Japan"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetStats",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetNews",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "new_deaths": "$var2.stats.newDeaths$",
+          "news": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Retrieve the number of newly recovered COVID-19 cases for Canada and get the latest news related to COVID-19.",
+    "output": [
+      {
+        "name": "Get_Country_Details_By_Country_Name",
+        "arguments": {
+          "name": "Canada"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetStats",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetNews",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "newly_recovered": "$var2.stats.newlyRecoveredCases$",
+          "news": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "How many newly confirmed cases of COVID-19 are there in South Africa? Also, please get news related to COVID-19 in South Africa.",
+    "output": [
+      {
+        "name": "Get_Country_Details_By_Country_Name",
+        "arguments": {
+          "name": "South Africa"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetStats",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetNews",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "newly_confirmed_cases": "$var2.stats.newlyConfirmedCases$",
+          "news": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "What are the current COVID-19 statistics for Argentina and find highlighted news content related to COVID-19 in Argentina.",
+    "output": [
+      {
+        "name": "Get_Country_Details_By_Country_Name",
+        "arguments": {
+          "name": "Argentina"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetStats",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetNews",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "statistics": "$var2.stats$",
+          "highlighted_news": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Obtain COVID-19 statistics for Russia and get featured new article content about COVID-19 in Russia.",
+    "output": [
+      {
+        "name": "Get_Country_Details_By_Country_Name",
+        "arguments": {
+          "name": "Russia"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetStats",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetNews",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "statistics": "$var2.stats$",
+          "featured_news": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Retrieve an overview of Beyonce as an artist and list her albums.",
+    "output": [
+      {
+        "name": "Spotify_Scraper_Get_Artist_ID_By_Name",
+        "arguments": {
+          "name": "Beyonce"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Spotify_Scraper_Get_Artist_Overview",
+        "arguments": {
+          "artistId": "$var1.id$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Spotify_Scraper_List_Artist_Albums_Singles",
+        "arguments": {
+          "artistId": "$var1.id$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "overview": "$var2$",
+          "albums": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find Bad Bunny's biography and list URLs to all his albums.",
+    "output": [
+      {
+        "name": "Spotify_Scraper_Get_Artist_ID_By_Name",
+        "arguments": {
+          "name": "Bad Bunny"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Spotify_Scraper_Get_Artist_Overview",
+        "arguments": {
+          "artistId": "$var1.id$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Spotify_Scraper_List_Artist_Albums_Singles",
+        "arguments": {
+          "artistId": "$var1.id$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "biography": "$var2.biography$",
+          "albums_as_urls": "$var3.shareUrl$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find out details of Taylor Swift in Spotify and the names of her most recent albums.",
+    "output": [
+      {
+        "name": "Spotify_Scraper_Get_Artist_ID_By_Name",
+        "arguments": {
+          "name": "Taylor Swift"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Spotify_Scraper_Get_Artist_Overview",
+        "arguments": {
+          "artistId": "$var1.id$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Spotify_Scraper_List_Artist_Albums_Singles",
+        "arguments": {
+          "artistId": "$var1.id$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "followers": "$var2$",
+          "albums_as_urls": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find the biography of Eminem from Spotify and retrieve his albums.",
+    "output": [
+      {
+        "name": "Spotify_Scraper_Get_Artist_ID_By_Name",
+        "arguments": {
+          "name": "Eminem"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Spotify_Scraper_Get_Artist_Overview",
+        "arguments": {
+          "artistId": "$var1.id$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Spotify_Scraper_List_Artist_Albums_Singles",
+        "arguments": {
+          "artistId": "$var1.id$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "listeners": "$var2.biography$",
+          "albums": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find information about the artist Drake and find related artists.",
+    "output": [
+      {
+        "name": "Spotify_Scraper_Get_Artist_ID_By_Name",
+        "arguments": {
+          "name": "Drake"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Spotify_Scraper_Get_Artist_Overview",
+        "arguments": {
+          "artistId": "$var1.id$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Spotify_Scraper_List_Related_Artists",
+        "arguments": {
+          "artistId": "$var1.id$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "overview": "$var2$",
+          "related_artists": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "What is Billie Ellish's statistics on Spotify?",
+    "output": [
+      {
+        "name": "Spotify_Scraper_Get_Artist_ID_By_Name",
+        "arguments": {
+          "name": "Billie Ellish"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Spotify_Scraper_Get_Artist_Overview",
+        "arguments": {
+          "artistId": "$var1.id$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "world_rank": "$var2.stats$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find artists that are similar to Sza.",
+    "output": [
+      {
+        "name": "Spotify_Scraper_Get_Artist_ID_By_Name",
+        "arguments": {
+          "name": "Sza"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Spotify_Scraper_List_Related_Artists",
+        "arguments": {
+          "artistId": "$var1.id$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "related_artists": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "What is Kendrick Lamar's biography and what are the release dates of his albums?",
+    "output": [
+      {
+        "name": "Spotify_Scraper_Get_Artist_ID_By_Name",
+        "arguments": {
+          "name": "Kendrick Lamar"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Spotify_Scraper_Get_Artist_Overview",
+        "arguments": {
+          "artistId": "$var1.id$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "Spotify_Scraper_List_Artist_Albums_Singles",
+        "arguments": {
+          "artistId": "$var1.id$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "biography": "$var2.biography$",
+          "release_dates": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find the names of the latest singles by Justin Bieber and provide the url to each song?",
+    "output": [
+      {
+        "name": "Spotify_Scraper_Get_Artist_ID_By_Name",
+        "arguments": {
+          "name": "Justin Bieber"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Spotify_Scraper_List_Artist_Albums_Singles",
+        "arguments": {
+          "artistId": "$var1.id$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "names_of_singles": "$var2.name$",
+          "song_url": "$var2.shareUrl$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find the names of the Weeknd's albums and how many track are on each?",
+    "output": [
+      {
+        "name": "Spotify_Scraper_Get_Artist_ID_By_Name",
+        "arguments": {
+          "name": "The Weeknd"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Spotify_Scraper_List_Artist_Albums_Singles",
+        "arguments": {
+          "artistId": "$var1.id$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "names_of_albums": "$var2.name$",
+          "number_of_tracks": "$var2.trackCount$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find the names of artists that make similar music to Odeza.",
+    "output": [
+      {
+        "name": "Spotify_Scraper_Get_Artist_ID_By_Name",
+        "arguments": {
+          "name": "Odeza"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Spotify_Scraper_List_Related_Artists",
+        "arguments": {
+          "artistId": "$var1.id$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "names": "$var2.name$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Get a single follower of the user aliciakeys and retrieve details of that follower.",
+    "output": [
+      {
+        "name": "Instagram_Followers",
+        "arguments": {
+          "username_or_id_or_url": "aliciakeys",
+          "amount": 1
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Instagram_Info",
+        "arguments": {
+          "username_or_id_or_url": "$var1.username$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "followers": "$var1$",
+          "user_details": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "The instagram id of Kyle Jenner is kyliejenner. Retrieve the list of accounts she is following on Instagram. Then find the Posts and Reels of the top account holder.",
+    "output": [
+      {
+        "name": "Instagram_Following",
+        "arguments": {
+          "username_or_id_or_url": "kyliejenner"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Instagram_Posts_Reels",
+        "arguments": {
+          "username_or_id_or_url": "$var1.username$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "following": "$var1$",
+          "recent_posts_and_reels": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Search Instagram id for Beyonce and retrieve her followers.",
+    "output": [
+      {
+        "name": "Instagram_Search_User",
+        "arguments": {
+          "search_query": "Beyonce"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Instagram_Followers",
+        "arguments": {
+          "username_or_id_or_url": "$var1.username$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "followers": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Get the number of likes on the latest Instagram post by Bella Hadid.",
+    "output": [
+      {
+        "name": "Instagram_Search_User",
+        "arguments": {
+          "search_query": "Bella Hadid"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Instagram_Posts_Reels",
+        "arguments": {
+          "username_or_id_or_url": "$var1.username$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "number_of_likes": "$var2.like_count$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Get the number of plays of Virat Kohli from his Instagram account.",
+    "output": [
+      {
+        "name": "Instagram_Search_User",
+        "arguments": {
+          "search_query": "Virat Kohli"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Instagram_Posts_Reels",
+        "arguments": {
+          "username_or_id_or_url": "$var1.username$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "play_count": "$var2.play_count$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "How many comments does Kendrick Lamar have on the top post on Instagram?",
+    "output": [
+      {
+        "name": "Instagram_Search_User",
+        "arguments": {
+          "search_query": "Kendrick Lamar"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Instagram_Posts_Reels",
+        "arguments": {
+          "username_or_id_or_url": "$var1.username$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "comment_count": "$var2.comment_count$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find the total number of comments on the top post by The Weeknd",
+    "output": [
+      {
+        "name": "Instagram_Search_User",
+        "arguments": {
+          "search_query": "The Weeknd"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Instagram_Posts_Reels",
+        "arguments": {
+          "username_or_id_or_url": "$var1.username$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "followers": "$var2.comment_count$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Find out if NASA has a verified account on Instagram or not and then get the public contact email address.",
+    "output": [
+      {
+        "name": "Instagram_Search_User",
+        "arguments": {
+          "search_query": "NASA"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Instagram_Info",
+        "arguments": {
+          "username_or_id_or_url": "$var1.username$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "is_verified": "$var2.is_verified$",
+          "email": "$var2.public_email$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Get the balance sheet for Microsoft (ticker id is MSFT) for the form 10-K with and then retrieve its financial statements and disclosures.",
+    "output": [
+      {
+        "name": "SEC_Balance_Sheet",
+        "arguments": {
+          "ticker": "MSFT",
+          "formtype": "10-K"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "SEC_Financial_Statements_and_Disclosures",
+        "arguments": {
+          "cik": "$var1.company.cik$",
+          "accessionNumber": "$var1.filing.accessionNumber$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "balanceSheet": "$var1$",
+          "financialStatements": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Get the balance sheet of Alphabet Inc. (ticker id is GOOGL) for the form 10-K with and then retrieve its financial statements and disclosures.",
+    "output": [
+      {
+        "name": "SEC_Balance_Sheet",
+        "arguments": {
+          "ticker": "GOOGL",
+          "formtype": "10-K"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "SEC_Financial_Statements_and_Disclosures",
+        "arguments": {
+          "cik": "$var1.company.cik$",
+          "accessionNumber": "$var1.filing.accessionNumber$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "balanceSheet": "$var1$",
+          "financialStatements": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "IBM's ticker id is IBM. Fetch the balance sheet for IBM (form 10-K) and then retrieve its recent SEC filing date.",
+    "output": [
+      {
+        "name": "SEC_Balance_Sheet",
+        "arguments": {
+          "ticker": "IBM",
+          "formtype": "10-K"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "SEC_Filings",
+        "arguments": {
+          "identifier": "$var1.company.cik$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "balanceSheet": "$var1$",
+          "filings": "$var2.fillings.filingDate$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "What is the dial code for China and find the latest COVID-19 news for China.",
+    "output": [
+      {
+        "name": "Get_Country_Details_By_Country_Name",
+        "arguments": {
+          "name": "China"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetNews",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "dial_code": "$var1.dial_code$",
+          "cases": "$var2$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Let me know the COVID-19 statistics of India and get me the latest articles about the politics of India.",
+    "output": [
+      {
+        "name": "Get_Country_Details_By_Country_Name",
+        "arguments": {
+          "name": "India"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Coronavirus_Smartable_GetStats",
+        "arguments": {
+          "location": "$var1.short_name$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "NewsAPISearchByKeyWord",
+        "arguments": {
+          "query": "politics",
+          "region": "$var1.short_name$"
+        },
+        "label": "var3"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "statistics": "$var2$",
+          "news": "$var3$"
+        }
+      }
+    ]
+  },
+  {
+    "input": "Get details about the singer Ed Sheeran.",
+    "output": [
+      {
+        "name": "Spotify_Scraper_Get_Artist_ID_By_Name",
+        "arguments": {
+          "name": "Ed Sheeran"
+        },
+        "label": "var1"
+      },
+      {
+        "name": "Spotify_Scraper_Get_Artist_Overview",
+        "arguments": {
+          "artistId": "$var1.id$"
+        },
+        "label": "var2"
+      },
+      {
+        "name": "var_result",
+        "arguments": {
+          "overview": "$var2$"
+        }
+      }
+    ]
+  }
+]

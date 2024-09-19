@@ -1,0 +1,4273 @@
+[
+    {
+        "name": "SkyScrapperFlightSearch",
+        "description": "Retrieves available flights for a given route using Skyscrapper API.",
+        "method": "GET",
+        "endpoint": "/api/v2/flights/searchFlightsComplete",
+        "host": "sky-scrapper.p.rapidapi.com",
+        "url": "https://rapidapi.com/apiheya/api/sky-scrapper/playground/apiendpoint_adcbe9c6-73a7-4db4-b95c-d9b552de558c",
+        "query_parameters": {
+            "originSkyId": {
+                "type": "string",
+                "description": "The originSkyId code can be extracted from the Search Airport API in the Flights collection.",
+                "required": true
+            },
+            "destinationSkyId": {
+                "type": "string",
+                "description": "The destinationSkyId code can be extracted from the Search Airport API in the Flights collection.",
+                "required": true
+            },
+            "originEntityId": {
+                "type": "string",
+                "description": "The originEntityId code can be extracted from the Search Airport API in the Flights collection.",
+                "required": true
+            },
+            "destinationEntityId": {
+                "type": "string",
+                "description": "The destinationEntityId code can be extracted from the Search Airport API in the Flights collection.",
+                "required": true
+            },
+            "date": {
+                "type": "string",
+                "description": "Departure or travel date. Format: YYYY-MM-DD",
+                "required": true
+            },
+            "returnDate": {
+                "type": "string",
+                "description": "Return date. Format: YYYY-MM-DD",
+                "required": false
+            },
+            "cabinClass": {
+                "type": "string",
+                "description": "Cabin class. Default value: economy",
+                "enum": [
+                    "economy",
+                    "premium_economy",
+                    "business",
+                    "first"
+                ],
+                "required": false
+            },
+            "adults": {
+                "type": "number",
+                "description": "Adults: 12+ years. Default value: 1",
+                "required": false
+            },
+            "children": {
+                "type": "number",
+                "description": "Children: 2-12 years. Default value: 0",
+                "required": false
+            },
+            "infants": {
+                "type": "number",
+                "description": "Infants: Under 2 years. Default value: 0",
+                "required": false
+            },
+            "sortBy": {
+                "type": "string",
+                "description": "Sort By. Default value: best",
+                "allowed_values": [
+                    "best",
+                    "price_high",
+                    "cheapest",
+                    "fastest",
+                    "outbound_take_off_time",
+                    "outbound_landing_time",
+                    "return_take_off_time",
+                    "return_landing_time"
+                ],
+                "required": false
+            },
+            "limit": {
+                "type": "number",
+                "description": "Set a limit on the amount of records. Example: 100",
+                "required": false
+            },
+            "carriersIds": {
+                "type": "string",
+                "description": "Filter the flight itinerary data by the carrier. Comma-separated format for multiple carriers. Example: -32672,-31435",
+                "required": false
+            },
+            "currency": {
+                "type": "string",
+                "description": "Currency code. Default value: USD",
+                "required": false
+            },
+            "market": {
+                "type": "string",
+                "description": "Market code. Default value: en-US",
+                "required": false
+            },
+            "countryCode": {
+                "type": "string",
+                "description": "Country code. Default value: US",
+                "required": false
+            }
+        },
+        "output_parser": "result.data.itineraries[0].{param}",
+        "output_parameters": {
+            "flightId": {
+                "type": "string",
+                "description": "The unique identifier of the flight."
+            },
+            "isSelfTransfer": {
+                "type": "boolean",
+                "description": "Indicates whether the flight is a self-transfer flight."
+            },
+            "isProtectedSelfTransfer": {
+                "type": "boolean",
+                "description": "Indicates whether the self-transfer flight is protected."
+            },
+            "fareAttributes": {
+                "type": "object",
+                "description": "The fare attributes of the flight."
+            },
+            "isMashUp": {
+                "type": "boolean",
+                "description": "Indicates whether the flight is a mash-up flight."
+            },
+            "hasFlexibleOptions": {
+                "type": "boolean",
+                "description": "Indicates whether the flight has flexible options."
+            },
+            "score": {
+                "type": "float",
+                "description": "The score of the flight."
+            },
+            "minPrice": {
+                "type": "float",
+                "description": "The minimum price of the flight."
+            },
+            "maxPrice": {
+                "type": "float",
+                "description": "The maximum price of the flight."
+            },
+            "multiCityMinPrice": {
+                "type": "float",
+                "description": "The minimum price of the multi-city flight."
+            },
+            "multiCityMaxPrice": {
+                "type": "float",
+                "description": "The maximum price of the multi-city flight."
+            },
+            "originCity": {
+                "type": "string",
+                "description": "The origin city of the flight."
+            },
+            "originAirportId": {
+                "type": "string",
+                "description": "The unique identifier of the origin airport."
+            },
+            "originAirportName": {
+                "type": "string",
+                "description": "The name of the origin airport."
+            },
+            "destinationCity": {
+                "type": "string",
+                "description": "The destination city of the flight."
+            },
+            "destinationAirportId": {
+                "type": "string",
+                "description": "The unique identifier of the destination airport."
+            },
+            "destinationAirportName": {
+                "type": "string",
+                "description": "The name of the destination airport."
+            },
+            "carrierId": {
+                "type": "string",
+                "description": "The unique identifier of the carrier."
+            },
+            "carrierName": {
+                "type": "string",
+                "description": "The name of the carrier."
+            },
+            "carrierLogoUrl": {
+                "type": "string",
+                "description": "The URL of the carrier logo."
+            },
+            "formattedPrice": {
+                "type": "string",
+                "description": "The formatted price of the flight."
+            },
+            "sessionId": {
+                "type": "string",
+                "description": "The unique identifier of the session."
+            },
+            "destinationImageUrl": {
+                "type": "string",
+                "description": "The URL of the destination image."
+            }
+        }
+    },
+    {
+        "name": "SkyScrapperSearchAirport",
+        "description": "Search for airports using a location name.",
+        "method": "GET",
+        "endpoint": "/api/v1/flights/searchAirport",
+        "host": "sky-scrapper.p.rapidapi.com",
+        "url": "https://rapidapi.com/apiheya/api/sky-scrapper/playground/apiendpoint_efcce954-2563-41cb-97fc-b2abe7851b3d",
+        "query_parameters": {
+            "query": {
+                "type": "string",
+                "description": "Name of the location where the airport is situated.",
+                "required": true
+            }
+        },
+        "output_parser": "result.data[0].{param}",
+        "output_parameters": {
+            "skyId": {
+                "type": "string",
+                "description": "The unique identifier of the airport."
+            },
+            "entityId": {
+                "type": "string",
+                "description": "The unique identifier of the airport."
+            },
+            "presentation": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "description": "The name of the airport."
+                    },
+                    "suggestionTitle": {
+                        "type": "string",
+                        "description": "The name of the airport."
+                    },
+                    "subtitle": {
+                        "type": "string",
+                        "description": "The location of the airport."
+                    }
+                }
+            },
+            "navigation": {
+                "type": "object",
+                "properties": {
+                    "entityId": {
+                        "type": "string",
+                        "description": "The unique identifier of the airport."
+                    },
+                    "entityType": {
+                        "type": "string",
+                        "description": "The type of the entity, in this case, it is an airport."
+                    },
+                    "localizedName": {
+                        "type": "string",
+                        "description": "The name of the airport."
+                    },
+                    "relevantFlightParams": {
+                        "type": "object",
+                        "properties": {
+                            "skyId": {
+                                "type": "string",
+                                "description": "The unique identifier of the airport."
+                            },
+                            "entityId": {
+                                "type": "string",
+                                "description": "The unique identifier of the airport."
+                            },
+                            "flightPlaceType": {
+                                "type": "string",
+                                "description": "The type of the flight place, in this case, it is an airport."
+                            },
+                            "localizedName": {
+                                "type": "string",
+                                "description": "The name of the airport."
+                            }
+                        }
+                    },
+                    "relevantHotelParams": {
+                        "type": "object",
+                        "properties": {
+                            "entityId": {
+                                "type": "string",
+                                "description": "The unique identifier of the airport."
+                            },
+                            "entityType": {
+                                "type": "string",
+                                "description": "The type of the entity, in this case, it is an airport."
+                            },
+                            "localizedName": {
+                                "type": "string",
+                                "description": "The name of the airport."
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "name": "TripadvisorSearchLocation",
+        "description": "Search for locations using a query string.",
+        "method": "GET",
+        "endpoint": "/api/v1/hotels/searchLocation",
+        "host": "tripadvisor16.p.rapidapi.com",
+        "url": "https://rapidapi.com/DataCrawler/api/tripadvisor16/playground/apiendpoint_7366d742-ab3d-48a0-b86d-3dcf3e2b681e",
+        "query_parameters": {
+            "query": {
+                "type": "string",
+                "description": "Search query for location (e.g., city name)",
+                "required": true
+            }
+        },
+        "output_parser": "result.data[0].{param}",
+        "output_parameters": {
+            "geoId": {
+                "type": "string",
+                "description": "The unique identifier for the location"
+            },
+            "name": {
+                "type": "string",
+                "description": "The name of the location"
+            },
+            "type": {
+                "type": "string",
+                "description": "The type of location (e.g., city, region, country)"
+            },
+            "latitude": {
+                "type": "float",
+                "description": "The latitude of the location"
+            },
+            "longitude": {
+                "type": "float",
+                "description": "The longitude of the location"
+            }
+        }
+    },
+    {
+        "name": "TripadvisorSearchHotels",
+        "description": "Retrieves available hotels in a given location using Tripadvisor API.",
+        "method": "GET",
+        "endpoint": "/api/v1/hotels/searchHotels",
+        "host": "tripadvisor16.p.rapidapi.com",
+        "url": "https://rapidapi.com/DataCrawler/api/tripadvisor16/playground/apiendpoint_fae8f2c1-fefe-47fe-ba1e-0f50f95b3489",
+        "query_parameters": {
+            "geoId": {
+                "type": "string",
+                "description": "Geo ID of the location retrieved from the Search Location API.",
+                "required": true
+            },
+            "checkIn": {
+                "type": "string",
+                "description": "Check-in date. Format: YYYY-MM-DD",
+                "required": true
+            },
+            "checkOut": {
+                "type": "string",
+                "description": "Check-out date. Format: YYYY-MM-DD",
+                "required": true
+            },
+            "pageNumber": {
+                "type": "number",
+                "description": "Page number. The default page number is 1.",
+                "required": false
+            },
+            "sort": {
+                "type": "string",
+                "description": "Sort order for results.",
+                "required": false
+            },
+            "adults": {
+                "type": "number",
+                "description": "Number of adults.",
+                "required": false
+            },
+            "rooms": {
+                "type": "number",
+                "description": "Number of rooms.",
+                "required": false
+            },
+            "childrenAges": {
+                "type": "array",
+                "description": "Ages of children.",
+                "required": false
+            },
+            "currencyCode": {
+                "type": "string",
+                "description": "Currency code.",
+                "required": false
+            },
+            "healthSafety": {
+                "type": "array",
+                "description": "Health and safety filters.",
+                "required": false
+            },
+            "deals": {
+                "type": "array",
+                "description": "Deal filters.",
+                "required": false
+            },
+            "type": {
+                "type": "array",
+                "description": "Type filters.",
+                "required": false
+            },
+            "amenity": {
+                "type": "array",
+                "description": "Amenity filters.",
+                "required": false
+            },
+            "neighborhood": {
+                "type": "array",
+                "description": "Neighborhood filters.",
+                "required": false
+            },
+            "rating": {
+                "type": "number",
+                "description": "Minimum rating.",
+                "required": false
+            },
+            "class": {
+                "type": "array",
+                "description": "Class filters.",
+                "required": false
+            },
+            "style": {
+                "type": "array",
+                "description": "Style filters.",
+                "required": false
+            },
+            "distFrom": {
+                "type": "string",
+                "description": "Distance from a location.",
+                "required": false
+            }
+        },
+        "output_parser": "result.data.data[0].{param}",
+        "output_parameters": {
+            "id": {
+                "type": "string",
+                "description": "Hotel ID"
+            },
+            "title": {
+                "type": "string",
+                "description": "Hotel name"
+            },
+            "primaryInfo": {
+                "type": "string",
+                "description": "Hotel address"
+            },
+            "secondaryInfo": {
+                "type": "string",
+                "description": "Hotel city"
+            },
+            "badge": {
+                "type": "object",
+                "description": "Hotel badge"
+            },
+            "bubbleRating": {
+                "type": "object",
+                "properties": {
+                    "count": "string",
+                    "rating": "number"
+                }
+            },
+            "isSponsored": {
+                "type": "boolean",
+                "description": "Is sponsored"
+            },
+            "accentedLabel": {
+                "type": "boolean",
+                "description": "Accented label"
+            },
+            "provider": {
+                "type": "string",
+                "description": "Provider"
+            },
+            "priceForDisplay": {
+                "type": "string",
+                "description": "Price for display"
+            },
+            "strikethroughPrice": {
+                "type": "string",
+                "description": "Strikethrough price"
+            },
+            "priceDetails": {
+                "type": "string",
+                "description": "Price details"
+            },
+            "priceSummary": {
+                "type": "string",
+                "description": "Price summary"
+            },
+            "cardPhotos": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "__typename": {
+                            "type": "string",
+                            "description": "type"
+                        },
+                        "sizes": {
+                            "type": "object",
+                            "properties": {
+                                "__typename": {
+                                    "type": "string",
+                                    "description": "type"
+                                },
+                                "maxHeight": {
+                                    "type": "number",
+                                    "description": "maximum height"
+                                },
+                                "maxWidth": {
+                                    "type": "number",
+                                    "description": "maximum width"
+                                },
+                                "urlTemplate": {
+                                    "type": "string",
+                                    "description": "url template"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "commerceInfo": {
+                "type": "object",
+                "properties": {
+                    "externalUrl": "string"
+                }
+            },
+            "details": {
+                "type": "object",
+                "properties": {
+                    "text": "string"
+                }
+            }
+        }
+    },
+    {
+        "name": "TripadvisorSearchRestaurants",
+        "description": "Search for restaurants using a location.",
+        "method": "GET",
+        "endpoint": "/api/v1/restaurant/searchRestaurants",
+        "host": "tripadvisor16.p.rapidapi.com",
+        "url": "https://rapidapi.com/DataCrawler/api/tripadvisor16/playground/apiendpoint_6c187918-f989-4c63-bf1e-b2e38efe3152",
+        "query_parameters": {
+            "locationId": {
+                "type": "string",
+                "description": "location geoId of a place.",
+                "required": true
+            }
+        },
+        "output_parser": "result.data.data[0].{param}",
+        "output_parameters": {
+            "restaurantsId": {
+                "type": "string",
+                "description": "The ID of the restaurant"
+            },
+            "locationId": {
+                "type": "number",
+                "description": "The ID of the location"
+            },
+            "name": {
+                "type": "string",
+                "description": "The name of the restaurant"
+            },
+            "averageRating": {
+                "type": "number",
+                "description": "The average rating of the restaurant"
+            },
+            "userReviewCount": {
+                "type": "number",
+                "description": "The number of user reviews for the restaurant"
+            },
+            "currentOpenStatusCategory": {
+                "type": "string",
+                "description": "The current open status category of the restaurant"
+            },
+            "currentOpenStatusText": {
+                "type": "string",
+                "description": "The current open status text of the restaurant"
+            },
+            "priceTag": {
+                "type": "string",
+                "description": "The price tag of the restaurant"
+            },
+            "hasMenu": {
+                "type": "boolean",
+                "description": "Whether the restaurant has a menu"
+            },
+            "menuUrl": {
+                "type": "string",
+                "description": "The URL of the restaurant's menu"
+            },
+            "isDifferentGeo": {
+                "type": "boolean",
+                "description": "Whether the restaurant is in a different geo"
+            },
+            "parentGeoName": {
+                "type": "string",
+                "description": "The name of the parent geo"
+            },
+            "distanceTo": {
+                "type": "string",
+                "description": "The distance to the restaurant"
+            },
+            "awardInfo": {
+                "type": "string",
+                "description": "The award information for the restaurant"
+            },
+            "isLocalChefItem": {
+                "type": "boolean",
+                "description": "Whether the restaurant is a local chef item"
+            },
+            "isPremium": {
+                "type": "boolean",
+                "description": "Whether the restaurant is premium"
+            },
+            "isStoryboardPublished": {
+                "type": "boolean",
+                "description": "Whether the restaurant's storyboard is published"
+            },
+            "establishmentTypeAndCuisineTags": {
+                "type": "array",
+                "description": "The establishment type and cuisine tags for the restaurant"
+            },
+            "offers": {
+                "type": "object",
+                "properties": {
+                    "hasDelivery": {
+                        "type": "boolean",
+                        "description": "Whether the restaurant offers delivery"
+                    },
+                    "hasReservation": {
+                        "type": "boolean",
+                        "description": "Whether the restaurant accepts reservations"
+                    },
+                    "slot1Offer": {
+                        "type": "string",
+                        "description": "The offer for slot 1"
+                    },
+                    "slot2Offer": {
+                        "type": "string",
+                        "description": "The offer for slot 2"
+                    },
+                    "restaurantSpecialOffer": {
+                        "type": "boolean",
+                        "description": "Whether the restaurant has a special offer"
+                    }
+                }
+            },
+            "heroImgUrl": {
+                "type": "string",
+                "description": "The URL of the hero image for the restaurant"
+            },
+            "heroImgRawHeight": {
+                "type": "number",
+                "description": "The raw height of the hero image"
+            },
+            "heroImgRawWidth": {
+                "type": "number",
+                "description": "The raw width of the hero image"
+            },
+            "squareImgUrl": {
+                "type": "string",
+                "description": "The URL of the square image for the restaurant"
+            },
+            "squareImgRawLength": {
+                "type": "number",
+                "description": "The raw length of the square image"
+            },
+            "thumbnail": {
+                "type": "object",
+                "description": "The thumbnail for the restaurant"
+            },
+            "reviewSnippets": {
+                "type": "object",
+                "description": "The review snippets for the restaurant"
+            }
+        }
+    },
+    {
+        "name": "NewsAPISearchByKeyWord",
+        "description": "Search for news articles by topic using the NewsAPI.",
+        "method": "GET",
+        "endpoint": "/search",
+        "host": "newsapi90.p.rapidapi.com",
+        "url": "https://rapidapi.com/strataconsultingllc/api/newsapi90/playground/apiendpoint_ac10bebc-6476-4cdf-886b-b9f5d6ef26c9",
+        "query_parameters": {
+            "query": {
+                "type": "string",
+                "description": "Search query for the topic (e.g., climate change)",
+                "required": false
+            },
+            "language": {
+                "type": "string",
+                "description": "Language for the search results (e.g., 'en', 'es', 'fr')",
+                "required": false
+            },
+            "region": {
+                "type": "string",
+                "description": "Region for the search results (e.g., 'US', 'GB', 'CA')",
+                "required": false
+            }
+        },
+        "output_parser": "result[0].{param}",
+        "output_parameters": {
+            "date": {
+                "type": "integer",
+                "description": "Publication date of the news article as a timestamp"
+            },
+            "domain": {
+                "type": "string",
+                "description": "Domain of the news source"
+            },
+            "image": {
+                "type": "string",
+                "description": "URL of the image associated with the news article"
+            },
+            "isVideo": {
+                "type": "boolean",
+                "description": "Indicates if the article is a video"
+            },
+            "link": {
+                "type": "string",
+                "description": "URL of the news article"
+            },
+            "preview": {
+                "type": "string",
+                "description": "Preview text of the news article"
+            },
+            "pubLogo": {
+                "type": "string",
+                "description": "URL of the publisher's logo"
+            },
+            "publisher": {
+                "type": "string",
+                "description": "Name of the news publisher"
+            },
+            "title": {
+                "type": "string",
+                "description": "Title of the news article"
+            }
+        }
+    },
+    {
+        "name": "RedditTopPostsBySubreddit",
+        "description": "Returns the top subreddit posts.",
+        "method": "GET",
+        "endpoint": "/getTopPostsBySubreddit",
+        "host": "reddit34.p.rapidapi.com",
+        "url": "https://rapidapi.com/socialminer/api/reddit34/playground/apiendpoint_6c1d3bb9-e10b-455f-813d-befec97d0797",
+        "query_parameters": {
+            "subreddit": {
+                "type": "String",
+                "description": "The subreddit for which to fetch top posts.",
+                "required": true
+            },
+            "time": {
+                "type": "String",
+                "description": "The time period for which to fetch top posts.",
+                "possible_values": [
+                    "hour",
+                    "day",
+                    "week",
+                    "month",
+                    "year",
+                    "all"
+                ],
+                "required": true
+            },
+            "cursor": {
+                "type": "String",
+                "description": "A cursor for pagination.",
+                "required": false
+            }
+        },
+        "output_parser": "result.data.posts[0].{param}",
+        "output_parameters": {
+            "cursor": {
+                "type": "string",
+                "description": "A cursor for pagination."
+            },
+            "id": {
+                "type": "string",
+                "description": "The id of the post."
+            },
+            "numComments": {
+                "type": "integer",
+                "description": "The number of comments on the post."
+            },
+            "created": {
+                "type": "integer",
+                "description": "The time the post was created."
+            },
+            "score": {
+                "type": "integer",
+                "description": "The score of the post."
+            },
+            "distinguishType": {
+                "type": "string",
+                "description": "The type of distinction the post has."
+            },
+            "isLocked": {
+                "type": "boolean",
+                "description": "Whether the post is locked."
+            },
+            "isStickied": {
+                "type": "boolean",
+                "description": "Whether the post is stickied."
+            },
+            "title": {
+                "type": "string",
+                "description": "The title of the post."
+            },
+            "author": {
+                "type": "string",
+                "description": "The author of the post."
+            },
+            "authorId": {
+                "type": "string",
+                "description": "The id of the author of the post."
+            },
+            "authorIsBlocked": {
+                "type": "boolean",
+                "description": "Whether the author of the post is blocked."
+            },
+            "domain": {
+                "type": "string",
+                "description": "The domain of the post."
+            },
+            "postId": {
+                "type": "string",
+                "description": "The id of the post."
+            },
+            "upvoteRatio": {
+                "type": "number",
+                "description": "The ratio of upvotes to downvotes on the post."
+            },
+            "numDuplicates": {
+                "type": "integer",
+                "description": "The number of duplicate posts."
+            },
+            "discussionType": {
+                "type": "string",
+                "description": "The type of discussion the post is."
+            },
+            "viewCount": {
+                "type": "integer",
+                "description": "The number of views the post has."
+            },
+            "goldCount": {
+                "type": "integer",
+                "description": "The number of gold awards the post has."
+            },
+            "isArchived": {
+                "type": "boolean",
+                "description": "Whether the post is archived."
+            },
+            "contestMode": {
+                "type": "boolean",
+                "description": "Whether the post is in contest mode."
+            },
+            "gildings": {
+                "type": "object",
+                "description": "The gildings of the post."
+            },
+            "postCategories": {
+                "type": "array",
+                "description": "The categories of the post."
+            },
+            "suggestedSort": {
+                "type": "string",
+                "description": "The suggested sort for the post."
+            },
+            "hidden": {
+                "type": "boolean",
+                "description": "Whether the post is hidden."
+            },
+            "saved": {
+                "type": "boolean",
+                "description": "Whether the post is saved."
+            },
+            "isGildable": {
+                "type": "boolean",
+                "description": "Whether the post is gildable."
+            },
+            "isMediaOnly": {
+                "type": "boolean",
+                "description": "Whether the post is media only."
+            },
+            "isSponsored": {
+                "type": "boolean",
+                "description": "Whether the post is sponsored."
+            },
+            "isNSFW": {
+                "type": "boolean",
+                "description": "Whether the post is NSFW."
+            },
+            "isMeta": {
+                "type": "boolean",
+                "description": "Whether the post is meta."
+            },
+            "isSpoiler": {
+                "type": "boolean",
+                "description": "Whether the post is a spoiler."
+            },
+            "isBlank": {
+                "type": "boolean",
+                "description": "Whether the post is blank."
+            },
+            "sendReplies": {
+                "type": "boolean",
+                "description": "Whether replies can be sent to the post."
+            },
+            "voteState": {
+                "type": "integer",
+                "description": "The vote state of the post."
+            },
+            "permalink": {
+                "type": "string",
+                "description": "The permalink of the post."
+            },
+            "events": {
+                "type": "object",
+                "description": "The events of the post."
+            },
+            "eventsOnRender": {
+                "type": "object",
+                "description": "The events on render of the post."
+            },
+            "callToAction": {
+                "type": "string",
+                "description": "The call to action of the post."
+            },
+            "domainOverride": {
+                "type": "string",
+                "description": "The domain override of the post."
+            },
+            "impressionId": {
+                "type": "string",
+                "description": "The impression id of the post."
+            },
+            "isSurveyAd": {
+                "type": "boolean",
+                "description": "Whether the post is a survey ad."
+            },
+            "impressionIdStr": {
+                "type": "string",
+                "description": "The impression id string of the post."
+            },
+            "isCreatedFromAdsUi": {
+                "type": "boolean",
+                "description": "Whether the post is created from ads ui."
+            },
+            "adSupplementaryText": {
+                "type": "string",
+                "description": "The ad supplementary text of the post."
+            },
+            "adPromotedUserPostIds": {
+                "type": "array",
+                "description": "The ad promoted user post ids of the post."
+            },
+            "subcaption": {
+                "type": "string",
+                "description": "The subcaption of the post."
+            },
+            "crosspostRootId": {
+                "type": "string",
+                "description": "The crosspost root id of the post."
+            },
+            "crosspostParentId": {
+                "type": "string",
+                "description": "The crosspost parent id of the post."
+            },
+            "numCrossposts": {
+                "type": "integer",
+                "description": "The number of crossposts of the post."
+            },
+            "isCrosspostable": {
+                "type": "boolean",
+                "description": "Whether the post is crosspostable."
+            },
+            "liveCommentsWebsocket": {
+                "type": "string",
+                "description": "The live comments websocket of the post."
+            },
+            "source": {
+                "type": "string",
+                "description": "The source of the post."
+            },
+            "isOriginalContent": {
+                "type": "boolean",
+                "description": "Whether the post is original content."
+            },
+            "contentCategories": {
+                "type": "array",
+                "description": "The content categories of the post."
+            },
+            "isScoreHidden": {
+                "type": "boolean",
+                "description": "Whether the score of the post is hidden."
+            }
+        }
+    },
+    {
+        "name": "LocalBusinessData",
+        "description": "Search for businesses based on specified criteria.",
+        "method": "GET",
+        "endpoint": "/search",
+        "host": "local-business-data.p.rapidapi.com",
+        "url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/local-business-data/playground/apiendpoint_5593ecaf-f610-4358-aedd-3513aa43cdeb",
+        "query_parameters": {
+            "query": {
+                "type": "string",
+                "description": "Search query or keyword."
+            },
+            "limit": {
+                "type": "number",
+                "description": "Maximum number of businesses to return (1-500).",
+                "default": 20
+            },
+            "lat": {
+                "type": "number",
+                "description": "Latitude of the coordinates point for biased results."
+            },
+            "lng": {
+                "type": "number",
+                "description": "Longitude of the coordinates point for biased results."
+            },
+            "zoom": {
+                "type": "string",
+                "description": "Zoom level for the search viewport determined by lat, lng.",
+                "default": "13"
+            },
+            "language": {
+                "type": "string",
+                "description": "Language of the results (ISO 639-1 code).",
+                "default": "en"
+            },
+            "region": {
+                "type": "string",
+                "description": "Region or country code to query Google Maps.",
+                "default": "us"
+            },
+            "verified": {
+                "type": "boolean",
+                "description": "Filter only verified businesses."
+            },
+            "business_status": {
+                "type": "string",
+                "description": "Business status to filter (comma-separated values: OPEN, CLOSED_TEMPORARILY, CLOSED)."
+            },
+            "extract_emails_and_contacts": {
+                "type": "boolean",
+                "description": "Extract emails, contacts, and social profiles for each business in the response."
+            },
+            "fields": {
+                "type": "string",
+                "description": "Comma-separated list of business fields to include in the response.",
+                "example": "business_id,type,phone_number,full_address"
+            }
+        },
+        "output_parser": "result.data[0].{param}",
+        "output_parameters": {
+            "business_id": {
+                "type": "string",
+                "description": "Unique ID of the business."
+            },
+            "google_id": {
+                "type": "string",
+                "description": "Google ID of the business."
+            },
+            "place_id": {
+                "type": "string",
+                "description": "Place ID of the business."
+            },
+            "google_mid": {
+                "type": "string",
+                "description": "Google MID of the business."
+            },
+            "phone_number": {
+                "type": "string",
+                "description": "Phone number of the business."
+            },
+            "name": {
+                "type": "string",
+                "description": "Name of the business."
+            },
+            "latitude": {
+                "type": "number",
+                "description": "Latitude of the business location."
+            },
+            "longitude": {
+                "type": "number",
+                "description": "Longitude of the business location."
+            },
+            "full_address": {
+                "type": "string",
+                "description": "Full address of the business."
+            },
+            "review_count": {
+                "type": "number",
+                "description": "Number of reviews for the business."
+            },
+            "rating": {
+                "type": "number",
+                "description": "Rating of the business."
+            },
+            "timezone": {
+                "type": "string",
+                "description": "Timezone of the business location."
+            },
+            "opening_status": {
+                "type": "string",
+                "description": "Opening status of the business."
+            },
+            "working_hours": {
+                "type": "object",
+                "description": "Working hours of the business."
+            },
+            "website": {
+                "type": "string",
+                "description": "Website URL of the business."
+            },
+            "verified": {
+                "type": "boolean",
+                "description": "Flag indicating if the business is verified."
+            },
+            "place_link": {
+                "type": "string",
+                "description": "Google Maps link to the business."
+            },
+            "cid": {
+                "type": "string",
+                "description": "CID (Client ID) of the business."
+            },
+            "reviews_link": {
+                "type": "string",
+                "description": "Link to Google reviews of the business."
+            },
+            "owner_id": {
+                "type": "string",
+                "description": "Owner ID of the business."
+            },
+            "owner_link": {
+                "type": "string",
+                "description": "Link to the owner's Google Maps profile."
+            },
+            "owner_name": {
+                "type": "string",
+                "description": "Name of the business owner."
+            },
+            "booking_link": {
+                "type": "string",
+                "description": "Link for booking services."
+            },
+            "reservations_link": {
+                "type": "string",
+                "description": "Link for reservations."
+            },
+            "business_status": {
+                "type": "string",
+                "description": "Status of the business (e.g., OPEN, CLOSED)."
+            },
+            "type": {
+                "type": "string",
+                "description": "Type/category of the business."
+            },
+            "photo_count": {
+                "type": "number",
+                "description": "Number of photos associated with the business."
+            },
+            "address": {
+                "type": "string",
+                "description": "Address of the business."
+            },
+            "order_link": {
+                "type": "string",
+                "description": "Link for ordering services."
+            },
+            "price_level": {
+                "type": "number",
+                "description": "Price level of the business."
+            },
+            "district": {
+                "type": "string",
+                "description": "District or neighborhood where the business is located."
+            },
+            "street_address": {
+                "type": "string",
+                "description": "Street address of the business."
+            },
+            "city": {
+                "type": "string",
+                "description": "City where the business is located."
+            },
+            "zipcode": {
+                "type": "string",
+                "description": "ZIP code of the business location."
+            },
+            "state": {
+                "type": "string",
+                "description": "State or region where the business is located."
+            },
+            "country": {
+                "type": "string",
+                "description": "Country where the business is located."
+            },
+            "hotel_location_rating": {
+                "type": "number",
+                "description": "Rating specific to hotel location."
+            },
+            "hotel_stars": {
+                "type": "number",
+                "description": "Star rating of the hotel."
+            }
+        }
+    },
+    {
+        "name": "LocalBusinessDataBusinessReviews",
+        "description": "Search for businesses reviews based on specified criteria.",
+        "method": "GET",
+        "endpoint": "/business-reviews",
+        "host": "local-business-data.p.rapidapi.com",
+        "url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/local-business-data/playground/apiendpoint_17004568-e6e7-4c85-b2a4-1c99ec7ca548",
+        "query_parameters": {
+            "business_id": {
+                "type": "string",
+                "description": "Search business ID"
+            },
+            "limit": {
+                "type": "number",
+                "description": "Maximum number of businesses reviews to return (1-500).",
+                "default": 20
+            },
+            "offset": {
+                "type": "number",
+                "description": "Number of business reviews to skip (for pagination/scrolling).",
+                "default": 0
+            },
+            "query": {
+                "type": "string",
+                "description": "Return reviews matching a text query."
+            },
+            "sortBy": {
+                "type": "string",
+                "description": "How to sort the reviews in the results.",
+                "allowed_values": [
+                    "most_relevant",
+                    "newest",
+                    "highest_ranking",
+                    "lowest_ranking",
+                    "do not include in request"
+                ],
+                "default": "most_relevant"
+            },
+            "fields": {
+                "type": "string",
+                "description": "A comma separated list of review fields to include in the response (field projection). By default all fields are returned."
+            },
+            "region": {
+                "type": "string",
+                "description": "Query Google Maps from a particular region or country.",
+                "default": "us"
+            },
+            "language": {
+                "type": "string",
+                "description": "Set the language of the results.",
+                "default": "en"
+            }
+        },
+        "output_parser": "result.data[0].{param}",
+        "output_parameters": {
+            "review_id": {
+                "type": "string",
+                "description": "The ID of the review."
+            },
+            "review_text": {
+                "type": "string",
+                "description": "The text of the review."
+            },
+            "rating": {
+                "type": "number",
+                "description": "The rating of the review (1-5)."
+            },
+            "review_datetime_utc": {
+                "type": "string",
+                "description": "The date and time the review was posted, in UTC."
+            },
+            "review_timestamp": {
+                "type": "number",
+                "description": "The timestamp of the review (in seconds since the Unix epoch)."
+            },
+            "review_link": {
+                "type": "string",
+                "description": "The URL of the review."
+            },
+            "review_photos": {
+                "type": "array",
+                "description": "An array of URLs of photos associated with the review."
+            },
+            "review_language": {
+                "type": "string",
+                "description": "The language of the review."
+            },
+            "like_count": {
+                "type": "number",
+                "description": "The number of likes the review has received."
+            },
+            "author_id": {
+                "type": "string",
+                "description": "The ID of the author of the review."
+            },
+            "author_link": {
+                "type": "string",
+                "description": "The URL of the author's profile."
+            },
+            "author_name": {
+                "type": "string",
+                "description": "The name of the author of the review."
+            },
+            "author_photo_url": {
+                "type": "string",
+                "description": "The URL of the author's photo."
+            },
+            "author_review_count": {
+                "type": "number",
+                "description": "The number of reviews the author has written."
+            },
+            "owner_response_datetime_utc": {
+                "type": "string",
+                "description": "The date and time the owner responded to the review, in UTC."
+            },
+            "owner_response_timestamp": {
+                "type": "string",
+                "description": "The timestamp of the owner's response (in seconds since the Unix epoch)."
+            },
+            "owner_response_text": {
+                "type": "string",
+                "description": "The text of the owner's response."
+            },
+            "owner_response_language": {
+                "type": "string",
+                "description": "The language of the owner's response."
+            },
+            "author_reviews_link": {
+                "type": "string",
+                "description": "The URL of the author's reviews."
+            },
+            "author_local_guide_level": {
+                "type": "number",
+                "description": "The local guide level of the author (1-10)."
+            },
+            "service_quality": {
+                "type": "string",
+                "description": "The service quality of the review (e.g. 'excellent', 'good', 'average', 'poor', 'terrible')."
+            },
+            "hotel_rating_breakdown": {
+                "type": "object",
+                "properties": {
+                    "Food": {
+                        "type": "number",
+                        "description": "The rating of the food (1-5)."
+                    },
+                    "Service": {
+                        "type": "number",
+                        "description": "The rating of the service (1-5)."
+                    },
+                    "Atmosphere": {
+                        "type": "number",
+                        "description": "The rating of the atmosphere (1-5)."
+                    }
+                }
+            },
+            "review_form": {
+                "type": "string",
+                "description": "The form of the review (e.g. 'full', 'short', 'suggest an edit')."
+            },
+            "review_source": {
+                "type": "string",
+                "description": "The source of the review (e.g. 'google', 'tripadvisor', 'yelp')."
+            }
+        }
+    },
+    {
+        "name": "Alpha_Vantage_CURRENCY_EXCHANGE_RATE",
+        "description": "Return the real time exchnage rate for any pair of digital currency.",
+        "method": "GET",
+        "endpoint": "/query",
+        "host": "alpha-vantage.p.rapidapi.com",
+        "url": "https://rapidapi.com/alphavantage/api/alpha-vantage/playground/apiendpoint_3a360da0-5746-47c7-abfd-3fb595035efb",
+        "query_parameters": {
+            "from_currency": {
+                "type": "String",
+                "required": true,
+                "description": "The cryptocurrency you want to convert from"
+            },
+            "function": {
+                "type": "String",
+                "required": true,
+                "description": "The function of your choice. (In this case CURRENCY_EXCHANGE_RATE)"
+            },
+            "to_currency": {
+                "type": "String",
+                "required": true,
+                "description": "The currency you want to convert to"
+            }
+        },
+        "output_parser": "result.Realtime Currency Exchange Rate.{param}",
+        "output_parameters": {
+            "From_Currency Code": {
+                "type": "String",
+                "description": "The code of the currency you are converting from"
+            },
+            "From_Currency Name": {
+                "type": "String",
+                "description": "The name of the currency you are converting from"
+            },
+            "To_Currency Code": {
+                "type": "String",
+                "description": "The code of the currency you are converting to"
+            },
+            "To_Currency Name": {
+                "type": "String",
+                "description": "The name of the currency you are converting to"
+            },
+            "Exchange Rate": {
+                "type": "String",
+                "description": "The exchange rate between the two currencies"
+            },
+            "Last Refreshed": {
+                "type": "String",
+                "description": "The last time the data was refreshed"
+            },
+            "Time Zone": {
+                "type": "String",
+                "description": "The time zone of the data"
+            },
+            "Bid Price": {
+                "type": "String",
+                "description": "The bid price for the currency exchange"
+            },
+            "Ask Price": {
+                "type": "String",
+                "description": "The ask price for the currency exchange"
+            }
+        }
+    },
+    {
+        "name": "CipherCircuit_Math_Assistant_CalculateAllArithmeticOperations",
+        "description": "Calculates all arithmetic operations.",
+        "method": "GET",
+        "endpoint": "/calculate",
+        "host": "ciphercircuit-math-assistant.p.rapidapi.com",
+        "url": "https://rapidapi.com/hakitofficial24/api/ciphercircuit-math-assistant/playground/apiendpoint_f3f802c3-1aca-455b-8744-9e46a049f747",
+        "query_parameters": {
+            "numbers": {
+                "type": "String",
+                "description": "A string containing the numbers and arithmetic operations to be calculated.",
+                "required": true
+            },
+            "decimalPlaces": {
+                "type": "Number",
+                "description": "The number of decimal places to round the result to.",
+                "required": false
+            }
+        },
+        "output_parser": "result.{param}",
+        "output_parameters": {
+            "answer": {
+                "type": "number",
+                "description": "The final result after performing all the arithmetic operations."
+            }
+        }
+    },
+    {
+        "name": "Real-Time_Product_Search_Search",
+        "description": "API to retrieve real-time product details, offers, and reviews from Amazon based on specific queries.",
+        "method": "GET",
+        "endpoint": "/search",
+        "host": "real-time-product-search.p.rapidapi.com",
+        "url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-product-search/playground/endpoint_22971080-bb99-4bea-b069-5b2c11c8cb14",
+        "query_parameters": {
+            "q": {
+                "type": "String",
+                "description": "Search query or keyword.",
+                "required": true
+            },
+            "country": {
+                "type": "String",
+                "description": "Country code of the region/country to return results for.",
+                "default": "us",
+                "allowed_values": [
+                    "us",
+                    "gb",
+                    "ca",
+                    "de",
+                    "fr"
+                ],
+                "required": false
+            },
+            "language": {
+                "type": "String",
+                "description": "Language of the results.",
+                "default": "en",
+                "allowed_values": [
+                    "en",
+                    "fr",
+                    "de",
+                    "es",
+                    "it"
+                ],
+                "required": false
+            },
+            "page": {
+                "type": "Number",
+                "description": "Results page to return.",
+                "default": 1,
+                "allowed_values": "1-100",
+                "required": false
+            },
+            "limit": {
+                "type": "Number",
+                "description": "Maximum number of products to return.",
+                "default": 30,
+                "allowed_values": "1-100",
+                "required": false
+            },
+            "sort_by": {
+                "type": "Enum",
+                "description": "Sort product offers by best match, top rated, lowest price, or highest price.",
+                "default": "BEST_MATCH",
+                "allowed_values": [
+                    "BEST_MATCH",
+                    "TOP_RATED",
+                    "LOWEST_PRICE",
+                    "HIGHEST_PRICE"
+                ],
+                "required": false
+            },
+            "min_price": {
+                "type": "Number",
+                "description": "Minimum price filter for product offers.",
+                "required": false
+            },
+            "max_price": {
+                "type": "Number",
+                "description": "Maximum price filter for product offers.",
+                "required": false
+            },
+            "product_condition": {
+                "type": "Enum",
+                "description": "Filter products by condition (ANY, NEW, USED, REFURBISHED).",
+                "default": "ANY",
+                "allowed_values": [
+                    "ANY",
+                    "NEW",
+                    "USED",
+                    "REFURBISHED"
+                ],
+                "required": false
+            },
+            "free_returns": {
+                "type": "Boolean",
+                "description": "Filter product offers that offer free returns.",
+                "required": false
+            },
+            "free_shipping": {
+                "type": "Boolean",
+                "description": "Filter product offers that offer free shipping/delivery.",
+                "required": false
+            },
+            "max_shipping_days": {
+                "type": "Number",
+                "description": "Maximum shipping days filter for product offers.",
+                "required": false
+            },
+            "on_sale": {
+                "type": "Boolean",
+                "description": "Filter product offers that are currently on sale.",
+                "required": false
+            },
+            "store_id": {
+                "type": "String",
+                "description": "Filter product offers from specific stores (comma-separated list of store IDs).",
+                "required": false
+            },
+            "other_filters": {
+                "type": "String",
+                "description": "Other dynamic filters (e.g., by Size, Color) separated by commas.",
+                "required": false
+            },
+            "min_rating": {
+                "type": "Enum",
+                "description": "Filter products by minimum rating.",
+                "default": "ANY",
+                "allowed_values": [
+                    "ANY",
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "required": false
+            }
+        },
+        "output_parser": "result.data[0].{param}",
+        "output_parameters": {
+            "product_id": {
+                "type": "Number",
+                "description": "The unique identifier of the product."
+            },
+            "product_title": {
+                "type": "String",
+                "description": "The title of the product."
+            },
+            "product_description": {
+                "type": "String",
+                "description": "The description of the product."
+            },
+            "product_photos": {
+                "type": "String",
+                "description": "The URLs of the product photos."
+            },
+            "product_attributes": {
+                "type": "String",
+                "description": "The attributes of the product (e.g., size, color, brand)."
+            },
+            "product_rating": {
+                "type": "Number",
+                "description": "The rating of the product (out of 5)."
+            },
+            "product_page_url": {
+                "type": "String",
+                "description": "The URL of the product page on Amazon."
+            },
+            "product_offers_page_url": {
+                "type": "String",
+                "description": "The URL of the product offers page on Amazon."
+            },
+            "product_specs_page_url": {
+                "type": "String",
+                "description": "The URL of the product specifications page on Amazon."
+            },
+            "product_reviews_page_url": {
+                "type": "String",
+                "description": "The URL of the product reviews page on Amazon."
+            },
+            "product_num_reviews": {
+                "type": "Number",
+                "description": "The number of reviews for the product."
+            },
+            "product_num_offers": {
+                "type": "String",
+                "description": "The number of offers for the product."
+            }
+        }
+    },
+    {
+        "name": "Real-Time_Product_Search_Product_Reviews",
+        "description": "Fetches reviews for a specific product.",
+        "method": "GET",
+        "endpoint": "/product-reviews",
+        "host": "real-time-product-search.p.rapidapi.com",
+        "url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-product-search/playground/endpoint_776509db-ca16-4cba-a320-f83900eef25b",
+        "query_parameters": {
+            "product_id": {
+                "type": "String",
+                "description": "Product ID of the product for which to fetch offers.",
+                "required": true
+            },
+            "limit": {
+                "type": "Number",
+                "description": "Maximum number of product reviews to return.",
+                "default": 10,
+                "required": false
+            },
+            "cursor": {
+                "type": "number",
+                "description": "A cursor to get the next set of results, it can be used for for paging purposes. Note: the cursor value for the next set of results is returned by this endpoint under data.cursor.",
+                "required": false
+            },
+            "rating": {
+                "type": "number",
+                "description": "Only return reviews with user rating greater than the specified value.",
+                "required": false
+            },
+            "country": {
+                "type": "string",
+                "description": "Country code of the region/country to return offers for.",
+                "default": "us",
+                "required": false
+            },
+            "language": {
+                "type": "string",
+                "description": "The language of the results.",
+                "default": "en",
+                "required": false
+            }
+        },
+        "output_parser": "result.data.reviews[0].{param}",
+        "output_parameters": {
+            "review_id": {
+                "type": "string",
+                "description": "The unique identifier of the review."
+            },
+            "review_title": {
+                "type": "string",
+                "description": "The title of the review."
+            },
+            "review_author": {
+                "type": "string",
+                "description": "The name of the author of the review."
+            },
+            "review_source": {
+                "type": "string",
+                "description": "The source of the review."
+            },
+            "review_source_url": {
+                "type": "string",
+                "description": "The URL of the source of the review."
+            },
+            "review_text": {
+                "type": "string",
+                "description": "The text of the review."
+            },
+            "rating": {
+                "type": "number",
+                "description": "The rating of the review."
+            },
+            "review_datetime_utc": {
+                "type": "string",
+                "description": "The date and time of the review in UTC."
+            },
+            "review_language": {
+                "type": "string",
+                "description": "The language of the review."
+            }
+        }
+    },
+    {
+        "name": "Real-Time_Product_Search_Product_Offers",
+        "description": "Fetches offers for a specific product.",
+        "method": "GET",
+        "endpoint": "/product-offers",
+        "host": "real-time-product-search.p.rapidapi.com",
+        "url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-product-search/playground/endpoint_72f10b45-1a4a-4d9c-990c-87053745c318",
+        "query_parameters": {
+            "product_id": {
+                "type": "String",
+                "description": "Product ID of the product for which to fetch offers.",
+                "required": true
+            },
+            "page": {
+                "type": "Number",
+                "description": "The page to return. Each page contains offers from 10 different stores (potentially resulting in more than 10 offers).",
+                "default": 1,
+                "required": false
+            },
+            "country": {
+                "type": "String",
+                "description": "Country code of the region/country to return offers for.",
+                "default": "us",
+                "required": false
+            },
+            "language": {
+                "type": "String",
+                "description": "The language of the results.",
+                "default": "en",
+                "required": false
+            }
+        },
+        "output_parser": "result.data.offers[0].{param}",
+        "output_parameters": {
+            "product_id": {
+                "type": "Number",
+                "description": "The ID of the product for which offers are being fetched."
+            },
+            "product_title": {
+                "type": "String",
+                "description": "The title of the product for which offers are being fetched."
+            },
+            "product_description": {
+                "type": "String",
+                "description": "The description of the product for which offers are being fetched."
+            },
+            "product_photos": {
+                "type": "String",
+                "description": "The photos of the product for which offers are being fetched."
+            },
+            "product_attributes": {
+                "type": "String",
+                "description": "The attributes of the product for which offers are being fetched."
+            },
+            "product_rating": {
+                "type": "Number",
+                "description": "The rating of the product for which offers are being fetched."
+            },
+            "product_page_url": {
+                "type": "String",
+                "description": "The URL of the product page for which offers are being fetched."
+            },
+            "product_offers_page_url": {
+                "type": "String",
+                "description": "The URL of the product offers page for which offers are being fetched."
+            },
+            "product_specs_page_url": {
+                "type": "String",
+                "description": "The URL of the product specs page for which offers are being fetched."
+            },
+            "product_reviews_page_url": {
+                "type": "String",
+                "description": "The URL of the product reviews page for which offers are being fetched."
+            },
+            "product_num_reviews": {
+                "type": "Number",
+                "description": "The number of reviews of the product for which offers are being fetched."
+            },
+            "product_num_offers": {
+                "type": "String",
+                "description": "The number of offers of the product for which offers are being fetched."
+            }
+        }
+    },
+    {
+        "name": "Real-Time_Product_Search_Product_Details",
+        "description": "Retrieves real-time product details based on search queries.",
+        "method": "GET",
+        "endpoint": "/product-details",
+        "host": "real-time-product-search.p.rapidapi.com",
+        "url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-product-search/playground/endpoint_c542ccd5-2a31-4be8-bda9-bc87d6359200",
+        "query_parameters": {
+            "q": {
+                "type": "String",
+                "description": "Search query or keyword."
+            },
+            "country": {
+                "type": "String",
+                "description": "Country code of the region/country to return results for.",
+                "default": "us",
+                "allowed_values": [
+                    "us",
+                    "gb",
+                    "ca",
+                    "de",
+                    "fr"
+                ]
+            },
+            "language": {
+                "type": "String",
+                "description": "Language of the results.",
+                "default": "en",
+                "allowed_values": [
+                    "en",
+                    "fr",
+                    "de",
+                    "es",
+                    "it"
+                ]
+            },
+            "page": {
+                "type": "Number",
+                "description": "Results page to return.",
+                "default": 1,
+                "allowed_values": "1-100"
+            },
+            "limit": {
+                "type": "Number",
+                "description": "Maximum number of products to return.",
+                "default": 30,
+                "allowed_values": "1-100"
+            },
+            "sort_by": {
+                "type": "Enum",
+                "description": "Sort product offers by best match, top rated, lowest price, or highest price.",
+                "default": "BEST_MATCH",
+                "allowed_values": [
+                    "BEST_MATCH",
+                    "TOP_RATED",
+                    "LOWEST_PRICE",
+                    "HIGHEST_PRICE"
+                ]
+            },
+            "min_price": {
+                "type": "Number",
+                "description": "Minimum price filter for product offers."
+            },
+            "max_price": {
+                "type": "Number",
+                "description": "Maximum price filter for product offers."
+            },
+            "product_condition": {
+                "type": "Enum",
+                "description": "Filter products by condition (ANY, NEW, USED, REFURBISHED).",
+                "default": "ANY",
+                "allowed_values": [
+                    "ANY",
+                    "NEW",
+                    "USED",
+                    "REFURBISHED"
+                ]
+            },
+            "free_returns": {
+                "type": "Boolean",
+                "description": "Filter product offers that offer free returns.",
+                "default": false
+            },
+            "free_shipping": {
+                "type": "Boolean",
+                "description": "Filter product offers that offer free shipping/delivery.",
+                "default": false
+            },
+            "max_shipping_days": {
+                "type": "Number",
+                "description": "Maximum shipping days filter for product offers."
+            },
+            "on_sale": {
+                "type": "Boolean",
+                "description": "Filter product offers that are currently on sale.",
+                "default": false
+            },
+            "store_id": {
+                "type": "String",
+                "description": "Filter product offers from specific stores (comma-separated list of store IDs)."
+            },
+            "other_filters": {
+                "type": "String",
+                "description": "Other dynamic filters (e.g., by Size, Color) separated by commas."
+            },
+            "min_rating": {
+                "type": "Enum",
+                "description": "Filter products by minimum rating.",
+                "default": "ANY",
+                "allowed_values": [
+                    "ANY",
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            }
+        },
+        "output_parser": "result.data.product.{param}",
+        "output_parameters": {
+            "product_id": {
+                "type": "Number",
+                "description": "The unique identifier of the product."
+            },
+            "product_title": {
+                "type": "String",
+                "description": "The title of the product."
+            },
+            "product_description": {
+                "type": "String",
+                "description": "The description of the product."
+            },
+            "product_photos": {
+                "type": "String",
+                "description": "The URLs of the product photos."
+            },
+            "product_attributes": {
+                "type": "String",
+                "description": "The attributes of the product (e.g., size, color, brand)."
+            },
+            "product_rating": {
+                "type": "Number",
+                "description": "The rating of the product (out of 5)."
+            },
+            "product_page_url": {
+                "type": "String",
+                "description": "The URL of the product page."
+            },
+            "product_offers_page_url": {
+                "type": "String",
+                "description": "The URL of the product offers page."
+            },
+            "product_specs_page_url": {
+                "type": "String",
+                "description": "The URL of the product specifications page."
+            },
+            "product_reviews_page_url": {
+                "type": "String",
+                "description": "The URL of the product reviews page."
+            },
+            "product_num_reviews": {
+                "type": "Number",
+                "description": "The number of reviews for the product."
+            },
+            "product_num_offers": {
+                "type": "String",
+                "description": "The number of offers for the product."
+            }
+        }
+    },
+    {
+        "name": "Goodreads_Search_Book_By_Keyword",
+        "description": "Searches for books based on a specified keyword.",
+        "method": "GET",
+        "endpoint": "/searchBooks",
+        "host": "goodreads12.p.rapidapi.com",
+        "url": "https://rapidapi.com/UnitedAPI/api/goodreads12/playground/apiendpoint_38cdfb0f-9eef-4051-810f-c433e42fb43f",
+        "query_parameters": {
+            "keyword": {
+                "type": "String",
+                "description": "Search term or keyword to look up books.",
+                "required": true
+            },
+            "page": {
+                "type": "String",
+                "description": "Optional. Page number for paginated results.",
+                "required": false
+            }
+        },
+        "output_parser": "result[0].{param}",
+        "output_parameters": {
+            "imageUrl": {
+                "type": "String",
+                "description": "URL of the book cover image."
+            },
+            "bookId": {
+                "type": "String",
+                "description": "ID of the book."
+            },
+            "workId": {
+                "type": "String",
+                "description": "ID of the work associated with the book."
+            },
+            "bookUrl": {
+                "type": "String",
+                "description": "URL of the book's page on the website."
+            },
+            "title": {
+                "type": "String",
+                "description": "Title of the book."
+            },
+            "author": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "description": "author id"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "author name"
+                        }
+                    }
+                }
+            },
+            "rank": {
+                "type": "String",
+                "description": "Ranking of the book."
+            },
+            "rating": {
+                "type": "String",
+                "description": "Average rating of the book."
+            },
+            "totalRatings": {
+                "type": "String",
+                "description": "Total number of ratings the book has received."
+            },
+            "publishedYear": {
+                "type": "String",
+                "description": "Year the book was published."
+            },
+            "totalEditions": {
+                "type": "String",
+                "description": "Total number of editions available."
+            }
+        }
+    },
+    {
+        "name": "Goodreads_Search_Quotes_By_Keyword",
+        "description": "Searches for quotes based on a specified keyword.",
+        "method": "GET",
+        "endpoint": "/searchQuotes",
+        "host": "goodreads12.p.rapidapi.com",
+        "url": "https://rapidapi.com/UnitedAPI/api/goodreads12/playground/apiendpoint_0112ad97-8076-4e1e-ac1a-65e9e9deb0a5",
+        "query_parameters": {
+            "keyword": {
+                "type": "String",
+                "description": "Search term or keyword to look up quotes.",
+                "required": true
+            },
+            "page": {
+                "type": "String",
+                "description": "Optional. Page number for paginated results.",
+                "required": false
+            }
+        },
+        "output_parser": "result[0].{param}",
+        "output_parameters": {
+            "imageUrl": {
+                "type": "String",
+                "description": "URL of the author's image."
+            },
+            "quoteText": {
+                "type": "String",
+                "description": "Text of the quote."
+            },
+            "urls": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "description": "url"
+                }
+            },
+            "likes": {
+                "type": "String",
+                "description": "Number of likes the quote has received."
+            }
+        }
+    },
+    {
+        "name": "Goodreads_Get_Authors_Books",
+        "description": "Retrieves books authored by a specific author.",
+        "method": "GET",
+        "endpoint": "/getAuthorBooks",
+        "host": "goodreads12.p.rapidapi.com",
+        "url": "https://rapidapi.com/UnitedAPI/api/goodreads12/playground/apiendpoint_050a9bd2-8e14-40b1-b7e8-fd8cd1a48fb1",
+        "query_parameters": {
+            "authorID": {
+                "type": "String",
+                "description": "ID of the author whose books are to be retrieved. Can be obtained through other endpoints.",
+                "required": true
+            }
+        },
+        "output_parser": "result[0].{param}",
+        "output_parameters": {
+            "imageUrl": {
+                "type": "String",
+                "description": "URL of the book cover image."
+            },
+            "bookId": {
+                "type": "String",
+                "description": "ID of the book."
+            },
+            "workId": {
+                "type": "String",
+                "description": "ID of the work associated with the book."
+            },
+            "bookUrl": {
+                "type": "String",
+                "description": "URL of the book's page on the website."
+            },
+            "title": {
+                "type": "String",
+                "description": "Title of the book."
+            },
+            "author": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "description": "author id"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "author name"
+                        }
+                    }
+                }
+            },
+            "rank": {
+                "type": "String",
+                "description": "Ranking of the book."
+            },
+            "rating": {
+                "type": "String",
+                "description": "Average rating of the book."
+            },
+            "totalRatings": {
+                "type": "String",
+                "description": "Total number of ratings the book has received."
+            },
+            "publishedYear": {
+                "type": "String",
+                "description": "Year the book was published."
+            },
+            "totalEditions": {
+                "type": "String",
+                "description": "Total number of editions available."
+            }
+        }
+    },
+    {
+        "name": "WeatherAPI.com_Realtime_Weather_Api",
+        "description": "Fetch real-time weather information based on various query parameters.",
+        "method": "GET",
+        "endpoint": "/current.json",
+        "host": "weatherapi-com.p.rapidapi.com",
+        "url": "https://rapidapi.com/weatherapi/api/weatherapi-com/playground/apiendpoint_bef542ef-a177-4633-aacc-ee9703945037",
+        "query_parameters": {
+            "q": {
+                "type": "String",
+                "description": "Query parameter based on which data is sent back. It could be one of the following: Latitude and Longitude (Decimal degree) e.g: q=48.8567,2.3508, city name e.g.: q=Paris, US zip e.g: q=10001, UK postcode e.g: q=SW1, Canada postal code e.g: q=G2J, metar:<metar_code> e.g: q=metar:EGLL, iata:<3 digit airport code> e.g: q=iata:DXB, auto:ip for IP lookup, IP address (IPv4 and IPv6 supported) e.g: q=100.0.0.1",
+                "required": true
+            }
+        },
+        "output_parser": "result.{param}",
+        "output_parameters": {
+            "location": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "String",
+                        "description": "Name of the location"
+                    },
+                    "region": {
+                        "type": "String",
+                        "description": "Region of the location"
+                    },
+                    "country": {
+                        "type": "String",
+                        "description": "Country of the location"
+                    },
+                    "lat": {
+                        "type": "Number",
+                        "description": "Latitude of the location"
+                    },
+                    "lon": {
+                        "type": "Number",
+                        "description": "Longitude of the location"
+                    },
+                    "tz_id": {
+                        "type": "String",
+                        "description": "Time zone ID"
+                    },
+                    "localtime_epoch": {
+                        "type": "Number",
+                        "description": "Local time in epoch format"
+                    },
+                    "localtime": {
+                        "type": "String",
+                        "description": "Local time"
+                    }
+                }
+            },
+            "current": {
+                "type": "object",
+                "description": "Current weather details of the location as an object eg temperature in celcius and farenheit, wind direction, wind degree etc. "
+            }
+        }
+    },
+    {
+        "name": "WeatherAPI.com_Time_Zone_API",
+        "description": "Fetch time zone information based on various query parameters.",
+        "method": "GET",
+        "endpoint": "/timezone.json",
+        "host": "weatherapi-com.p.rapidapi.com",
+        "url": "https://rapidapi.com/weatherapi/api/weatherapi-com/playground/apiendpoint_e163d1c6-f2e1-4809-b433-4438da245f5e",
+        "query_parameters": {
+            "q": {
+                "type": "String",
+                "description": "Query parameter based on which data is sent back. It could be one of the following: Latitude and Longitude (Decimal degree) e.g: q=48.8567,2.3508, city name e.g.: q=Paris, US zip e.g: q=10001, UK postcode e.g: q=SW1, Canada postal code e.g: q=G2J, metar:<metar_code> e.g: q=metar:EGLL, iata:<3 digit airport code> e.g: q=iata:DXB, auto:ip for IP lookup, IP address (IPv4 and IPv6 supported) e.g: q=100.0.0.1",
+                "required": true
+            }
+        },
+        "output_parser": "result.{param}",
+        "output_parameters": {
+            "location": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "String",
+                        "description": "Name of the location"
+                    },
+                    "region": {
+                        "type": "String",
+                        "description": "Region of the location"
+                    },
+                    "country": {
+                        "type": "String",
+                        "description": "Country of the location"
+                    },
+                    "lat": {
+                        "type": "Number",
+                        "description": "Latitude of the location"
+                    },
+                    "lon": {
+                        "type": "Number",
+                        "description": "Longitude of the location"
+                    },
+                    "tz_id": {
+                        "type": "String",
+                        "description": "Time zone ID"
+                    },
+                    "localtime_epoch": {
+                        "type": "Number",
+                        "description": "Local time in epoch format"
+                    },
+                    "localtime": {
+                        "type": "String",
+                        "description": "Local time"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "name": "WeatherAPI.com_Forecast_Weather_API",
+        "description": "Fetch forecast weather information based on various query parameters.",
+        "method": "GET",
+        "endpoint": "/forecast.json",
+        "host": "weatherapi-com.p.rapidapi.com",
+        "url": "https://rapidapi.com/weatherapi/api/weatherapi-com/playground/apiendpoint_02481648-7c41-48cc-9b9f-e53596d38bab",
+        "query_parameters": {
+            "q": {
+                "type": "String",
+                "description": "Query parameter based on which data is sent back. It could be one of the following: Latitude and Longitude (Decimal degree) e.g: q=48.8567,2.3508, city name e.g.: q=Paris, US zip e.g: q=10001, UK postcode e.g: q=SW1, Canada postal code e.g: q=G2J, metar:<metar_code> e.g: q=metar:EGLL, iata:<3 digit airport code> e.g: q=iata:DXB, auto:ip for IP lookup, IP address (IPv4 and IPv6 supported) e.g: q=100.0.0.1",
+                "required": true
+            },
+            "days": {
+                "type": "Number",
+                "description": "Number of days of forecast required (optional)",
+                "required": false
+            },
+            "lang": {
+                "type": "String",
+                "description": "Returns 'condition:text' field in API in the desired language (optional)",
+                "required": false
+            },
+            "dt": {
+                "type": "Date (yyyy-mm-dd)",
+                "description": "Specific date for the forecast (optional). It should be between today and the next 10 days in yyyy-MM-dd format.",
+                "required": false
+            }
+        },
+        "output_parser": "result.{param}",
+        "output_parameters": {
+            "location": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "String",
+                        "description": "Name of the location"
+                    },
+                    "region": {
+                        "type": "String",
+                        "description": "Region of the location"
+                    },
+                    "country": {
+                        "type": "String",
+                        "description": "Country of the location"
+                    },
+                    "lat": {
+                        "type": "Number",
+                        "description": "Latitude of the location"
+                    },
+                    "lon": {
+                        "type": "Number",
+                        "description": "Longitude of the location"
+                    },
+                    "tz_id": {
+                        "type": "String",
+                        "description": "Time zone ID"
+                    },
+                    "localtime_epoch": {
+                        "type": "Number",
+                        "description": "Local time in epoch format"
+                    },
+                    "localtime": {
+                        "type": "String",
+                        "description": "Local time"
+                    }
+                }
+            },
+            "current": {
+                "type": "object",
+                "description": "Current weather details of the location as an object eg temperature in celcius and farenheit, wind direction, wind degree etc. "
+            }
+        }
+    },
+    {
+        "name": "Tripadvisor_Search_Restaurant_Location",
+        "description": "Fetches location details for restaurants based on the name of the location.",
+        "method": "GET",
+        "endpoint": "/api/v1/restaurant/searchLocation",
+        "host": "tripadvisor16.p.rapidapi.com",
+        "url": "https://rapidapi.com/DataCrawler/api/tripadvisor16/playground/apiendpoint_b0128f2a-67c5-4bbd-9369-721cc7170f9c",
+        "query_parameters": {
+            "query": {
+                "type": "String",
+                "description": "Name of the location where the restaurant is situated.",
+                "required": true
+            }
+        },
+        "output_parser": "result.data[0].{param}",
+        "output_parameters": {
+            "status": {
+                "type": "Boolean",
+                "description": "Indicates the success or failure of the request."
+            },
+            "message": {
+                "type": "String",
+                "description": "Message providing additional information about the request."
+            },
+            "timestamp": {
+                "type": "Number",
+                "description": "Timestamp indicating when the response was generated."
+            },
+            "location": {
+                "type": "Object",
+                "properties": {
+                    "locationId": {
+                        "type": "Number",
+                        "description": "Unique identifier for the location."
+                    },
+                    "documentId": {
+                        "type": "String",
+                        "description": "Document ID associated with the location."
+                    },
+                    "propertyId": {
+                        "type": "Number",
+                        "description": "Property ID associated with the location."
+                    },
+                    "localizedName": {
+                        "type": "String",
+                        "description": "Localized name of the location."
+                    },
+                    "placeType": {
+                        "type": "String",
+                        "description": "Type of place (e.g., CITY, TOWN)."
+                    },
+                    "latitude": {
+                        "type": "Number",
+                        "description": "Latitude coordinates of the location."
+                    },
+                    "longitude": {
+                        "type": "Number",
+                        "description": "Longitude coordinates of the location."
+                    },
+                    "isGeo": {
+                        "type": "Boolean",
+                        "description": "Indicates if the location is geographically defined."
+                    }
+                }
+            }
+        }
+    },
+    {
+        "name": "Tripadvisor_Search_Restaurants",
+        "description": "Searches restaurants based on locationId and optionally by page number.",
+        "method": "GET",
+        "endpoint": "/api/v1/restaurant/searchRestaurants",
+        "host": "tripadvisor16.p.rapidapi.com",
+        "url": "https://rapidapi.com/DataCrawler/api/tripadvisor16/playground/apiendpoint_6c187918-f989-4c63-bf1e-b2e38efe3152",
+        "query_parameters": {
+            "locationId": {
+                "type": "String",
+                "description": "Location ID obtained from Tripadvisor's Search Restaurant Location API.",
+                "required": true
+            },
+            "page": {
+                "type": "Number",
+                "description": "Optional. Page number for paginated results. Defaults to 1 if not specified.",
+                "required": false
+            }
+        },
+        "output_parser": "result.data.data[0].{param}",
+        "output_parameters": {
+            "restaurantsId": {
+                "type": "String",
+                "description": "Unique identifier for the restaurant."
+            },
+            "locationId": {
+                "type": "Number",
+                "description": "Location ID associated with the restaurant."
+            },
+            "name": {
+                "type": "String",
+                "description": "Name of the restaurant."
+            },
+            "averageRating": {
+                "type": "Number",
+                "description": "Average rating of the restaurant."
+            },
+            "userReviewCount": {
+                "type": "Number",
+                "description": "Number of user reviews for the restaurant."
+            },
+            "currentOpenStatusCategory": {
+                "type": "String",
+                "description": "Category indicating the current open status (e.g., OPEN, CLOSED)."
+            },
+            "currentOpenStatusText": {
+                "type": "String",
+                "description": "Text description of the current open status."
+            },
+            "priceTag": {
+                "type": "String",
+                "description": "Price category of the restaurant (e.g., $$, $$$)."
+            },
+            "hasMenu": {
+                "type": "Boolean",
+                "description": "Indicates if the restaurant has an available menu."
+            },
+            "menuUrl": {
+                "type": "String",
+                "description": "URL link to the restaurant's menu, if available."
+            },
+            "isDifferentGeo": {
+                "type": "Boolean",
+                "description": "Indicates if the restaurant is in a different geographical location."
+            },
+            "parentGeoName": {
+                "type": "String",
+                "description": "Name of the parent geographical location (e.g., city name)."
+            },
+            "distanceTo": {
+                "type": "Number",
+                "description": "Distance to the restaurant from the specified location, if available."
+            },
+            "awardInfo": {
+                "type": "String",
+                "description": "Information about any awards received by the restaurant."
+            },
+            "isLocalChefItem": {
+                "type": "Boolean",
+                "description": "Indicates if the restaurant offers local chef specialty items."
+            },
+            "isPremium": {
+                "type": "Boolean",
+                "description": "Indicates if the restaurant is a premium listing."
+            },
+            "isStoryboardPublished": {
+                "type": "Boolean",
+                "description": "Indicates if the restaurant has a published storyboard."
+            },
+            "heroImgUrl": {
+                "type": "String",
+                "description": "URL link to the hero image of the restaurant."
+            },
+            "heroImgRawHeight": {
+                "type": "Number",
+                "description": "Raw height of the hero image in pixels."
+            },
+            "heroImgRawWidth": {
+                "type": "Number",
+                "description": "Raw width of the hero image in pixels."
+            },
+            "squareImgUrl": {
+                "type": "String",
+                "description": "URL link to the square image of the restaurant."
+            },
+            "squareImgRawLength": {
+                "type": "Number",
+                "description": "Raw length of the square image in pixels."
+            }
+        }
+    },
+    {
+        "name": "Tripadvisor_Get_Restaurant_Details",
+        "description": "Retrieve details of a restaurant using its restaurantsId and optionally specify currencyCode.",
+        "method": "GET",
+        "endpoint": "/api/v1/restaurant/getRestaurantDetailsV2",
+        "host": "tripadvisor16.p.rapidapi.com",
+        "url": "https://rapidapi.com/DataCrawler/api/tripadvisor16/playground/apiendpoint_ab413135-dbc1-41b2-95ab-2470fed079c1",
+        "query_parameters": {
+            "restaurantsId": {
+                "type": "String",
+                "description": "restaurantsId obtained from Tripadvisor's Search Restaurants API.",
+                "required": true
+            },
+            "currencyCode": {
+                "type": "String",
+                "description": "Currency code obtained from Get Currency API in Configs collection.",
+                "required": false
+            }
+        },
+        "output_parser": "result.data.{param}",
+        "output_parameters": {
+            "location": {
+                "type": "Object",
+                "description": "Location of the restaurant."
+            },
+            "hours": {
+                "type": "Object",
+                "description": "Working hours of the restaurant."
+            },
+            "ownerStatus": {
+                "type": "Object",
+                "description": "Status of the business (e.g., OPEN, CLOSED)."
+            },
+            "ownerLikelihood": {
+                "type": "Object",
+                "description": "Likelihood of the restaurant."
+            },
+            "overview": {
+                "type": "Object",
+                "description": "Overview of the restaurant."
+            }
+        }
+    },
+    {
+        "name": "Coronavirus_Smartable_GetNews",
+        "description": "Retrieve COVID-19 news for a specific location.",
+        "method": "GET",
+        "endpoint": "/news/v1/",
+        "host": "coronavirus-smartable.p.rapidapi.com",
+        "url": "https://rapidapi.com/SmartableAI/api/coronavirus-smartable/playground/apiendpoint_f638b6c0-b9f2-4204-bffa-1bd0107c4cc0",
+        "path_parameters": {
+            "location": {
+                "type": "String",
+                "description": "ISO 3166-2 location code. For example, use 'FR' for coronavirus news in France; use 'US' for coronavirus news in US; use 'US-CA' for coronavirus news in the US California state. Use 'global' to retrieve global news.",
+                "required": true
+            }
+        },
+        "output_parser": "result.{}.{param}",
+        "output_parameters": {
+            "location": {
+                "type": "Object",
+                "properties": {
+                    "long": {
+                        "type": "Number",
+                        "description": "Longitude of the location."
+                    },
+                    "countryOrRegion": {
+                        "type": "String",
+                        "description": "Name of the country or region."
+                    },
+                    "provinceOrState": {
+                        "type": "String",
+                        "description": "Name of the province or state, if applicable."
+                    },
+                    "county": {
+                        "type": "String",
+                        "description": "Name of the county, if applicable."
+                    },
+                    "isoCode": {
+                        "type": "String",
+                        "description": "ISO code of the location."
+                    },
+                    "lat": {
+                        "type": "Number",
+                        "description": "Latitude of the location."
+                    },
+                    "updatedDateTime": {
+                        "type": "String",
+                        "description": "Date and time when the news was last updated."
+                    }
+                }
+            },
+            "updatedDateTime": {
+                "type": "string",
+                "description": "Date and time when the news was last updated."
+            },
+            "news": {
+                "type": "Array",
+                "items": {
+                    "type": "Object",
+                    "properties": {
+                        "path": {
+                            "type": "String",
+                            "description": "Path to the news article."
+                        },
+                        "title": {
+                            "type": "String",
+                            "description": "Title of the news article."
+                        },
+                        "excerpt": {
+                            "type": "String",
+                            "description": "Excerpt from the news article."
+                        },
+                        "sourceUrl": {
+                            "type": "String",
+                            "description": "Source URL of the news article, if available."
+                        },
+                        "webUrl": {
+                            "type": "String",
+                            "description": "Web URL of the news article."
+                        },
+                        "originalUrl": {
+                            "type": "String",
+                            "description": "Original URL of the news article."
+                        },
+                        "featuredContent": {
+                            "type": "String",
+                            "description": "Featured content, if available."
+                        },
+                        "highlight": {
+                            "type": "String",
+                            "description": "Highlighted content, if available."
+                        },
+                        "heat": {
+                            "type": "Number",
+                            "description": "Heat score of the news article."
+                        },
+                        "content": {
+                            "type": "String",
+                            "description": "Content of the news article."
+                        },
+                        "type": {
+                            "type": "String",
+                            "description": "Type of the news article."
+                        },
+                        "ampWebUrl": {
+                            "type": "String",
+                            "description": "AMP web URL of the news article."
+                        },
+                        "cdnAmpWebUrl": {
+                            "type": "String",
+                            "description": "CDN AMP web URL of the news article."
+                        },
+                        "publishedDateTime": {
+                            "type": "String",
+                            "description": "Date and time when the news article was published."
+                        },
+                        "updatedDateTime": {
+                            "type": "String",
+                            "description": "Date and time when the news article was last updated."
+                        },
+                        "locale": {
+                            "type": "String",
+                            "description": "Locale of the news article."
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "name": "Get_Country_Details_By_Country_Name",
+        "description": "Retrieve details about a country based on Country Name",
+        "method": "GET",
+        "endpoint": "/",
+        "host": "country-codes3.p.rapidapi.com",
+        "url": "https://rapidapi.com/samiddha99/api/country-codes3/playground/apiendpoint_e688da37-3691-4bbd-8976-1cc96b4fd05c",
+        "query_parameters": {
+            "name": {
+                "type": "String",
+                "description": "Country Name",
+                "required": true
+            }
+        },
+        "output_parser": "result.countries[0].{param}",
+        "output_parameters": {
+            "name": {
+                "type": "String",
+                "description": "Name of the country"
+            },
+            "short_name": {
+                "type": "String",
+                "description": "Short-name of the country"
+            },
+            "dial_code": {
+                "type": "String",
+                "description": "dial-code of the country"
+            },
+            "flag": {
+                "type": "String",
+                "description": "Flag of the counrty"
+            }
+        }
+    },
+    {
+        "name": "Coronavirus_Smartable_GetStats",
+        "description": "Retrieve COVID-19 statistics for a specific location.",
+        "method": "GET",
+        "endpoint": "/stats/v1/",
+        "host": "coronavirus-smartable.p.rapidapi.com",
+        "url": "https://rapidapi.com/SmartableAI/api/coronavirus-smartable/playground/apiendpoint_622cafbb-ff83-42a5-9fa0-dc8113eea716",
+        "path_parameters": {
+            "location": {
+                "type": "String",
+                "description": "ISO 3166-2 location code. For example, use 'FR' for coronavirus stats in France; use 'US' for coronavirus stats in US; use 'US-CA' for coronavirus stats in the US California state. Use 'global' to retrieve global stats.",
+                "required": true
+            }
+        },
+        "output_parser": "result.{}.{param}",
+        "output_parameters": {
+            "location": {
+                "type": "Object",
+                "properties": {
+                    "long": {
+                        "type": "Number",
+                        "description": "Longitude of the location."
+                    },
+                    "countryOrRegion": {
+                        "type": "String",
+                        "description": "Name of the country or region."
+                    },
+                    "provinceOrState": {
+                        "type": "String",
+                        "description": "Name of the province or state, if applicable."
+                    },
+                    "county": {
+                        "type": "String",
+                        "description": "Name of the county, if applicable."
+                    },
+                    "isoCode": {
+                        "type": "String",
+                        "description": "ISO code of the location."
+                    },
+                    "lat": {
+                        "type": "Number",
+                        "description": "Latitude of the location."
+                    },
+                    "updatedDateTime": {
+                        "type": "String",
+                        "description": "Date and time when the statistics were last updated."
+                    }
+                }
+            },
+            "updatedDateTime": {
+                "type": "string",
+                "description": "Date and time when the statistics were last updated."
+            },
+            "stats": {
+                "type": "Object",
+                "properties": {
+                    "totalConfirmedCases": {
+                        "type": "Number",
+                        "description": "Total number of confirmed COVID-19 cases."
+                    },
+                    "newlyConfirmedCases": {
+                        "type": "Number",
+                        "description": "Number of newly confirmed COVID-19 cases."
+                    },
+                    "totalDeaths": {
+                        "type": "Number",
+                        "description": "Total number of deaths due to COVID-19."
+                    },
+                    "newDeaths": {
+                        "type": "Number",
+                        "description": "Number of new deaths due to COVID-19."
+                    },
+                    "totalRecoveredCases": {
+                        "type": "Number",
+                        "description": "Total number of recovered COVID-19 cases."
+                    },
+                    "newlyRecoveredCases": {
+                        "type": "Number",
+                        "description": "Number of newly recovered COVID-19 cases."
+                    },
+                    "history": {
+                        "type": "Array",
+                        "description": "Histroy of COVID-19 cases."
+                    }
+                }
+            }
+        }
+    },
+    {
+        "name": "Spotify_Scraper_Get_Artist_ID_By_Name",
+        "description": "Retrieve the Spotify artist ID by providing the artist name.",
+        "method": "GET",
+        "endpoint": "/v1/artist/search",
+        "host": "spotify-scraper.p.rapidapi.com",
+        "url": "https://rapidapi.com/DataFanatic/api/spotify-scraper/playground/apiendpoint_de1c5738-9aa9-4b37-b7f0-28d15d1b242c",
+        "query_parameters": {
+            "name": {
+                "type": "String",
+                "description": "Artist name for which to retrieve the Spotify ID.",
+                "required": true
+            }
+        },
+        "output_parser": "result.{param}",
+        "output_parameters": {
+            "artist_id": {
+                "type": "String",
+                "description": "Unique Spotify ID of the artist."
+            },
+            "name": {
+                "type": "String",
+                "description": "Name of the artist."
+            },
+            "url": {
+                "type": "String",
+                "description": "URL to the Spotify artist page."
+            },
+            "image_url": {
+                "type": "String",
+                "description": "URL of the artist's image."
+            },
+            "verified": {
+                "type": "Boolean",
+                "description": "Indicates if the artist is verified on Spotify."
+            }
+        }
+    },
+    {
+        "name": "Spotify_Scraper_Get_Artist_Overview",
+        "description": "Retrieve an overview of an artist from Spotify based on the artist ID.",
+        "method": "GET",
+        "endpoint": "/v1/artist/overview",
+        "host": "spotify-scraper.p.rapidapi.com",
+        "url": "https://rapidapi.com/DataFanatic/api/spotify-scraper/playground/apiendpoint_fd33b4eb-d258-437e-af85-c244904acefc",
+        "query_parameters": {
+            "artistId": {
+                "type": "String",
+                "description": "Unique Spotify ID of the artist for which to retrieve the overview.",
+                "required": true
+            }
+        },
+        "output_parser": "result.{param}",
+        "output_parameters": {
+            "status": {
+                "type": "Boolean",
+                "description": "Indicates the success or failure of the request."
+            },
+            "errorId": {
+                "type": "String",
+                "description": "String identifier for any error encountered, if applicable."
+            },
+            "type": {
+                "type": "String",
+                "description": "Type of the artist."
+            },
+            "id": {
+                "type": "String",
+                "description": "Unique Spotify ID of the artist."
+            },
+            "name": {
+                "type": "String",
+                "description": "Name of the artist."
+            },
+            "shareUrl": {
+                "type": "String",
+                "description": "URL to the Spotify artist page."
+            },
+            "verified": {
+                "type": "Boolean",
+                "description": "Indicates if the artist is verified on Spotify."
+            },
+            "biography": {
+                "type": "String",
+                "description": "Biography of the artist."
+            },
+            "stats": {
+                "type": "Object",
+                "description": "Statistics of the Artist."
+            },
+            "externalLinks": {
+                "type": "Array",
+                "description": "External URL liked to the artist."
+            },
+            "visuals": {
+                "type": "Object",
+                "description": "Pictures, covers and avatars relaed to the artist."
+            },
+            "playlists": {
+                "type": "Object",
+                "description": "Playlists containing the artist."
+            },
+            "discography": {
+                "type": "Object",
+                "description": "Discography of the artist."
+            },
+            "relatedContent": {
+                "type": "Object",
+                "description": "Other related content for this artist like the songs the artists features on, appears on etc."
+            },
+            "goods": {
+                "type": "Object",
+                "description": "Any concerts and merch sold by the artist."
+            }
+        }
+    },
+    {
+        "name": "Spotify_Scraper_List_Artist_Albums_Singles",
+        "description": "Retrieve albums or singles released by an artist on Spotify.",
+        "method": "GET",
+        "endpoint": "/v1/artist/albums",
+        "host": "spotify-scraper.p.rapidapi.com",
+        "url": "https://rapidapi.com/DataFanatic/api/spotify-scraper/playground/apiendpoint_768e91c5-7f09-4321-84b4-29ddef6c931f",
+        "query_parameters": {
+            "artistId": {
+                "type": "String",
+                "description": "Unique Spotify ID of the artist for which to retrieve albums or singles.",
+                "required": true
+            },
+            "type": {
+                "type": "Enum",
+                "description": "Type of release to retrieve. Defaults to 'album'. Use 'album' or 'single'. Note: 'appearsOn' type does not support pagination scraping.",
+                "required": false
+            },
+            "offset": {
+                "type": "Number",
+                "description": "Number of items to omit before returning results. Ignored if type is 'appearsOn'. Defaults to 0.",
+                "required": false
+            },
+            "limit": {
+                "type": "Number",
+                "description": "Max number of items to return per request. Ignored if type is 'appearsOn'. Defaults to 50.",
+                "required": false
+            }
+        },
+        "output_parser": "result.{param}",
+        "output_parameters": {
+            "id": {
+                "type": "String",
+                "description": "Unique Spotify ID of the album or single."
+            },
+            "name": {
+                "type": "String",
+                "description": "Name of the album or single."
+            },
+            "type": {
+                "type": "String",
+                "description": "Type of release, e.g., 'album'."
+            },
+            "shareUrl": {
+                "type": "String",
+                "description": "URL to the Spotify album or single."
+            },
+            "date": {
+                "type": "String",
+                "description": "Release date of the album or single in ISO 8601 format."
+            },
+            "trackCount": {
+                "type": "Number",
+                "description": "Number of tracks in the album. Null if type is 'single'."
+            }
+        }
+    },
+    {
+        "name": "Spotify_Scraper_List_Related_Artists",
+        "description": "Retrieve a list of related artists based on the provided Artist ID.",
+        "method": "GET",
+        "endpoint": "/v1/artist/related",
+        "host": "spotify-scraper.p.rapidapi.com",
+        "url": "https://rapidapi.com/DataFanatic/api/spotify-scraper/playground/apiendpoint_2528a974-e5af-4269-a6ed-89d2bde4fdde",
+        "query_parameters": {
+            "artistId": {
+                "type": "String",
+                "description": "Unique identifier of the artist.",
+                "required": true
+            }
+        },
+        "output_parser": "result.relatedArtists.items[0].{param}",
+        "output_parameters": {
+            "type": {
+                "type": "String",
+                "description": "Type of the artist (e.g., 'artist')."
+            },
+            "id": {
+                "type": "String",
+                "description": "Unique identifier of the artist."
+            },
+            "name": {
+                "type": "String",
+                "description": "Name of the artist."
+            },
+            "shareUrl": {
+                "type": "String",
+                "description": "URL to open the artist in Spotify."
+            }
+        }
+    },
+    {
+        "name": "Instagram_Info",
+        "description": "Retrieve detailed information about an Instagram account, including contacts and account details.",
+        "method": "GET",
+        "endpoint": "/v1/info",
+        "host": "instagram-scraper-api2.p.rapidapi.com",
+        "url": "https://rapidapi.com/social-api1-instagram/api/instagram-scraper-api2/playground/apiendpoint_59cb4f4c-55c0-41b5-807d-e39967e66c1d",
+        "query_parameters": {
+            "username_or_id_or_url": {
+                "type": "String",
+                "required": true,
+                "description": "Insert a username (e.g., mrbeast), user ID (e.g., 2278169415), or URL (e.g., instagram.com/mrbeast)."
+            },
+            "include_about": {
+                "type": "Boolean",
+                "required": false,
+                "description": "Include 'About this account' information: country and date_joined (in about field). Default: false. Enabling this will cost one extra request."
+            },
+            "url_embed_safe": {
+                "type": "Boolean",
+                "required": false,
+                "description": "If you need to embed images/videos on your website, set to 'true' to evade CORS restrictions. URLs are valid from 6 to 24 hours. Default: false."
+            }
+        },
+        "output_parser": "result.{param}",
+        "output_parameters": {
+            "about": {
+                "type": "Object",
+                "description": "Information about the account, including country and date_joined."
+            },
+            "account_badges": {
+                "type": "Array",
+                "description": "List of badges associated with the account."
+            },
+            "account_type": {
+                "type": "Number",
+                "description": "Type of the account (e.g., personal, business)."
+            },
+            "active_standalone_fundraisers": {
+                "type": "Object",
+                "description": "All the currently active fundraisers associated with the account."
+            },
+            "ads_incentive_expiration_date": {
+                "type": "String",
+                "description": "Expiration date of ads incentive."
+            },
+            "ads_page_id": {
+                "type": "String",
+                "description": "ID of the ads page associated with the account."
+            },
+            "ads_page_name": {
+                "type": "String",
+                "description": "Name of the ads page associated with the account."
+            },
+            "bio_links": {
+                "type": "Array",
+                "description": "Links in the biography of the account."
+            },
+            "biography": {
+                "type": "String",
+                "description": "Biography text of the account."
+            },
+            "biography_email": {
+                "type": "String",
+                "description": "Email address mentioned in the biography, if any."
+            },
+            "biography_with_entities": {
+                "type": "Object",
+                "description": "Entities mentioned in the biography if any."
+            },
+            "business_contact_method": {
+                "type": "String",
+                "description": "Preferred method of contact for business inquiries."
+            },
+            "can_add_fb_group_link_on_profile": {
+                "type": "Boolean",
+                "description": "Boolean indicating if a Facebook group link can be added to the profile."
+            },
+            "can_hide_category": {
+                "type": "Boolean",
+                "description": "Boolean indicating if the account category can be hidden."
+            },
+            "can_hide_public_contacts": {
+                "type": "Boolean",
+                "description": "Boolean indicating if public contact information can be hidden."
+            },
+            "category": {
+                "type": "String",
+                "description": "Category of the account (e.g., Public figure, Blogger)."
+            },
+            "category_id": {
+                "type": "Number",
+                "description": "ID of the account category."
+            },
+            "contact_phone_number": {
+                "type": "String",
+                "description": "Contact phone number associated with the account."
+            },
+            "current_catalog_id": {
+                "type": "Number",
+                "description": "ID of the current catalog associated with the account."
+            },
+            "direct_messaging": {
+                "type": "String",
+                "description": "Direct messaging capabilities of the account."
+            },
+            "external_lynx_url": {
+                "type": "String",
+                "description": "External URL linked to the account with tracking parameters."
+            },
+            "external_url": {
+                "type": "String",
+                "description": "External URL linked to the account."
+            },
+            "fbid_v2": {
+                "type": "String",
+                "description": "Facebook ID version 2 associated with the account."
+            },
+            "follower_count": {
+                "type": "Number",
+                "description": "Number of followers of the account."
+            },
+            "following_count": {
+                "type": "Number",
+                "description": "Number of accounts the user is following."
+            },
+            "full_name": {
+                "type": "String",
+                "description": "Full name of the account holder."
+            },
+            "has_anonymous_profile_picture": {
+                "type": "Boolean",
+                "description": "Boolean indicating if the profile picture is anonymous."
+            },
+            "has_chaining": {
+                "type": "Boolean",
+                "description": "Boolean indicating if the account has chaining enabled."
+            },
+            "has_guides": {
+                "type": "Boolean",
+                "description": "Boolean indicating if the account has guides enabled."
+            },
+            "has_igtv_series": {
+                "type": "Boolean",
+                "description": "Boolean indicating if the account has IGTV series."
+            },
+            "id": {
+                "type": "String",
+                "description": "ID of the Instagram account."
+            },
+            "is_business": {
+                "type": "Boolean",
+                "description": "Boolean indicating if the account is a business account."
+            },
+            "is_call_to_action_enabled": {
+                "type": "Boolean",
+                "description": "Boolean indicating if call-to-action is enabled for the account."
+            },
+            "is_category_tappable": {
+                "type": "Boolean",
+                "description": "Boolean indicating if the category is tappable."
+            },
+            "is_eligible_for_request_message": {
+                "type": "Boolean",
+                "description": "Boolean indicating if the account is eligible for request messages."
+            },
+            "is_favorite": {
+                "type": "Boolean",
+                "description": "Boolean indicating if the account is marked as favorite."
+            },
+            "is_favorite_for_clips": {
+                "type": "Boolean",
+                "description": "Boolean indicating if the account is marked as favorite for clips."
+            },
+            "is_favorite_for_igtv": {
+                "type": "Boolean",
+                "description": "Boolean indicating if the account is marked as favorite for IGTV."
+            },
+            "is_favorite_for_stories": {
+                "type": "Boolean",
+                "description": "Boolean indicating if the account is marked as favorite for stories."
+            },
+            "is_open_to_collab": {
+                "type": "Boolean",
+                "description": "Boolean indicating if the account is open to collaborations."
+            },
+            "is_parenting_account": {
+                "type": "Boolean",
+                "description": "Boolean indicating if the account is a parenting account."
+            },
+            "is_private": {
+                "type": "Boolean",
+                "description": "Boolean indicating if the account is private."
+            },
+            "is_profile_audio_call_enabled": {
+                "type": "Boolean",
+                "description": "Boolean indicating if audio call is enabled for the profile."
+            },
+            "is_verified": {
+                "type": "Boolean",
+                "description": "Boolean indicating if the account is verified."
+            },
+            "latest_reel_media": {
+                "type": "Number",
+                "description": "ID of the latest reel media posted by the account."
+            },
+            "live_subscription_status": {
+                "type": "String",
+                "description": "Subscription status for live content."
+            },
+            "location_data": {
+                "type": "Object",
+                "description": "Location data of the account."
+            },
+            "media_count": {
+                "type": "Number",
+                "description": "Number of media items posted by the account."
+            },
+            "merchant_checkout_style": {
+                "type": "String",
+                "description": "Checkout style of the merchant."
+            },
+            "page_id": {
+                "type": "Number",
+                "description": "Page ID associated with the account."
+            },
+            "page_name": {
+                "type": "String",
+                "description": "Page name associated with the account."
+            },
+            "pinned_channels_info": {
+                "type": "Object",
+                "description": "Page name associated with the account."
+            },
+            "primary_profile_link_type": {
+                "type": "Number",
+                "description": "Type of the primary profile link."
+            },
+            "professional_conversion_suggested_account_type": {
+                "type": "Number",
+                "description": "Suggested account type for professional conversion."
+            },
+            "profile_context": {
+                "type": "String",
+                "description": "Context information about the profile."
+            },
+            "profile_context_facepile_users": {
+                "type": "Array",
+                "description": "Users who are part of the profile context facepile."
+            },
+            "profile_context_links_with_user_ids": {
+                "type": "Array",
+                "description": "Links with user IDs in the profile context."
+            },
+            "profile_pic_id": {
+                "type": "String",
+                "description": "ID of the profile picture."
+            },
+            "profile_pic_url": {
+                "type": "String",
+                "description": "URL of the profile picture."
+            },
+            "profile_pic_url_hd": {
+                "type": "String",
+                "description": "HD URL of the profile picture."
+            },
+            "public_email": {
+                "type": "String",
+                "description": "Public email associated with the account."
+            },
+            "public_phone_country_code": {
+                "type": "String",
+                "description": "Country code of the public phone number."
+            },
+            "public_phone_number": {
+                "type": "String",
+                "description": "Public phone number associated with the account."
+            },
+            "seller_shoppable_feed_type": {
+                "type": "String",
+                "description": "Type of the shoppable feed."
+            },
+            "show_shoppable_feed": {
+                "type": "Boolean",
+                "description": "If the shoppable posts in the feed are show."
+            },
+            "third_party_downloads_enabled": {
+                "type": "Number",
+                "description": "Boolean indicating if third-party downloads are enabled."
+            },
+            "total_igtv_videos": {
+                "type": "Number",
+                "description": "Total number of IGTV videos posted by the account."
+            },
+            "upcoming_events": {
+                "type": "Array",
+                "description": "List of upcoming events associated with the account."
+            },
+            "username": {
+                "type": "String",
+                "description": "List of upcoming events associated with the account."
+            }
+        }
+    },
+    {
+        "name": "Instagram_Followers",
+        "description": "Retrieve the list of followers for an Instagram account.",
+        "method": "GET",
+        "endpoint": "/v1/followers",
+        "host": "instagram-scraper-api2.p.rapidapi.com",
+        "url": "https://rapidapi.com/social-api1-instagram/api/instagram-scraper-api2/playground/apiendpoint_4f4c3199-f234-4978-8d94-ae3ca22aa64e",
+        "query_parameters": {
+            "username_or_id_or_url": {
+                "type": "String",
+                "description": "Insert a username (e.g. mrbeast), user id (e.g. 2278169415) or URL (e.g. instagram.com/mrbeast)."
+            },
+            "amount": {
+                "type": "Number",
+                "description": "Minimum number of followers to retrieve. Maximum: 1000. Default: 50. Note: costs one extra request for every 50 users requested (e.g. amount=100 costs 2 requests).",
+                "optional": true
+            },
+            "pagination_token": {
+                "type": "String",
+                "description": "Use the value from the previous request to retrieve the continuation of the list. Leave empty in the first request. For more help, check our tutorials.",
+                "optional": true
+            }
+        },
+        "output_parser": "result.data.items[0].{param}",
+        "output_parameters": {
+            "full_name": {
+                "type": "String",
+                "description": "Full name if the follower."
+            },
+            "id": {
+                "type": "String",
+                "description": "ID of the follower."
+            },
+            "is_private": {
+                "type": "Boolean",
+                "description": "Boolean indicating if the follower's account is private."
+            },
+            "is_verified": {
+                "type": "Boolean",
+                "description": "Boolean indicating if the follower's account is verified."
+            },
+            "profile_pic_url": {
+                "type": "String",
+                "description": "URL link to the profile picture of the follower."
+            },
+            "username": {
+                "type": "String",
+                "description": "Username of the follower."
+            }
+        }
+    },
+    {
+        "name": "Instagram_Following",
+        "description": "Retrieve the list of accounts followed by an Instagram user.",
+        "method": "GET",
+        "endpoint": "/v1/following",
+        "host": "instagram-scraper-api2.p.rapidapi.com",
+        "url": "https://rapidapi.com/social-api1-instagram/api/instagram-scraper-api2/playground/apiendpoint_8d0da7e2-4689-4cdb-8182-1bd4650849ad",
+        "query_parameters": {
+            "username_or_id_or_url": {
+                "type": "String",
+                "description": "Insert a username (e.g. mrbeast), user id (e.g. 2278169415) or URL (e.g. instagram.com/mrbeast)."
+            },
+            "amount": {
+                "type": "Number",
+                "description": "Minimum number of accounts to retrieve. Maximum: 1000. Default: 50. Note: costs one extra request for every 50 users requested (e.g. amount=100 costs 2 requests).",
+                "optional": true
+            },
+            "pagination_token": {
+                "type": "String",
+                "description": "Use the value from the previous request to retrieve the continuation of the list. Leave empty in the first request. For more help, check our tutorials.",
+                "optional": true
+            }
+        },
+        "output_parser": "result.data.items[0].{param}",
+        "output_parameters": {
+            "account_badges": {
+                "type": "Array",
+                "description": "List of badges associated with the account."
+            },
+            "fbid_v2": {
+                "type": "String",
+                "description": "Facebook ID of the followed account."
+            },
+            "full_name": {
+                "type": "String",
+                "description": "Name of the followed account."
+            },
+            "has_anonymous_profile_picture": {
+                "type": "Boolean",
+                "description": "Indicates if the followed account has anonymous profile picture."
+            },
+            "id": {
+                "type": "String",
+                "description": "ID of the followed account."
+            },
+            "is_favorite": {
+                "type": "Boolean",
+                "description": "Indicates if the followed account is favorite."
+            },
+            "is_possible_bad_actor": {
+                "type": "Object",
+                "description": "If the followed account is a possible bad actor."
+            },
+            "is_possible_scammer": {
+                "type": "Boolean",
+                "description": "Indicates if the followed account is a possible scammer."
+            },
+            "is_private": {
+                "type": "Boolean",
+                "description": "Indicates if the followed account is private"
+            },
+            "is_verified": {
+                "type": "Boolean",
+                "description": "Indicates if the followed account is verified"
+            },
+            "latest_reel_media": {
+                "type": "Number",
+                "description": "Number of latest reel media."
+            },
+            "profile_pic_id": {
+                "type": "String",
+                "description": "ID of the profile picture of the followed account."
+            },
+            "profile_pic_url": {
+                "type": "String",
+                "description": "URL link to the profile picture of the followed account."
+            },
+            "third_party_downloads_enabled": {
+                "type": "Number",
+                "description": "Number of third party downloads enabled."
+            },
+            "username": {
+                "type": "String",
+                "description": "Username of the followed account."
+            }
+        }
+    },
+    {
+        "name": "Instagram_Posts_Reels",
+        "description": "Retrieve the list of posts and reels for an Instagram user.",
+        "method": "GET",
+        "endpoint": "/v1.2/posts",
+        "host": "instagram-scraper-api2.p.rapidapi.com",
+        "url": "https://rapidapi.com/social-api1-instagram/api/instagram-scraper-api2/playground/apiendpoint_b1301387-dc09-4b1f-ba39-b7b51d186b40",
+        "query_parameters": {
+            "username_or_id_or_url": {
+                "type": "String",
+                "description": "Insert a username (e.g. mrbeast), user id (e.g. 2278169415) or URL (e.g. instagram.com/mrbeast)."
+            },
+            "pagination_token": {
+                "type": "String",
+                "description": "Use the value from the previous request to retrieve the continuation of the list. Leave empty in the first request. For more help, check our tutorials.",
+                "optional": true
+            },
+            "url_embed_safe": {
+                "type": "Boolean",
+                "description": "If you need to embed images/videos on your website, set to 'true' to evade CORS restrictions. URLs are valid from 6 to 24 hours. Default: false.",
+                "optional": true
+            }
+        },
+        "output_parser": "result.data.items[0].{param}",
+        "output_parameters": {
+            "can_reshare": {
+                "type": "Boolean",
+                "description": "Indicates if the post can be reshared."
+            },
+            "can_save": {
+                "type": "Boolean",
+                "description": "Indicates if the post can be saved."
+            },
+            "caption": {
+                "type": "Object",
+                "description": "Caption of the post."
+            },
+            "caption_is_edited": {
+                "type": "Boolean",
+                "description": "Indicates if the caption has been edited."
+            },
+            "clips_metadata": {
+                "type": "Object",
+                "description": "Metadata of the clips."
+            },
+            "clips_tab_pinned_user_ids": {
+                "type": "String",
+                "description": "IDs of users pinned in the clips tab."
+            },
+            "code": {
+                "type": "String",
+                "description": "Unique code for the post."
+            },
+            "comment_count": {
+                "type": "Number",
+                "description": "Number of comments on the post."
+            },
+            "comment_inform_treatment": {
+                "type": "Object",
+                "description": "If the comment can inform treatment."
+            },
+            "comment_likes_enabled": {
+                "type": "Boolean",
+                "description": "Indicates if likes on the comments are enabled."
+            },
+            "comment_threading_enabled": {
+                "type": "Boolean",
+                "description": "Indicates if comment threading is enabled."
+            },
+            "commerciality_status": {
+                "type": "String",
+                "description": "Commercial status of the post."
+            },
+            "deleted_reason": {
+                "type": "Number",
+                "description": "Reason for post deletion."
+            },
+            "device_timestamp": {
+                "type": "Number",
+                "description": "Timestamp from the device when the post was created."
+            },
+            "fb_like_count": {
+                "type": "Number",
+                "description": "Facebook likes count of the post."
+            },
+            "fb_play_count": {
+                "type": "Number",
+                "description": "Facebook play count of the post."
+            },
+            "fb_user_tags": {
+                "type": "Object",
+                "description": "User tags on Facebook associated with the post."
+            },
+            "featured_products": {
+                "type": "Array",
+                "description": "List of featured products in the post."
+            },
+            "filter_type": {
+                "type": "Number",
+                "description": "Type of filter applied to the post."
+            },
+            "fundraiser_tag": {
+                "type": "Object",
+                "description": "Fundraiser tag associated with the post."
+            },
+            "has_audio": {
+                "type": "Boolean",
+                "description": "Indicates if the user has liked the post."
+            },
+            "has_liked": {
+                "type": "Boolean",
+                "description": "Indicates if the user has liked the post."
+            },
+            "has_more_comments": {
+                "type": "Boolean",
+                "description": "Indicates if there are more comments to load."
+            },
+            "has_privately_liked": {
+                "type": "Boolean",
+                "description": "Indicates if the post has been liked privately."
+            },
+            "has_shared_to_fb": {
+                "type": "Number",
+                "description": "Indicates if the post has been shared to Facebook."
+            },
+            "id": {
+                "type": "String",
+                "description": "ID of the post."
+            },
+            "ig_media_sharing_disabled": {
+                "type": "Boolean",
+                "description": "Indicates if Instagram media sharing is disabled."
+            },
+            "image_versions": {
+                "type": "Object",
+                "description": "Versions of the image."
+            },
+            "inline_composer_display_condition": {
+                "type": "String",
+                "description": "Condition for displaying the inline composer."
+            },
+            "inline_composer_imp_trigger_time": {
+                "type": "Number",
+                "description": "Trigger time for inline composer impression."
+            },
+            "integrity_review_decision": {
+                "type": "String",
+                "description": "Decision from integrity review."
+            },
+            "invited_coauthor_producers": {
+                "type": "Array",
+                "description": "List of invited coauthor producers."
+            },
+            "is_artist_pick": {
+                "type": "Boolean",
+                "description": "Indicates if the artist is picked."
+            },
+            "is_auto_created": {
+                "type": "Boolean",
+                "description": "Indicates if the post was autocreated."
+            },
+            "is_comments_gif_composer_enabled": {
+                "type": "Boolean",
+                "description": "Indicates if GIF composer is enabled for comments."
+            },
+            "is_cutout_sticker_allowed": {
+                "type": "Boolean",
+                "description": "Indicates if cutout stickers are allowed."
+            },
+            "is_dash_eligible": {
+                "type": "Boolean",
+                "description": "Indicates if dash is enabled."
+            },
+            "is_in_profile_grid": {
+                "type": "Boolean",
+                "description": "Indicates if the post is in the profile grid."
+            },
+            "is_open_to_public_submission": {
+                "type": "Boolean",
+                "description": "Indicates if the post is open to public submission."
+            },
+            "is_organic_product_tagging_eligible": {
+                "type": "Boolean",
+                "description": "Indicates eligibility for organic product tagging."
+            },
+            "is_paid_partnership": {
+                "type": "Boolean",
+                "description": "Indicates if the post is a paid partnership."
+            },
+            "is_post_live_clips_media": {
+                "type": "Boolean",
+                "description": "Indicates if the post is live clips media."
+            },
+            "is_quiet_post": {
+                "type": "Boolean",
+                "description": "Indicates if the post is a quiet post."
+            },
+            "is_reshare_of_text_post_app_media_in_ig": {
+                "type": "Boolean",
+                "description": "Indicates if the post is a reshare of text post app media."
+            },
+            "is_third_party_downloads_eligible": {
+                "type": "Boolean",
+                "description": "Indicates if third party downloads are eligible."
+            },
+            "is_unified_video": {
+                "type": "Boolean",
+                "description": "Indicates if the post is a unified video."
+            },
+            "is_video": {
+                "type": "Boolean",
+                "description": "Indicates if the post is a video."
+            },
+            "lat": {
+                "type": "Number",
+                "description": "Latitude coordinates of the location."
+            },
+            "like_and_view_counts_disabled": {
+                "type": "Boolean",
+                "description": "Indicates if like and view counts are disabled."
+            },
+            "like_count": {
+                "type": "Number",
+                "description": "Number of likes on the post."
+            },
+            "lng": {
+                "type": "Number",
+                "description": "Longitude coordinates of the location."
+            },
+            "location": {
+                "type": "Object",
+                "description": "Location information of the post."
+            },
+            "max_num_visible_preview_comments": {
+                "type": "Number",
+                "description": "Maximum number of visible preview comments."
+            },
+            "media_appreciation_settings": {
+                "type": "Object",
+                "description": "Appreciation settings of the media item."
+            },
+            "media_cropping_info": {
+                "type": "Object",
+                "description": "Cropping information of the media item."
+            },
+            "media_name": {
+                "type": "String",
+                "description": "Name of the media item."
+            },
+            "media_type": {
+                "type": "Number",
+                "description": "Type of media item."
+            },
+            "mezql_token": {
+                "type": "String",
+                "description": "MEZQL token associated with the post."
+            },
+            "music_metadata": {
+                "type": "String",
+                "description": "Metadata of the music."
+            },
+            "number_of_qualities": {
+                "type": "Number",
+                "description": "Number of qualities."
+            },
+            "open_carousel_submission_state": {
+                "type": "String",
+                "description": "Submission state of the open carousel."
+            },
+            "original_height": {
+                "type": "Number",
+                "description": "Original height of the media item."
+            },
+            "original_width": {
+                "type": "Number",
+                "description": "Original width of the media item."
+            },
+            "owner": {
+                "type": "Object",
+                "description": "Owner of the media item."
+            },
+            "play_count": {
+                "type": "Number",
+                "description": "Number of plays of the item."
+            },
+            "preview_comments": {
+                "type": "Array",
+                "description": "List of preview comments."
+            },
+            "product_suggestions": {
+                "type": "Array",
+                "description": "List of product suggestions."
+            },
+            "product_type": {
+                "type": "String",
+                "description": "Type of product in the post."
+            },
+            "share_count": {
+                "type": "Number",
+                "description": "Number of shares of the item."
+            },
+            "sharing_friction_info": {
+                "type": "Object",
+                "description": "SHaring of friction info."
+            },
+            "shop_routing_user_id": {
+                "type": "String",
+                "description": "User ID for shop routing."
+            },
+            "sponsor_tags": {
+                "type": "Array",
+                "description": "List of sponsor tags."
+            },
+            "tagged_users": {
+                "type": "Array",
+                "description": "List of tagged users."
+            },
+            "taken_at": {
+                "type": "Number",
+                "description": "Timestamp when the post was taken."
+            },
+            "taken_at_ts": {
+                "type": "Number",
+                "description": "Timestamp when the post was taken in Unix format."
+            },
+            "thumbnail_url": {
+                "type": "String",
+                "description": "URL of the thumbnail image."
+            },
+            "top_likers": {
+                "type": "Array",
+                "description": "List of top likers."
+            },
+            "user": {
+                "type": "Object",
+                "description": "Username of item."
+            },
+            "video_codec": {
+                "type": "String",
+                "description": "Video codec of video."
+            },
+            "video_duration": {
+                "type": "Number",
+                "description": "Duration of the video."
+            },
+            "video_url": {
+                "type": "String",
+                "description": "URL link to the video."
+            },
+            "video_versions": {
+                "type": "Array",
+                "description": "Versions of the video."
+            }
+        }
+    },
+    {
+        "name": "Instagram_Search_User",
+        "description": "Retrieve the list of accounts with the user name on Instagram.",
+        "method": "GET",
+        "endpoint": "/v1/search_users",
+        "host": "instagram-scraper-api2.p.rapidapi.com",
+        "url": "https://rapidapi.com/social-api1-instagram/api/instagram-scraper-api2/playground/apiendpoint_dcdb7a36-a7ed-4501-a65b-3200093e1135",
+        "query_parameters": {
+            "search_query": {
+                "type": "String",
+                "description": "Insert the name of an Instagram user."
+            },
+            "url_embed_safe": {
+                "type": "Boolean",
+                "description": "If you need to embed images/videos on your website, set to 'true' to evade CORS restrictions.",
+                "optional": true
+            }
+        },
+        "output_parser": "result.data.items[0].{param}",
+        "output_parameters": {
+            "full_name": {
+                "type": "String",
+                "description": "Full name of the user."
+            },
+            "id": {
+                "type": "String",
+                "description": "ID of the user."
+            },
+            "is_private": {
+                "type": "Boolean",
+                "description": "Indicates if the user is private."
+            },
+            "is_verified": {
+                "type": "Boolean",
+                "description": "Indicates if the user is verified."
+            },
+            "profile_pic_url": {
+                "type": "String",
+                "description": "URL link to the profile picture."
+            },
+            "profile_pic_url_hd": {
+                "type": "String",
+                "description": "URL link to the profile picture in high definition."
+            },
+            "username": {
+                "type": "String",
+                "description": "Username of the user."
+            }
+        }
+    },
+    {
+        "name": "SEC_Balance_Sheet",
+        "description": "Retrieve the balance sheet of a publicly traded company from SEC filings.",
+        "method": "GET",
+        "endpoint": "/v1/company/balancesheet",
+        "host": "last10k-company-v1.p.rapidapi.com",
+        "url": "https://rapidapi.com/last10k/api/sec-filings/playground/5920a047e4b00fa921e13cec",
+        "query_parameters": {
+            "ticker": {
+                "type": "String",
+                "description": "Publicly traded company's stock symbol",
+                "required": true
+            },
+            "formtype": {
+                "type": "String",
+                "description": "10-K = Annual Report (default) | 10-Q = Quarterly Report",
+                "required": false
+            },
+            "filingorder": {
+                "type": "Number",
+                "description": "Retrieve an older financial statement by specifying number of filings to go back. By default, the most recent filing is returned (filingOrder = 0).",
+                "required": false
+            }
+        },
+        "output_parser": "result.data.attributes.{param}",
+        "output_parameters": {
+            "company": {
+                "type": "Object",
+                "properties": {
+                    "name": {
+                        "type": "String",
+                        "description": "Name of the company"
+                    },
+                    "cik": {
+                        "type": "String",
+                        "description": "Central Index Key (CIK)"
+                    },
+                    "ticker": {
+                        "type": "String",
+                        "description": "Stock ticker symbol"
+                    }
+                }
+            },
+            "filing": {
+                "type": "Object",
+                "properties": {
+                    "name": {
+                        "type": "String",
+                        "description": "Name of the filing"
+                    },
+                    "accessionNumber": {
+                        "type": "String",
+                        "description": "Accession number of the filing"
+                    },
+                    "filingDate": {
+                        "type": "String",
+                        "description": "Date of the filing"
+                    },
+                    "period": {
+                        "type": "String",
+                        "description": "Reporting period"
+                    },
+                    "formType": {
+                        "type": "String",
+                        "description": "Type of form (10-K or 10-Q)"
+                    },
+                    "filingCount": {
+                        "type": "Number",
+                        "description": "Number of filings"
+                    }
+                }
+            },
+            "result": {
+                "type": "Object",
+                "properties": {
+                    "CashAndCashEquivalentsAtCarryingValue": {
+                        "type": "Number",
+                        "description": "Value of cash and cash equivalents"
+                    },
+                    "ShortTermInvestments": {
+                        "type": "Number",
+                        "description": "Value of short-term investments"
+                    },
+                    "CashCashEquivalentsAndShortTermInvestments": {
+                        "type": "Number",
+                        "description": "Total value of cash, cash equivalents, and short-term investments"
+                    },
+                    "AccountsReceivableNetCurrent": {
+                        "type": "Number",
+                        "description": "Net value of current accounts receivable"
+                    },
+                    "InventoryNet": {
+                        "type": "Number",
+                        "description": "Net value of inventory"
+                    },
+                    "OtherAssetsCurrent": {
+                        "type": "Number",
+                        "description": "Value of other current assets"
+                    },
+                    "AssetsCurrent": {
+                        "type": "Number",
+                        "description": "Total value of current assets"
+                    },
+                    "PropertyPlantAndEquipmentNet": {
+                        "type": "Number",
+                        "description": "Net value of property, plant, and equipment"
+                    },
+                    "OperatingLeaseRightOfUseAsset": {
+                        "type": "Number",
+                        "description": "Value of operating lease right-of-use asset"
+                    },
+                    "LongTermInvestments": {
+                        "type": "Number",
+                        "description": "Value of long-term investments"
+                    },
+                    "Goodwill": {
+                        "type": "Number",
+                        "description": "Value of goodwill"
+                    },
+                    "FiniteLivedIntangibleAssetsNet": {
+                        "type": "Number",
+                        "description": "Net value of finite-lived intangible assets"
+                    },
+                    "OtherAssetsNoncurrent": {
+                        "type": "Number",
+                        "description": "Value of other non-current assets"
+                    },
+                    "Assets": {
+                        "type": "Number",
+                        "description": "Total value of assets"
+                    },
+                    "AccountsPayableCurrent": {
+                        "type": "Number",
+                        "description": "Value of current accounts payable"
+                    },
+                    "LongTermDebtCurrent": {
+                        "type": "Number",
+                        "description": "Value of current long-term debt"
+                    },
+                    "EmployeeRelatedLiabilitiesCurrent": {
+                        "type": "Number",
+                        "description": "Value of current employee-related liabilities"
+                    },
+                    "AccruedIncomeTaxesCurrent": {
+                        "type": "Number",
+                        "description": "Value of current accrued income taxes"
+                    },
+                    "ContractWithCustomerLiabilityCurrent": {
+                        "type": "Number",
+                        "description": "Value of current contract with customer liability"
+                    },
+                    "OtherLiabilitiesCurrent": {
+                        "type": "Number",
+                        "description": "Value of other current liabilities"
+                    },
+                    "LiabilitiesCurrent": {
+                        "type": "Number",
+                        "description": "Total value of current liabilities"
+                    },
+                    "LongTermDebtNoncurrent": {
+                        "type": "Number",
+                        "description": "Value of non-current long-term debt"
+                    },
+                    "AccruedIncomeTaxesNoncurrent": {
+                        "type": "Number",
+                        "description": "Value of non-current accrued income taxes"
+                    },
+                    "ContractWithCustomerLiabilityNoncurrent": {
+                        "type": "Number",
+                        "description": "Value of non-current contract with customer liability"
+                    },
+                    "DeferredIncomeTaxLiabilitiesNet": {
+                        "type": "Number",
+                        "description": "Net value of deferred income tax liabilities"
+                    },
+                    "OperatingLeaseLiabilityNoncurrent": {
+                        "type": "Number",
+                        "description": "Value of non-current operating lease liability"
+                    },
+                    "OtherLiabilitiesNoncurrent": {
+                        "type": "Number",
+                        "description": "Value of other non-current liabilities"
+                    },
+                    "Liabilities": {
+                        "type": "Number",
+                        "description": "Total value of liabilities"
+                    },
+                    "CommonStocksIncludingAdditionalPaidInCapital": {
+                        "type": "Number",
+                        "description": "Value of common stocks including additional paid-in capital"
+                    },
+                    "RetainedEarningsAccumulatedDeficit": {
+                        "type": "Number",
+                        "description": "Value of retained earnings or accumulated deficit"
+                    },
+                    "AccumulatedOtherComprehensiveIncomeLossNetOfTax": {
+                        "type": "Number",
+                        "description": "Net value of accumulated other comprehensive income or loss, net of tax"
+                    },
+                    "StockholdersEquity": {
+                        "type": "Number",
+                        "description": "Total value of stockholders' equity"
+                    },
+                    "LiabilitiesAndStockholdersEquity": {
+                        "type": "Number",
+                        "description": "Total value of liabilities and stockholders' equity"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "name": "SEC_Financial_Statements_and_Disclosures",
+        "description": "Retrieve financial statements and disclosures of a publicly traded company from SEC filings.",
+        "method": "GET",
+        "endpoint": "/v1/company/sections",
+        "host": "last10k-company-v1.p.rapidapi.com",
+        "url": "https://rapidapi.com/last10k/api/sec-filings/playground/apiendpoint_b2c2c761-dbec-43d4-8d70-6e7fa3228688",
+        "query_parameters": {
+            "cik": {
+                "type": "String",
+                "description": "Central Index Key (CIK)",
+                "required": true
+            },
+            "accessionNumber": {
+                "type": "String",
+                "description": "SEC Filing Identifier",
+                "required": true
+            }
+        },
+        "output_parser": "result.data.attributes.{param}",
+        "output_parameters": {
+            "company": {
+                "type": "Object",
+                "properties": {
+                    "name": {
+                        "type": "String",
+                        "description": "Name of the company"
+                    },
+                    "cik": {
+                        "type": "String",
+                        "description": "Central Index Key (CIK)"
+                    },
+                    "ticker": {
+                        "type": "String",
+                        "description": "Stock ticker symbol"
+                    }
+                }
+            },
+            "filing": {
+                "type": "Object",
+                "properties": {
+                    "accessionNumber": {
+                        "type": "String",
+                        "description": "Accession number of the filing"
+                    },
+                    "filingDate": {
+                        "type": "String",
+                        "description": "Date of the filing"
+                    },
+                    "formType": {
+                        "type": "String",
+                        "description": "Type of form (e.g., 10-K, 10-Q)"
+                    },
+                    "count": {
+                        "type": "Number",
+                        "description": "Number of sections in the filing"
+                    }
+                }
+            },
+            "result": {
+                "type": "Array",
+                "items": {
+                    "type": "Object",
+                    "properties": {
+                        "Id": {
+                            "type": "String",
+                            "description": "Unique identifier for the section"
+                        },
+                        "HtmlFileName": {
+                            "type": "String",
+                            "description": "HTML file name of the section"
+                        },
+                        "Url": {
+                            "type": "String",
+                            "description": "URL to the section"
+                        },
+                        "Section": {
+                            "type": "String",
+                            "description": "Type of section (e.g., Statement, Note)"
+                        },
+                        "Name": {
+                            "type": "String",
+                            "description": "Name of the section (e.g., Consolidated Balance Sheets)"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "name": "SEC_Filings",
+        "description": "Retrieve recent SEC filings for a publicly traded company based on stock symbol or Central Index Key (CIK).",
+        "method": "GET",
+        "endpoint": "/v1/company/filings",
+        "host": "last10k-company-v1.p.rapidapi.com",
+        "url": "https://rapidapi.com/last10k/api/sec-filings/playground/apiendpoint_0b003612-5870-411e-a8a0-4086c6a8859d",
+        "query_parameters": {
+            "identifier": {
+                "type": "String",
+                "description": "Publicly traded company's stock symbol or Central Index Key (CIK)",
+                "required": true
+            }
+        },
+        "output_parser": "result.data.attributes.{param}",
+        "output_parameters": {
+            "company": {
+                "type": "Object",
+                "properties": {
+                    "status": {
+                        "type": "Number",
+                        "description": "Response status"
+                    },
+                    "count": {
+                        "type": "Number",
+                        "description": "Number of filings returned"
+                    }
+                }
+            },
+            "filings": {
+                "type": "Array",
+                "items": {
+                    "type": "Object",
+                    "properties": {
+                        "name": {
+                            "type": "String",
+                            "description": "Name of the report"
+                        },
+                        "accessionNumber": {
+                            "type": "String",
+                            "description": "Accession number of the filing"
+                        },
+                        "filingDate": {
+                            "type": "String",
+                            "description": "Date of the filing"
+                        },
+                        "formType": {
+                            "type": "String",
+                            "description": "Type of form (e.g., 10-K, 10-Q, 144)"
+                        },
+                        "url": {
+                            "type": "String",
+                            "description": "URL to the filing"
+                        },
+                        "type": {
+                            "type": "String",
+                            "description": "Type of data (e.g., filings)"
+                        },
+                        "id": {
+                            "type": "String",
+                            "description": "Unique identifier for the filing"
+                        }
+                    }
+                }
+            }
+        }
+    }
+]

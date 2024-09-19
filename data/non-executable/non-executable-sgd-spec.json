@@ -1,0 +1,2345 @@
+[
+    {
+        "name": "Buses.FindBus",
+        "description": "Find a bus itinerary between cities for a given date",
+        "arguments": {
+            "origin": {
+                "description": "Origin city for journey",
+                "required": true,
+                "allowed_values": []
+            },
+            "destination": {
+                "description": "Destination city for journey",
+                "required": true,
+                "allowed_values": []
+            },
+            "departure_date": {
+                "description": "Date of bus departure",
+                "required": true,
+                "allowed_values": []
+            },
+            "fare_type": {
+                "description": "Type of fare for the booking",
+                "required": false,
+                "default_value": "Economy",
+                "allowed_values": [
+                    "Economy",
+                    "Economy extra",
+                    "Flexible"
+                ]
+            },
+            "group_size": {
+                "description": "Size of group for the booking",
+                "required": false,
+                "default_value": "1",
+                "allowed_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            }
+        },
+        "output_parameters": {
+            "origin": {
+                "description": "Origin city for journey",
+                "possible_values": []
+            },
+            "destination": {
+                "description": "Destination city for journey",
+                "possible_values": []
+            },
+            "origin_station_name": {
+                "description": "Name of the bus terminus at the origin",
+                "possible_values": []
+            },
+            "destination_station_name": {
+                "description": "Name of the bus terminus at the destination",
+                "possible_values": []
+            },
+            "departure_date": {
+                "description": "Date of bus departure",
+                "possible_values": []
+            },
+            "price": {
+                "description": "Price per ticket of the itinerary",
+                "possible_values": []
+            },
+            "departure_time": {
+                "description": "Time of bus departure",
+                "possible_values": []
+            },
+            "group_size": {
+                "description": "Size of group for the booking",
+                "possible_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            },
+            "fare_type": {
+                "description": "Type of fare for the booking",
+                "possible_values": [
+                    "Economy",
+                    "Economy extra",
+                    "Flexible"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Buses.BuyBusTicket",
+        "description": "Buy tickets for a bus itinerary",
+        "arguments": {
+            "origin": {
+                "description": "Origin city for journey",
+                "required": true,
+                "allowed_values": []
+            },
+            "destination": {
+                "description": "Destination city for journey",
+                "required": true,
+                "allowed_values": []
+            },
+            "departure_date": {
+                "description": "Date of bus departure",
+                "required": true,
+                "allowed_values": []
+            },
+            "departure_time": {
+                "description": "Time of bus departure",
+                "required": true,
+                "allowed_values": []
+            },
+            "group_size": {
+                "description": "Size of group for the booking",
+                "required": true,
+                "allowed_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            },
+            "fare_type": {
+                "description": "Type of fare for the booking",
+                "required": false,
+                "default_value": "Economy",
+                "allowed_values": [
+                    "Economy",
+                    "Economy extra",
+                    "Flexible"
+                ]
+            }
+        },
+        "output_parameters": {
+            "origin": {
+                "description": "Origin city for journey",
+                "possible_values": []
+            },
+            "destination": {
+                "description": "Destination city for journey",
+                "possible_values": []
+            },
+            "origin_station_name": {
+                "description": "Name of the bus terminus at the origin",
+                "possible_values": []
+            },
+            "destination_station_name": {
+                "description": "Name of the bus terminus at the destination",
+                "possible_values": []
+            },
+            "departure_date": {
+                "description": "Date of bus departure",
+                "possible_values": []
+            },
+            "price": {
+                "description": "Price per ticket of the itinerary",
+                "possible_values": []
+            },
+            "departure_time": {
+                "description": "Time of bus departure",
+                "possible_values": []
+            },
+            "group_size": {
+                "description": "Size of group for the booking",
+                "possible_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            },
+            "fare_type": {
+                "description": "Type of fare for the booking",
+                "possible_values": [
+                    "Economy",
+                    "Economy extra",
+                    "Flexible"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Homes.FindApartment",
+        "description": "Find an apartment in a city for a given number of bedrooms",
+        "arguments": {
+            "area": {
+                "description": "City where the apartment is located",
+                "required": true,
+                "allowed_values": []
+            },
+            "number_of_beds": {
+                "description": "Number of bed rooms",
+                "required": true,
+                "allowed_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            },
+            "furnished": {
+                "description": "Boolean flag indicating if the property is furnished",
+                "required": false,
+                "allowed_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "pets_allowed": {
+                "description": "Boolean flag indicating if pets are allowed",
+                "required": false,
+                "allowed_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "number_of_baths": {
+                "description": "Number of baths in the apartment",
+                "required": false,
+                "allowed_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            }
+        },
+        "output_parameters": {
+            "area": {
+                "description": "City where the apartment is located",
+                "possible_values": []
+            },
+            "address": {
+                "description": "Address of the apartment",
+                "possible_values": []
+            },
+            "property_name": {
+                "description": "Name of the apartment",
+                "possible_values": []
+            },
+            "phone_number": {
+                "description": "Phone number of the apartment",
+                "possible_values": []
+            },
+            "furnished": {
+                "description": "Boolean flag indicating if the property is furnished",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "pets_allowed": {
+                "description": "Boolean flag indicating if pets are allowed",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "rent": {
+                "description": "Rent per month of the apartment",
+                "possible_values": []
+            },
+            "number_of_beds": {
+                "description": "Number of bed rooms",
+                "possible_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            },
+            "number_of_baths": {
+                "description": "Number of baths in the apartment",
+                "possible_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Homes.ScheduleVisit",
+        "description": "Schedule a visit for a given property on a particular date",
+        "arguments": {
+            "property_name": {
+                "description": "Name of the apartment",
+                "required": true,
+                "allowed_values": []
+            },
+            "visit_date": {
+                "description": "Date for the visit to the apartment",
+                "required": true,
+                "allowed_values": []
+            }
+        },
+        "output_parameters": {
+            "address": {
+                "description": "Address of the apartment",
+                "possible_values": []
+            },
+            "property_name": {
+                "description": "Name of the apartment",
+                "possible_values": []
+            },
+            "phone_number": {
+                "description": "Phone number of the apartment",
+                "possible_values": []
+            },
+            "furnished": {
+                "description": "Boolean flag indicating if the property is furnished",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "pets_allowed": {
+                "description": "Boolean flag indicating if pets are allowed",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "rent": {
+                "description": "Rent per month of the apartment",
+                "possible_values": []
+            },
+            "visit_date": {
+                "description": "Date for the visit to the apartment",
+                "possible_values": []
+            },
+            "number_of_beds": {
+                "description": "Number of bed rooms",
+                "possible_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            },
+            "number_of_baths": {
+                "description": "Number of baths in the apartment",
+                "possible_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Hotels.SearchHotel",
+        "description": "Find a hotel at a given location",
+        "arguments": {
+            "destination": {
+                "description": "Location of the hotel",
+                "required": true,
+                "allowed_values": []
+            },
+            "number_of_rooms": {
+                "description": "Number of rooms in the reservation",
+                "required": false,
+                "allowed_values": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            "has_wifi": {
+                "description": "Boolean flag indicating if the hotel has wifi",
+                "required": false,
+                "allowed_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "star_rating": {
+                "description": "Star rating of the hotel",
+                "required": false,
+                "allowed_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            }
+        },
+        "output_parameters": {
+            "destination": {
+                "description": "Location of the hotel",
+                "possible_values": []
+            },
+            "number_of_rooms": {
+                "description": "Number of rooms in the reservation",
+                "possible_values": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            "star_rating": {
+                "description": "Star rating of the hotel",
+                "possible_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            },
+            "hotel_name": {
+                "description": "Name of the hotel",
+                "possible_values": []
+            },
+            "street_address": {
+                "description": "Address of the hotel",
+                "possible_values": []
+            },
+            "phone_number": {
+                "description": "Phone number of the hotel",
+                "possible_values": []
+            },
+            "price_per_night": {
+                "description": "Price per night for the reservation",
+                "possible_values": []
+            },
+            "has_wifi": {
+                "description": "Boolean flag indicating if the hotel has wifi",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Hotels.ReserveHotel",
+        "description": "Reserve a selected hotel for given dates",
+        "arguments": {
+            "hotel_name": {
+                "description": "Name of the hotel",
+                "required": true,
+                "allowed_values": []
+            },
+            "check_in_date": {
+                "description": "Start date for the reservation",
+                "required": true,
+                "allowed_values": []
+            },
+            "number_of_days": {
+                "description": "Number of days in the reservation",
+                "required": true,
+                "allowed_values": []
+            },
+            "destination": {
+                "description": "Location of the hotel",
+                "required": true,
+                "allowed_values": []
+            },
+            "number_of_rooms": {
+                "description": "Number of rooms in the reservation",
+                "required": false,
+                "default_value": "1",
+                "allowed_values": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            }
+        },
+        "output_parameters": {
+            "destination": {
+                "description": "Location of the hotel",
+                "possible_values": []
+            },
+            "number_of_rooms": {
+                "description": "Number of rooms in the reservation",
+                "possible_values": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            "check_in_date": {
+                "description": "Start date for the reservation",
+                "possible_values": []
+            },
+            "number_of_days": {
+                "description": "Number of days in the reservation",
+                "possible_values": []
+            },
+            "star_rating": {
+                "description": "Star rating of the hotel",
+                "possible_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            },
+            "hotel_name": {
+                "description": "Name of the hotel",
+                "possible_values": []
+            },
+            "street_address": {
+                "description": "Address of the hotel",
+                "possible_values": []
+            },
+            "phone_number": {
+                "description": "Phone number of the hotel",
+                "possible_values": []
+            },
+            "price_per_night": {
+                "description": "Price per night for the reservation",
+                "possible_values": []
+            },
+            "has_wifi": {
+                "description": "Boolean flag indicating if the hotel has wifi",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            }
+        }
+    },
+    {
+        "name": "RideSharing.GetRide",
+        "description": "Book a cab for any destination, number of seats and ride type",
+        "arguments": {
+            "destination": {
+                "description": "Destination address or location for cab",
+                "required": true,
+                "allowed_values": []
+            },
+            "number_of_seats": {
+                "description": "Number of seats to reserve in the cab",
+                "required": true,
+                "allowed_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            },
+            "ride_type": {
+                "description": "Type of cab ride",
+                "required": true,
+                "allowed_values": [
+                    "Pool",
+                    "Regular",
+                    "Luxury"
+                ]
+            }
+        },
+        "output_parameters": {
+            "destination": {
+                "description": "Destination address or location for cab",
+                "possible_values": []
+            },
+            "ride_type": {
+                "description": "Type of cab ride",
+                "possible_values": [
+                    "Pool",
+                    "Regular",
+                    "Luxury"
+                ]
+            },
+            "ride_fare": {
+                "description": "Total fare for cab ride",
+                "possible_values": []
+            },
+            "wait_time": {
+                "description": "Expected waiting time for pick-up by cab",
+                "possible_values": []
+            },
+            "number_of_seats": {
+                "description": "Number of seats to reserve in the cab",
+                "possible_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            }
+        }
+    },
+    {
+        "name": "RentalCars.GetCarsAvailable",
+        "description": "Search for available rental cars by city and date",
+        "arguments": {
+            "pickup_city": {
+                "description": "City to pick up the rental car",
+                "required": true,
+                "allowed_values": []
+            },
+            "pickup_date": {
+                "description": "Date of rental car pickup",
+                "required": true,
+                "allowed_values": []
+            },
+            "pickup_time": {
+                "description": "Time of rental car pickup",
+                "required": true,
+                "allowed_values": []
+            },
+            "dropoff_date": {
+                "description": "Date of rental car drop-off",
+                "required": true,
+                "allowed_values": []
+            },
+            "type": {
+                "description": "Category to which rental car belongs",
+                "required": false,
+                "default_value": "Standard",
+                "allowed_values": [
+                    "Compact",
+                    "Standard",
+                    "Full-size"
+                ]
+            }
+        },
+        "output_parameters": {
+            "type": {
+                "description": "Category to which rental car belongs",
+                "possible_values": [
+                    "Compact",
+                    "Standard",
+                    "Full-size"
+                ]
+            },
+            "car_name": {
+                "description": "Model name of rental car",
+                "possible_values": []
+            },
+            "pickup_location": {
+                "description": "Location of rental car pickup",
+                "possible_values": []
+            },
+            "pickup_date": {
+                "description": "Date of rental car pickup",
+                "possible_values": []
+            },
+            "pickup_time": {
+                "description": "Time of rental car pickup",
+                "possible_values": []
+            },
+            "pickup_city": {
+                "description": "City to pick up the rental car",
+                "possible_values": []
+            },
+            "dropoff_date": {
+                "description": "Date of rental car drop-off",
+                "possible_values": []
+            },
+            "total_price": {
+                "description": "Total price of car rental",
+                "possible_values": []
+            }
+        }
+    },
+    {
+        "name": "RentalCars.ReserveCar",
+        "description": "Reserve car rental for given dates and location",
+        "arguments": {
+            "pickup_location": {
+                "description": "Location of rental car pickup",
+                "required": true,
+                "allowed_values": []
+            },
+            "pickup_date": {
+                "description": "Date of rental car pickup",
+                "required": true,
+                "allowed_values": []
+            },
+            "pickup_time": {
+                "description": "Time of rental car pickup",
+                "required": true,
+                "allowed_values": []
+            },
+            "dropoff_date": {
+                "description": "Date of rental car drop-off",
+                "required": true,
+                "allowed_values": []
+            },
+            "type": {
+                "description": "Category to which rental car belongs",
+                "required": true,
+                "allowed_values": [
+                    "Compact",
+                    "Standard",
+                    "Full-size"
+                ]
+            }
+        },
+        "output_parameters": {
+            "type": {
+                "description": "Category to which rental car belongs",
+                "possible_values": [
+                    "Compact",
+                    "Standard",
+                    "Full-size"
+                ]
+            },
+            "car_name": {
+                "description": "Model name of rental car",
+                "possible_values": []
+            },
+            "pickup_location": {
+                "description": "Location of rental car pickup",
+                "possible_values": []
+            },
+            "pickup_date": {
+                "description": "Date of rental car pickup",
+                "possible_values": []
+            },
+            "pickup_time": {
+                "description": "Time of rental car pickup",
+                "possible_values": []
+            },
+            "dropoff_date": {
+                "description": "Date of rental car drop-off",
+                "possible_values": []
+            },
+            "total_price": {
+                "description": "Total price of car rental",
+                "possible_values": []
+            }
+        }
+    },
+    {
+        "name": "Restaurants.FindRestaurants",
+        "description": "Find a restaurant of a particular cuisine in a city",
+        "arguments": {
+            "cuisine": {
+                "description": "Cuisine of food served in the restaurant",
+                "required": true,
+                "allowed_values": [
+                    "Mexican",
+                    "Chinese",
+                    "Indian",
+                    "American",
+                    "Italian"
+                ]
+            },
+            "city": {
+                "description": "City in which the restaurant is located",
+                "required": true,
+                "allowed_values": []
+            },
+            "price_range": {
+                "description": "Price range for the restaurant",
+                "required": false,
+                "allowed_values": [
+                    "inexpensive",
+                    "moderate",
+                    "expensive",
+                    "very expensive"
+                ]
+            },
+            "has_live_music": {
+                "description": "Boolean flag indicating if the restaurant has live music",
+                "required": false,
+                "allowed_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "serves_alcohol": {
+                "description": "Boolean flag indicating if the restaurant serves alcohol",
+                "required": false,
+                "allowed_values": [
+                    "True",
+                    "False"
+                ]
+            }
+        },
+        "output_parameters": {
+            "restaurant_name": {
+                "description": "Name of the restaurant",
+                "possible_values": []
+            },
+            "serves_alcohol": {
+                "description": "Boolean flag indicating if the restaurant serves alcohol",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "has_live_music": {
+                "description": "Boolean flag indicating if the restaurant has live music",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "phone_number": {
+                "description": "Phone number of the restaurant",
+                "possible_values": []
+            },
+            "street_address": {
+                "description": "Address of the restaurant",
+                "possible_values": []
+            },
+            "price_range": {
+                "description": "Price range for the restaurant",
+                "possible_values": [
+                    "inexpensive",
+                    "moderate",
+                    "expensive",
+                    "very expensive"
+                ]
+            },
+            "city": {
+                "description": "City in which the restaurant is located",
+                "possible_values": []
+            },
+            "cuisine": {
+                "description": "Cuisine of food served in the restaurant",
+                "possible_values": [
+                    "Mexican",
+                    "Chinese",
+                    "Indian",
+                    "American",
+                    "Italian"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Restaurants.ReserveRestaurant",
+        "description": "Reserve a table at a restaurant",
+        "arguments": {
+            "restaurant_name": {
+                "description": "Name of the restaurant",
+                "required": true,
+                "allowed_values": []
+            },
+            "city": {
+                "description": "City in which the restaurant is located",
+                "required": true,
+                "allowed_values": []
+            },
+            "time": {
+                "description": "Time for the reservation or to find availability",
+                "required": true,
+                "allowed_values": []
+            },
+            "date": {
+                "description": "Date for the reservation or to find availability",
+                "required": false,
+                "default_value": "2019-03-01",
+                "allowed_values": []
+            },
+            "party_size": {
+                "description": "Party size for a reservation",
+                "required": false,
+                "default_value": "2",
+                "allowed_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6"
+                ]
+            }
+        },
+        "output_parameters": {
+            "restaurant_name": {
+                "description": "Name of the restaurant",
+                "possible_values": []
+            },
+            "date": {
+                "description": "Date for the reservation or to find availability",
+                "possible_values": []
+            },
+            "time": {
+                "description": "Time for the reservation or to find availability",
+                "possible_values": []
+            },
+            "serves_alcohol": {
+                "description": "Boolean flag indicating if the restaurant serves alcohol",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "has_live_music": {
+                "description": "Boolean flag indicating if the restaurant has live music",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "phone_number": {
+                "description": "Phone number of the restaurant",
+                "possible_values": []
+            },
+            "street_address": {
+                "description": "Address of the restaurant",
+                "possible_values": []
+            },
+            "party_size": {
+                "description": "Party size for a reservation",
+                "possible_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6"
+                ]
+            },
+            "price_range": {
+                "description": "Price range for the restaurant",
+                "possible_values": [
+                    "inexpensive",
+                    "moderate",
+                    "expensive",
+                    "very expensive"
+                ]
+            },
+            "city": {
+                "description": "City in which the restaurant is located",
+                "possible_values": []
+            },
+            "cuisine": {
+                "description": "Cuisine of food served in the restaurant",
+                "possible_values": [
+                    "Mexican",
+                    "Chinese",
+                    "Indian",
+                    "American",
+                    "Italian"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Events.FindEvents",
+        "description": "Find events in a given city",
+        "arguments": {
+            "category": {
+                "description": "Type of event",
+                "required": true,
+                "allowed_values": [
+                    "Music",
+                    "Sports"
+                ]
+            },
+            "city_of_event": {
+                "description": "City where event is happening",
+                "required": true,
+                "allowed_values": []
+            },
+            "date": {
+                "description": "Date of occurrence of event",
+                "required": false,
+                "allowed_values": []
+            },
+            "subcategory": {
+                "description": "Subcategory of event, either a music genre or sport name",
+                "required": false,
+                "allowed_values": []
+            }
+        },
+        "output_parameters": {
+            "category": {
+                "description": "Type of event",
+                "possible_values": [
+                    "Music",
+                    "Sports"
+                ]
+            },
+            "subcategory": {
+                "description": "Subcategory of event, either a music genre or sport name",
+                "possible_values": []
+            },
+            "event_name": {
+                "description": "Name of event",
+                "possible_values": []
+            },
+            "date": {
+                "description": "Date of occurrence of event",
+                "possible_values": []
+            },
+            "time": {
+                "description": "Time when the event is scheduled to start",
+                "possible_values": []
+            },
+            "city_of_event": {
+                "description": "City where event is happening",
+                "possible_values": []
+            },
+            "event_location": {
+                "description": "Name of event location",
+                "possible_values": []
+            },
+            "address_of_location": {
+                "description": "Street address of event location",
+                "possible_values": []
+            }
+        }
+    },
+    {
+        "name": "Events.BuyEventTickets",
+        "description": "Buy tickets for an event",
+        "arguments": {
+            "event_name": {
+                "description": "Name of event",
+                "required": true,
+                "allowed_values": []
+            },
+            "number_of_seats": {
+                "description": "Number of seats to find event tickets for",
+                "required": true,
+                "allowed_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9"
+                ]
+            },
+            "date": {
+                "description": "Date of occurrence of event",
+                "required": true,
+                "allowed_values": []
+            },
+            "city_of_event": {
+                "description": "City where event is happening",
+                "required": true,
+                "allowed_values": []
+            }
+        },
+        "output_parameters": {
+            "event_name": {
+                "description": "Name of event",
+                "possible_values": []
+            },
+            "date": {
+                "description": "Date of occurrence of event",
+                "possible_values": []
+            },
+            "time": {
+                "description": "Time when the event is scheduled to start",
+                "possible_values": []
+            },
+            "number_of_seats": {
+                "description": "Number of seats to find event tickets for",
+                "possible_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9"
+                ]
+            },
+            "city_of_event": {
+                "description": "City where event is happening",
+                "possible_values": []
+            },
+            "event_location": {
+                "description": "Name of event location",
+                "possible_values": []
+            },
+            "address_of_location": {
+                "description": "Street address of event location",
+                "possible_values": []
+            }
+        }
+    },
+    {
+        "name": "Movies.FindMovies",
+        "description": "Search for movies by location, genre or other attributes",
+        "arguments": {
+            "location": {
+                "description": "City where the theatre is located",
+                "required": true,
+                "allowed_values": []
+            },
+            "genre": {
+                "description": "Genre of the movie",
+                "required": false,
+                "allowed_values": []
+            },
+            "show_type": {
+                "description": "Type of show",
+                "required": false,
+                "allowed_values": [
+                    "regular",
+                    "3d",
+                    "imax"
+                ]
+            },
+            "theater_name": {
+                "description": "Name of the theatre",
+                "required": false,
+                "allowed_values": []
+            }
+        },
+        "output_parameters": {
+            "price": {
+                "description": "Price per ticket",
+                "possible_values": []
+            },
+            "show_type": {
+                "description": "Type of show",
+                "possible_values": [
+                    "regular",
+                    "3d",
+                    "imax"
+                ]
+            },
+            "theater_name": {
+                "description": "Name of the theatre",
+                "possible_values": []
+            },
+            "genre": {
+                "description": "Genre of the movie",
+                "possible_values": []
+            },
+            "street_address": {
+                "description": "Address of the theatre",
+                "possible_values": []
+            },
+            "location": {
+                "description": "City where the theatre is located",
+                "possible_values": []
+            },
+            "movie_name": {
+                "description": "Name of the movie",
+                "possible_values": []
+            }
+        }
+    },
+    {
+        "name": "Movies.BuyMovieTickets",
+        "description": "Buy movie tickets for a particular show",
+        "arguments": {
+            "movie_name": {
+                "description": "Name of the movie",
+                "required": true,
+                "allowed_values": []
+            },
+            "number_of_tickets": {
+                "description": "Number of the movie tickets to be purchased",
+                "required": true,
+                "allowed_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9"
+                ]
+            },
+            "show_date": {
+                "description": "Date of the show",
+                "required": true,
+                "allowed_values": []
+            },
+            "location": {
+                "description": "City where the theatre is located",
+                "required": true,
+                "allowed_values": []
+            },
+            "show_time": {
+                "description": "Time of the show",
+                "required": true,
+                "allowed_values": []
+            },
+            "show_type": {
+                "description": "Type of show",
+                "required": true,
+                "allowed_values": [
+                    "regular",
+                    "3d",
+                    "imax"
+                ]
+            }
+        },
+        "output_parameters": {
+            "price": {
+                "description": "Price per ticket",
+                "possible_values": []
+            },
+            "number_of_tickets": {
+                "description": "Number of the movie tickets to be purchased",
+                "possible_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9"
+                ]
+            },
+            "show_type": {
+                "description": "Type of show",
+                "possible_values": [
+                    "regular",
+                    "3d",
+                    "imax"
+                ]
+            },
+            "theater_name": {
+                "description": "Name of the theatre",
+                "possible_values": []
+            },
+            "show_time": {
+                "description": "Time of the show",
+                "possible_values": []
+            },
+            "show_date": {
+                "description": "Date of the show",
+                "possible_values": []
+            },
+            "genre": {
+                "description": "Genre of the movie",
+                "possible_values": []
+            },
+            "street_address": {
+                "description": "Address of the theatre",
+                "possible_values": []
+            },
+            "location": {
+                "description": "City where the theatre is located",
+                "possible_values": []
+            },
+            "movie_name": {
+                "description": "Name of the movie",
+                "possible_values": []
+            }
+        }
+    },
+    {
+        "name": "Movies.GetTimesForMovie",
+        "description": "Get show times for a movie at a location on a given date",
+        "arguments": {
+            "movie_name": {
+                "description": "Name of the movie",
+                "required": true,
+                "allowed_values": []
+            },
+            "location": {
+                "description": "City where the theatre is located",
+                "required": true,
+                "allowed_values": []
+            },
+            "show_date": {
+                "description": "Date of the show",
+                "required": true,
+                "allowed_values": []
+            },
+            "show_type": {
+                "description": "Type of show",
+                "required": false,
+                "allowed_values": [
+                    "regular",
+                    "3d",
+                    "imax"
+                ]
+            },
+            "theater_name": {
+                "description": "Name of the theatre",
+                "required": false,
+                "allowed_values": []
+            }
+        },
+        "output_parameters": {
+            "price": {
+                "description": "Price per ticket",
+                "possible_values": []
+            },
+            "show_type": {
+                "description": "Type of show",
+                "possible_values": [
+                    "regular",
+                    "3d",
+                    "imax"
+                ]
+            },
+            "theater_name": {
+                "description": "Name of the theatre",
+                "possible_values": []
+            },
+            "show_time": {
+                "description": "Time of the show",
+                "possible_values": []
+            },
+            "show_date": {
+                "description": "Date of the show",
+                "possible_values": []
+            },
+            "genre": {
+                "description": "Genre of the movie",
+                "possible_values": []
+            },
+            "street_address": {
+                "description": "Address of the theatre",
+                "possible_values": []
+            },
+            "location": {
+                "description": "City where the theatre is located",
+                "possible_values": []
+            },
+            "movie_name": {
+                "description": "Name of the movie",
+                "possible_values": []
+            }
+        }
+    },
+    {
+        "name": "Hotels.SearchHouse",
+        "description": "Find a house at a given location",
+        "arguments": {
+            "where_to": {
+                "description": "Location of the house",
+                "required": true,
+                "allowed_values": []
+            },
+            "rating": {
+                "description": "Review rating of the house",
+                "required": false,
+                "allowed_values": []
+            },
+            "has_laundry_service": {
+                "description": "Boolean flag indicating if the house has laundry service",
+                "required": false,
+                "allowed_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "number_of_adults": {
+                "description": "Number of people for the reservation",
+                "required": false,
+                "allowed_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            }
+        },
+        "output_parameters": {
+            "where_to": {
+                "description": "Location of the house",
+                "possible_values": []
+            },
+            "number_of_adults": {
+                "description": "Number of people for the reservation",
+                "possible_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            },
+            "rating": {
+                "description": "Review rating of the house",
+                "possible_values": []
+            },
+            "address": {
+                "description": "Address of the house",
+                "possible_values": []
+            },
+            "phone_number": {
+                "description": "Phone number of the house",
+                "possible_values": []
+            },
+            "total_price": {
+                "description": "Price per night of the house",
+                "possible_values": []
+            },
+            "has_laundry_service": {
+                "description": "Boolean flag indicating if the house has laundry service",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Hotels.BookHouse",
+        "description": "Book the selected house for given dates and number of adults",
+        "arguments": {
+            "where_to": {
+                "description": "Location of the house",
+                "required": true,
+                "allowed_values": []
+            },
+            "number_of_adults": {
+                "description": "Number of people for the reservation",
+                "required": true,
+                "allowed_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            },
+            "check_in_date": {
+                "description": "Start date for the reservation or to find the house",
+                "required": true,
+                "allowed_values": []
+            },
+            "check_out_date": {
+                "description": "End date for the reservation or to find the house",
+                "required": true,
+                "allowed_values": []
+            }
+        },
+        "output_parameters": {
+            "where_to": {
+                "description": "Location of the house",
+                "possible_values": []
+            },
+            "number_of_adults": {
+                "description": "Number of people for the reservation",
+                "possible_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            },
+            "check_in_date": {
+                "description": "Start date for the reservation or to find the house",
+                "possible_values": []
+            },
+            "check_out_date": {
+                "description": "End date for the reservation or to find the house",
+                "possible_values": []
+            },
+            "rating": {
+                "description": "Review rating of the house",
+                "possible_values": []
+            },
+            "address": {
+                "description": "Address of the house",
+                "possible_values": []
+            },
+            "phone_number": {
+                "description": "Phone number of the house",
+                "possible_values": []
+            },
+            "total_price": {
+                "description": "Price per night of the house",
+                "possible_values": []
+            },
+            "has_laundry_service": {
+                "description": "Boolean flag indicating if the house has laundry service",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Services_Dentist.FindProvider",
+        "description": "Find a dentist by location and optionally by services offered",
+        "arguments": {
+            "city": {
+                "description": "City where the dentist is located",
+                "required": true,
+                "allowed_values": []
+            },
+            "offers_cosmetic_services": {
+                "description": "Boolean flag indicating if the dentist offers cosmetic services",
+                "required": false,
+                "allowed_values": [
+                    "True",
+                    "False"
+                ]
+            }
+        },
+        "output_parameters": {
+            "dentist_name": {
+                "description": "Name of the dentist",
+                "possible_values": []
+            },
+            "phone_number": {
+                "description": "Phone number of the dentist",
+                "possible_values": []
+            },
+            "address": {
+                "description": "Address of the dentist",
+                "possible_values": []
+            },
+            "city": {
+                "description": "City where the dentist is located",
+                "possible_values": []
+            },
+            "offers_cosmetic_services": {
+                "description": "Boolean flag indicating if the dentist offers cosmetic services",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Services_Dentist.BookAppointment",
+        "description": "Book an appointment at a dentist for a given time and date",
+        "arguments": {
+            "dentist_name": {
+                "description": "Name of the dentist",
+                "required": true,
+                "allowed_values": []
+            },
+            "appointment_time": {
+                "description": "Time for the appointment",
+                "required": true,
+                "allowed_values": []
+            },
+            "appointment_date": {
+                "description": "Date for the appointment",
+                "required": true,
+                "allowed_values": []
+            }
+        },
+        "output_parameters": {
+            "dentist_name": {
+                "description": "Name of the dentist",
+                "possible_values": []
+            },
+            "phone_number": {
+                "description": "Phone number of the dentist",
+                "possible_values": []
+            },
+            "address": {
+                "description": "Address of the dentist",
+                "possible_values": []
+            },
+            "appointment_date": {
+                "description": "Date for the appointment",
+                "possible_values": []
+            },
+            "appointment_time": {
+                "description": "Time for the appointment",
+                "possible_values": []
+            },
+            "offers_cosmetic_services": {
+                "description": "Boolean flag indicating if the dentist offers cosmetic services",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Flights.SearchRoundtripFlights",
+        "description": "Search for round-trip flights to a destination",
+        "arguments": {
+            "origin_city": {
+                "description": "Starting city for the trip",
+                "required": true,
+                "allowed_values": []
+            },
+            "destination_city": {
+                "description": "Ending city for the trip",
+                "required": true,
+                "allowed_values": []
+            },
+            "departure_date": {
+                "description": "Start date for the trip",
+                "required": true,
+                "allowed_values": []
+            },
+            "return_date": {
+                "description": "Date of the return flight",
+                "required": true,
+                "allowed_values": []
+            },
+            "airlines": {
+                "description": "Name of airline",
+                "required": false,
+                "allowed_values": [
+                    "United Airlines",
+                    "American Airlines",
+                    "Delta Airlines",
+                    "Southwest Airlines",
+                    "Alaska Airlines",
+                    "British Airways",
+                    "Air Canada",
+                    "Air France"
+                ]
+            },
+            "refundable": {
+                "description": "Whether the booking is refundable or not",
+                "required": false,
+                "allowed_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "passengers": {
+                "description": "Number of passengers in the booking",
+                "required": false,
+                "default_value": "1",
+                "allowed_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            },
+            "seating_class": {
+                "description": "Seating class for the booking",
+                "required": false,
+                "default_value": "Economy",
+                "allowed_values": [
+                    "Economy",
+                    "Premium Economy",
+                    "Business",
+                    "First Class"
+                ]
+            }
+        },
+        "output_parameters": {
+            "passengers": {
+                "description": "Number of passengers in the booking",
+                "possible_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            },
+            "seating_class": {
+                "description": "Seating class for the booking",
+                "possible_values": [
+                    "Economy",
+                    "Premium Economy",
+                    "Business",
+                    "First Class"
+                ]
+            },
+            "origin_city": {
+                "description": "Starting city for the trip",
+                "possible_values": []
+            },
+            "destination_city": {
+                "description": "Ending city for the trip",
+                "possible_values": []
+            },
+            "origin_airport": {
+                "description": "Airport at the starting city for the trip",
+                "possible_values": []
+            },
+            "destination_airport": {
+                "description": "Airport at the ending city for the trip",
+                "possible_values": []
+            },
+            "departure_date": {
+                "description": "Start date for the trip",
+                "possible_values": []
+            },
+            "return_date": {
+                "description": "Date of the return flight",
+                "possible_values": []
+            },
+            "number_stops": {
+                "description": "Number of layovers in the flight",
+                "possible_values": [
+                    "0",
+                    "1"
+                ]
+            },
+            "outbound_departure_time": {
+                "description": "Departure time for the outbound leg flight",
+                "possible_values": []
+            },
+            "outbound_arrival_time": {
+                "description": "Arrival time for the outbound leg flight",
+                "possible_values": []
+            },
+            "inbound_arrival_time": {
+                "description": "Arrival time for the return leg flight",
+                "possible_values": []
+            },
+            "inbound_departure_time": {
+                "description": "Departure time for the return leg flight",
+                "possible_values": []
+            },
+            "price": {
+                "description": "Price of the booking per passenger",
+                "possible_values": []
+            },
+            "refundable": {
+                "description": "Whether the booking is refundable or not",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "airlines": {
+                "description": "Name of airline",
+                "possible_values": [
+                    "United Airlines",
+                    "American Airlines",
+                    "Delta Airlines",
+                    "Southwest Airlines",
+                    "Alaska Airlines",
+                    "British Airways",
+                    "Air Canada",
+                    "Air France"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Flights.ReserveRoundtripFlights",
+        "description": "Reserve a round-trip flight",
+        "arguments": {
+            "origin_city": {
+                "description": "Starting city for the trip",
+                "required": true,
+                "allowed_values": []
+            },
+            "destination_city": {
+                "description": "Ending city for the trip",
+                "required": true,
+                "allowed_values": []
+            },
+            "airlines": {
+                "description": "Name of airline",
+                "required": true,
+                "allowed_values": [
+                    "United Airlines",
+                    "American Airlines",
+                    "Delta Airlines",
+                    "Southwest Airlines",
+                    "Alaska Airlines",
+                    "British Airways",
+                    "Air Canada",
+                    "Air France"
+                ]
+            },
+            "departure_date": {
+                "description": "Start date for the trip",
+                "required": true,
+                "allowed_values": []
+            },
+            "return_date": {
+                "description": "Date of the return flight",
+                "required": true,
+                "allowed_values": []
+            },
+            "outbound_departure_time": {
+                "description": "Departure time for the outbound leg flight",
+                "required": true,
+                "allowed_values": []
+            },
+            "inbound_departure_time": {
+                "description": "Departure time for the return leg flight",
+                "required": true,
+                "allowed_values": []
+            },
+            "refundable": {
+                "description": "Whether the booking is refundable or not",
+                "required": false,
+                "allowed_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "passengers": {
+                "description": "Number of passengers in the booking",
+                "required": false,
+                "default_value": "1",
+                "allowed_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            },
+            "seating_class": {
+                "description": "Seating class for the booking",
+                "required": false,
+                "default_value": "Economy",
+                "allowed_values": [
+                    "Economy",
+                    "Premium Economy",
+                    "Business",
+                    "First Class"
+                ]
+            }
+        },
+        "output_parameters": {
+            "passengers": {
+                "description": "Number of passengers in the booking",
+                "possible_values": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            },
+            "seating_class": {
+                "description": "Seating class for the booking",
+                "possible_values": [
+                    "Economy",
+                    "Premium Economy",
+                    "Business",
+                    "First Class"
+                ]
+            },
+            "origin_city": {
+                "description": "Starting city for the trip",
+                "possible_values": []
+            },
+            "destination_city": {
+                "description": "Ending city for the trip",
+                "possible_values": []
+            },
+            "origin_airport": {
+                "description": "Airport at the starting city for the trip",
+                "possible_values": []
+            },
+            "destination_airport": {
+                "description": "Airport at the ending city for the trip",
+                "possible_values": []
+            },
+            "departure_date": {
+                "description": "Start date for the trip",
+                "possible_values": []
+            },
+            "return_date": {
+                "description": "Date of the return flight",
+                "possible_values": []
+            },
+            "number_stops": {
+                "description": "Number of layovers in the flight",
+                "possible_values": [
+                    "0",
+                    "1"
+                ]
+            },
+            "outbound_departure_time": {
+                "description": "Departure time for the outbound leg flight",
+                "possible_values": []
+            },
+            "outbound_arrival_time": {
+                "description": "Arrival time for the outbound leg flight",
+                "possible_values": []
+            },
+            "inbound_arrival_time": {
+                "description": "Arrival time for the return leg flight",
+                "possible_values": []
+            },
+            "inbound_departure_time": {
+                "description": "Departure time for the return leg flight",
+                "possible_values": []
+            },
+            "price": {
+                "description": "Price of the booking per passenger",
+                "possible_values": []
+            },
+            "refundable": {
+                "description": "Whether the booking is refundable or not",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "airlines": {
+                "description": "Name of airline",
+                "possible_values": [
+                    "United Airlines",
+                    "American Airlines",
+                    "Delta Airlines",
+                    "Southwest Airlines",
+                    "Alaska Airlines",
+                    "British Airways",
+                    "Air Canada",
+                    "Air France"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Music.LookupSong",
+        "description": "Search for a song",
+        "arguments": {
+            "genre": {
+                "description": "Genre of the song",
+                "required": false,
+                "allowed_values": []
+            },
+            "artist": {
+                "description": "Artist who performed the song",
+                "required": false,
+                "allowed_values": []
+            },
+            "album": {
+                "description": "Album the song belongs to",
+                "required": false,
+                "allowed_values": []
+            },
+            "year": {
+                "description": "Year in which the song was released",
+                "required": false,
+                "allowed_values": [
+                    "2010",
+                    "2011",
+                    "2012",
+                    "2013",
+                    "2014",
+                    "2015",
+                    "2016",
+                    "2017",
+                    "2018",
+                    "2019"
+                ]
+            }
+        },
+        "output_parameters": {
+            "song_name": {
+                "description": "Name of the song",
+                "possible_values": []
+            },
+            "artist": {
+                "description": "Artist who performed the song",
+                "possible_values": []
+            },
+            "album": {
+                "description": "Album the song belongs to",
+                "possible_values": []
+            },
+            "genre": {
+                "description": "Genre of the song",
+                "possible_values": []
+            },
+            "year": {
+                "description": "Year in which the song was released",
+                "possible_values": [
+                    "2010",
+                    "2011",
+                    "2012",
+                    "2013",
+                    "2014",
+                    "2015",
+                    "2016",
+                    "2017",
+                    "2018",
+                    "2019"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Music.PlaySong",
+        "description": "Play the selected song on the device",
+        "arguments": {
+            "song_name": {
+                "description": "Name of the song",
+                "required": true,
+                "allowed_values": []
+            },
+            "artist": {
+                "description": "Artist who performed the song",
+                "required": false,
+                "allowed_values": []
+            },
+            "playback_device": {
+                "description": "Playback device on which the song is to be played",
+                "required": false,
+                "default_value": "TV",
+                "allowed_values": [
+                    "TV",
+                    "Kitchen speaker",
+                    "Bedroom speaker"
+                ]
+            }
+        },
+        "output_parameters": {
+            "song_name": {
+                "description": "Name of the song",
+                "possible_values": []
+            },
+            "artist": {
+                "description": "Artist who performed the song",
+                "possible_values": []
+            },
+            "album": {
+                "description": "Album the song belongs to",
+                "possible_values": []
+            },
+            "genre": {
+                "description": "Genre of the song",
+                "possible_values": []
+            },
+            "year": {
+                "description": "Year in which the song was released",
+                "possible_values": [
+                    "2010",
+                    "2011",
+                    "2012",
+                    "2013",
+                    "2014",
+                    "2015",
+                    "2016",
+                    "2017",
+                    "2018",
+                    "2019"
+                ]
+            },
+            "playback_device": {
+                "description": "Playback device on which the song is to be played",
+                "possible_values": [
+                    "TV",
+                    "Kitchen speaker",
+                    "Bedroom speaker"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Services_Medical.FindProvider",
+        "description": "Find a medical service provider based on their location and speciality",
+        "arguments": {
+            "city": {
+                "description": "City where the doctor is located",
+                "required": true,
+                "allowed_values": []
+            },
+            "type": {
+                "description": "Speciality of the doctor",
+                "required": true,
+                "allowed_values": [
+                    "Gynecologist",
+                    "ENT Specialist",
+                    "Ophthalmologist",
+                    "General Practitioner",
+                    "Dermatologist"
+                ]
+            }
+        },
+        "output_parameters": {
+            "doctor_name": {
+                "description": "Name of the doctor or the medical practice",
+                "possible_values": []
+            },
+            "phone_number": {
+                "description": "Contact number for the doctor or the medical practice",
+                "possible_values": []
+            },
+            "average_rating": {
+                "description": "Average review rating of the doctor",
+                "possible_values": []
+            },
+            "street_address": {
+                "description": "Address of the doctor",
+                "possible_values": []
+            },
+            "city": {
+                "description": "City where the doctor is located",
+                "possible_values": []
+            },
+            "type": {
+                "description": "Speciality of the doctor",
+                "possible_values": [
+                    "Gynecologist",
+                    "ENT Specialist",
+                    "Ophthalmologist",
+                    "General Practitioner",
+                    "Dermatologist"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Services_Medical.BookAppointment",
+        "description": "Book an appointment with a specific doctor for the given date and time",
+        "arguments": {
+            "doctor_name": {
+                "description": "Name of the doctor or the medical practice",
+                "required": true,
+                "allowed_values": []
+            },
+            "appointment_time": {
+                "description": "Time for the appointment with the doctor",
+                "required": true,
+                "allowed_values": []
+            },
+            "appointment_date": {
+                "description": "Date for scheduling the appointment with the doctor",
+                "required": true,
+                "allowed_values": []
+            }
+        },
+        "output_parameters": {
+            "doctor_name": {
+                "description": "Name of the doctor or the medical practice",
+                "possible_values": []
+            },
+            "phone_number": {
+                "description": "Contact number for the doctor or the medical practice",
+                "possible_values": []
+            },
+            "average_rating": {
+                "description": "Average review rating of the doctor",
+                "possible_values": []
+            },
+            "street_address": {
+                "description": "Address of the doctor",
+                "possible_values": []
+            },
+            "appointment_date": {
+                "description": "Date for scheduling the appointment with the doctor",
+                "possible_values": []
+            },
+            "appointment_time": {
+                "description": "Time for the appointment with the doctor",
+                "possible_values": []
+            },
+            "type": {
+                "description": "Speciality of the doctor",
+                "possible_values": [
+                    "Gynecologist",
+                    "ENT Specialist",
+                    "Ophthalmologist",
+                    "General Practitioner",
+                    "Dermatologist"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Services_Salon.FindProvider",
+        "description": "Search for a hair stylist by city and optionally other attributes",
+        "arguments": {
+            "city": {
+                "description": "City where the salon is located",
+                "required": true,
+                "allowed_values": []
+            },
+            "is_unisex": {
+                "description": "Boolean flag indicating if the salon is unisex",
+                "required": false,
+                "allowed_values": [
+                    "True",
+                    "False"
+                ]
+            }
+        },
+        "output_parameters": {
+            "stylist_name": {
+                "description": "Name of the hair stylist/salon",
+                "possible_values": []
+            },
+            "phone_number": {
+                "description": "Phone number of the stylist/salon",
+                "possible_values": []
+            },
+            "average_rating": {
+                "description": "Average review rating for the stylist/salon",
+                "possible_values": []
+            },
+            "is_unisex": {
+                "description": "Boolean flag indicating if the salon is unisex",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "street_address": {
+                "description": "Address of the stylist/salon",
+                "possible_values": []
+            },
+            "city": {
+                "description": "City where the salon is located",
+                "possible_values": []
+            }
+        }
+    },
+    {
+        "name": "Services_Salon.BookAppointment",
+        "description": "Book an appointment at a hair stylist",
+        "arguments": {
+            "stylist_name": {
+                "description": "Name of the hair stylist/salon",
+                "required": true,
+                "allowed_values": []
+            },
+            "appointment_time": {
+                "description": "Time of the appointment",
+                "required": true,
+                "allowed_values": []
+            },
+            "appointment_date": {
+                "description": "Date for the appointment",
+                "required": true,
+                "allowed_values": []
+            }
+        },
+        "output_parameters": {
+            "stylist_name": {
+                "description": "Name of the hair stylist/salon",
+                "possible_values": []
+            },
+            "phone_number": {
+                "description": "Phone number of the stylist/salon",
+                "possible_values": []
+            },
+            "average_rating": {
+                "description": "Average review rating for the stylist/salon",
+                "possible_values": []
+            },
+            "is_unisex": {
+                "description": "Boolean flag indicating if the salon is unisex",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "street_address": {
+                "description": "Address of the stylist/salon",
+                "possible_values": []
+            },
+            "appointment_date": {
+                "description": "Date for the appointment",
+                "possible_values": []
+            },
+            "appointment_time": {
+                "description": "Time of the appointment",
+                "possible_values": []
+            }
+        }
+    },
+    {
+        "name": "Media.FindMovies",
+        "description": "Find movies by genre and optionally director",
+        "arguments": {
+            "genre": {
+                "description": "Genre of the movie",
+                "required": true,
+                "allowed_values": []
+            },
+            "directed_by": {
+                "description": "Name of the director of the movie",
+                "required": false,
+                "allowed_values": []
+            }
+        },
+        "output_parameters": {
+            "title": {
+                "description": "Title of the movie",
+                "possible_values": []
+            },
+            "genre": {
+                "description": "Genre of the movie",
+                "possible_values": []
+            },
+            "subtitles": {
+                "description": "Boolean flag indicating if subtitles are desired for this movie",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "directed_by": {
+                "description": "Name of the director of the movie",
+                "possible_values": []
+            }
+        }
+    },
+    {
+        "name": "Media.PlayMovie",
+        "description": "Play the selected movie",
+        "arguments": {
+            "title": {
+                "description": "Title of the movie",
+                "required": true,
+                "allowed_values": []
+            },
+            "subtitles": {
+                "description": "Boolean flag indicating if subtitles are desired for this movie",
+                "required": false,
+                "default_value": "False",
+                "allowed_values": [
+                    "True",
+                    "False"
+                ]
+            }
+        },
+        "output_parameters": {
+            "title": {
+                "description": "Title of the movie",
+                "possible_values": []
+            },
+            "genre": {
+                "description": "Genre of the movie",
+                "possible_values": []
+            },
+            "subtitles": {
+                "description": "Boolean flag indicating if subtitles are desired for this movie",
+                "possible_values": [
+                    "True",
+                    "False"
+                ]
+            },
+            "directed_by": {
+                "description": "Name of the director of the movie",
+                "possible_values": []
+            }
+        }
+    }
+]

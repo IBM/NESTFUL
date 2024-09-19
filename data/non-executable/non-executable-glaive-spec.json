@@ -1,0 +1,1903 @@
+[
+    {
+        "name": "analyze_sentiment",
+        "description": "Analyze the sentiment (positive, negative, neutral) of a given text",
+        "query_parameters": {
+            "text": {
+                "type": "string",
+                "required": true,
+                "description": "The text to be analyzed"
+            }
+        },
+        "output_parameters": {
+            "sentiment": {
+                "type": "string",
+                "description": "The sentiment of the text (positive, negative, neutral)"
+            }
+        }
+    },
+    {
+        "name": "get_translation",
+        "description": "Get the translation of a word in a given language",
+        "query_parameters": {
+            "text": {
+                "type": "string",
+                "required": true,
+                "description": "The text to translate"
+            },
+            "source_language": {
+                "type": "string",
+                "required": true,
+                "description": "The source language of the text"
+            },
+            "target_language": {
+                "type": "string",
+                "required": true,
+                "description": "The target language to translate the text"
+            }
+        },
+        "output_parameters": {
+            "translation": {
+                "type": "string",
+                "description": "The translated word"
+            }
+        }
+    },
+    {
+        "name": "send_sms",
+        "description": "Send an SMS message to a phone number",
+        "query_parameters": {
+            "phone_number": {
+                "type": "string",
+                "required": true,
+                "description": "The phone number to send the SMS to"
+            },
+            "message": {
+                "type": "string",
+                "required": true,
+                "description": "The message content"
+            }
+        },
+        "output_parameters": {
+            "sms_status": {
+                "type": "string",
+                "description": "The status of the SMS (sent or failed)"
+            }
+        }
+    },
+    {
+        "name": "calculate_gcd",
+        "description": "Calculate the greatest common divisor (GCD)",
+        "query_parameters": {
+            "num1": {
+                "type": "integer",
+                "required": true,
+                "description": "The first number"
+            },
+            "num2": {
+                "type": "integer",
+                "required": true,
+                "description": "The second number"
+            }
+        },
+        "output_parameters": {
+            "gcd": {
+                "type": "integer",
+                "description": "The greatest common divisor of the two numbers"
+            }
+        }
+    },
+    {
+        "name": "calculate_squared",
+        "description": "Calculate the square of a number",
+        "query_parameters": {
+            "number": {
+                "type": "number",
+                "required": true,
+                "description": "The number to calculate the square of"
+            }
+        },
+        "output_parameters": {
+            "squared_number": {
+                "type": "number",
+                "description": "The square of the input number"
+            }
+        }
+    },
+    {
+        "name": "find_song_lyrics",
+        "description": "Find the lyrics of a song",
+        "query_parameters": {
+            "title": {
+                "type": "string",
+                "required": true,
+                "description": "The title of the song"
+            },
+            "artist": {
+                "type": "string",
+                "required": true,
+                "description": "The artist of the song"
+            }
+        },
+        "output_parameters": {
+            "lyrics": {
+                "type": "string",
+                "description": "The lyrics of the song"
+            }
+        }
+    },
+    {
+        "name": "calculate_interest",
+        "description": "Calculate the interest earned or paid",
+        "query_parameters": {
+            "principal_amount": {
+                "type": "number",
+                "required": true,
+                "description": "The principal amount"
+            },
+            "interest_rate": {
+                "type": "number",
+                "required": true,
+                "description": "The annual interest rate"
+            },
+            "time_period": {
+                "type": "integer",
+                "required": true,
+                "description": "The time period in years"
+            }
+        },
+        "output_parameters": {
+            "interest_earned": {
+                "type": "number",
+                "description": "The total interest earned or paid"
+            }
+        }
+    },
+    {
+        "name": "convert_currency",
+        "description": "Convert currency from one unit to another",
+        "query_parameters": {
+            "amount": {
+                "type": "number",
+                "required": true,
+                "description": "The amount to be converted"
+            },
+            "from": {
+                "type": "string",
+                "required": true,
+                "description": "The currency to convert from"
+            },
+            "to": {
+                "type": "string",
+                "required": true,
+                "description": "The currency to convert to"
+            }
+        },
+        "output_parameters": {
+            "converted_amount": {
+                "type": "number",
+                "description": "The converted amount"
+            }
+        }
+    },
+    {
+        "name": "find_nearby_restaurants",
+        "description": "Find nearby restaurants based on current location",
+        "query_parameters": {
+            "location": {
+                "type": "string",
+                "required": true,
+                "description": "The current location"
+            },
+            "radius": {
+                "type": "integer",
+                "required": true,
+                "description": "The search radius in meters"
+            },
+            "cuisine": {
+                "type": "string",
+                "required": false,
+                "description": "The preferred cuisine type"
+            }
+        },
+        "output_parameters": {
+            "restaurants": {
+                "type": "array",
+                "description": "The list of nearby restaurants"
+            }
+        }
+    },
+    {
+        "name": "search_recipes",
+        "description": "Search for recipes based on ingredients",
+        "query_parameters": {
+            "ingredients": {
+                "type": "array",
+                "required": true,
+                "items": {
+                    "type": "string"
+                },
+                "description": "Ingredients to search for"
+            },
+            "diet": {
+                "type": "string",
+                "required": false,
+                "enum": [
+                    "vegetarian",
+                    "vegan",
+                    "gluten-free",
+                    "dairy-free"
+                ],
+                "description": "Dietary restrictions"
+            }
+        },
+        "output_parameters": {
+            "recipes": {
+                "type": "array",
+                "description": "Recipes that match the search criteria"
+            }
+        }
+    },
+    {
+        "name": "analyze_sales_data",
+        "description": "Analyze the sales data for a given time period",
+        "query_parameters": {
+            "start_date": {
+                "type": "string",
+                "required": true,
+                "description": "The start date of the time period in YYYY-MM-DD format"
+            },
+            "end_date": {
+                "type": "string",
+                "required": true,
+                "description": "The end date of the time period in YYYY-MM-DD format"
+            },
+            "product_type": {
+                "type": "string",
+                "required": true,
+                "description": "The type of product to be analyzed"
+            }
+        },
+        "output_parameters": {
+            "total_sales": {
+                "type": "number",
+                "description": "The total sales for the given time period and product type"
+            },
+            "average_sales_per_day": {
+                "type": "number",
+                "description": "The average sales per day for the given time period and product type"
+            },
+            "peak_sales_day": {
+                "type": "string",
+                "description": "The day with peak sales in the given time period and product type"
+            }
+        }
+    },
+    {
+        "name": "record_audio",
+        "description": "Record audio from a microphone",
+        "query_parameters": {
+            "duration": {
+                "type": "integer",
+                "required": true,
+                "description": "The duration of the recording in seconds"
+            }
+        },
+        "output_parameters": {
+            "audio_file": {
+                "type": "file",
+                "description": "The recorded audio file"
+            }
+        }
+    },
+    {
+        "name": "add_contact",
+        "description": "Add a new contact to the address book",
+        "query_parameters": {
+            "name": {
+                "type": "string",
+                "required": true,
+                "description": "The name of the contact"
+            },
+            "phone": {
+                "type": "string",
+                "required": true,
+                "description": "The phone number of the contact"
+            },
+            "email": {
+                "type": "string",
+                "required": false,
+                "description": "The email address of the contact"
+            }
+        },
+        "output_parameters": {
+            "contact_id": {
+                "type": "integer",
+                "description": "The unique identifier assigned to the new contact"
+            }
+        }
+    },
+    {
+        "name": "calculate_distance",
+        "description": "Calculate the distance between two locations in miles",
+        "query_parameters": {
+            "origin": {
+                "type": "string",
+                "required": true,
+                "description": "Starting location"
+            },
+            "destination": {
+                "type": "string",
+                "required": true,
+                "description": "Destination location"
+            },
+            "mode": {
+                "type": "string",
+                "required": false,
+                "description": "Mode of transportation (e.g. driving, walking, cycling)"
+            }
+        },
+        "output_parameters": {
+            "distance": {
+                "type": "number",
+                "description": "The distance between the given locations"
+            }
+        }
+    },
+    {
+        "name": "convert_distance",
+        "description": "Convert distance from one unit to another",
+        "query_parameters": {
+            "distance": {
+                "type": "number",
+                "required": true,
+                "description": "The distance to convert"
+            },
+            "from": {
+                "type": "string",
+                "required": true,
+                "description": "The distance unit to convert from"
+            },
+            "to": {
+                "type": "string",
+                "required": true,
+                "description": "The distance unit to convert to"
+            }
+        },
+        "output_parameters": {
+            "converted_distance": {
+                "type": "number",
+                "description": "The distance after conversion"
+            }
+        }
+    },
+    {
+        "name": "encrypt_data",
+        "description": "Encrypt sensitive data",
+        "query_parameters": {
+            "data": {
+                "type": "string",
+                "required": true,
+                "description": "The data to be encrypted"
+            },
+            "encryption_key": {
+                "type": "string",
+                "required": true,
+                "description": "The encryption key"
+            }
+        },
+        "output_parameters": {
+            "encrypted_data": {
+                "type": "string",
+                "description": "The encrypted data"
+            }
+        }
+    },
+    {
+        "name": "calculate_gross_salary",
+        "description": "Calculate the gross_salary",
+        "query_parameters": {
+            "basic_salary": {
+                "type": "number",
+                "required": true,
+                "description": "The basic salary"
+            },
+            "allowance": {
+                "type": "number",
+                "required": true,
+                "description": "The allowance amount"
+            }
+        },
+        "output_parameters": {
+            "gross_salary": {
+                "type": "number",
+                "description": "The total gross salary"
+            }
+        }
+    },
+    {
+        "name": "calculate_sales_tax",
+        "description": "Calculate the sales tax on a purchase",
+        "query_parameters": {
+            "amount": {
+                "type": "number",
+                "required": true,
+                "description": "The purchase amount"
+            },
+            "tax_rate": {
+                "type": "number",
+                "required": true,
+                "description": "The tax rate as a decimal"
+            }
+        },
+        "output_parameters": {
+            "sales_tax": {
+                "type": "number",
+                "description": "The sales tax amount for the purchase"
+            }
+        }
+    },
+    {
+        "name": "calculate_tip",
+        "description": "Calculate the tip amount for a bill",
+        "query_parameters": {
+            "bill_total": {
+                "type": "number",
+                "required": true,
+                "description": "The total amount of the bill"
+            },
+            "tip_percentage": {
+                "type": "number",
+                "required": true,
+                "description": "The percentage of the tip to be added"
+            }
+        },
+        "output_parameters": {
+            "tip_amount": {
+                "type": "number",
+                "description": "The calculated tip amount"
+            }
+        }
+    },
+    {
+        "name": "create_event",
+        "description": "Create a new event in the calendar",
+        "query_parameters": {
+            "title": {
+                "type": "string",
+                "required": true,
+                "description": "The title of the event"
+            },
+            "start_time": {
+                "type": "string",
+                "required": true,
+                "description": "The start time of the event in format YYYY-MM-DD HH:MM"
+            },
+            "end_time": {
+                "type": "string",
+                "required": true,
+                "description": "The end time of the event in format YYYY-MM-DD HH:MM"
+            },
+            "attendees": {
+                "type": "string",
+                "required": false,
+                "description": "People invited to attend the event"
+            }
+        },
+        "output_parameters": {
+            "event_id": {
+                "type": "string",
+                "description": "The unique identifier of the created event"
+            }
+        }
+    },
+    {
+        "name": "calculate_area",
+        "description": "Calculate the area of a shape",
+        "query_parameters": {
+            "shape": {
+                "type": "string",
+                "required": true,
+                "description": "The shape for which the area needs to be calculated"
+            },
+            "dimensions": {
+                "type": "array",
+                "required": true,
+                "items": {
+                    "type": "number"
+                },
+                "description": "The dimensions required for calculating the area of the shape"
+            }
+        },
+        "output_parameters": {
+            "area": {
+                "type": "number",
+                "description": "The calculated area of the shape"
+            }
+        }
+    },
+    {
+        "name": "generate_random_password",
+        "description": "Generate a random password with specified requirements",
+        "query_parameters": {
+            "length": {
+                "type": "integer",
+                "required": true,
+                "description": "The length of the password"
+            },
+            "include_lowercase": {
+                "type": "boolean",
+                "required": false,
+                "description": "Include lowercase letters in the password"
+            },
+            "include_uppercase": {
+                "type": "boolean",
+                "required": false,
+                "description": "Include uppercase letters in the password"
+            },
+            "include_numbers": {
+                "type": "boolean",
+                "required": false,
+                "description": "Include numbers in the password"
+            },
+            "include_special_characters": {
+                "type": "boolean",
+                "required": false,
+                "description": "Include special characters in the password"
+            }
+        },
+        "output_parameters": {
+            "random_password": {
+                "type": "string",
+                "description": "The generated random password"
+            }
+        }
+    },
+    {
+        "name": "analyze_stock_market",
+        "description": "Analyze the stock market data for a specific company",
+        "query_parameters": {
+            "company": {
+                "type": "string",
+                "required": true,
+                "description": "The name of the company"
+            },
+            "date_range": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                    "start_date": {
+                        "type": "string",
+                        "description": "The start date for analysis in YYYY-MM-DD format"
+                    },
+                    "end_date": {
+                        "type": "string",
+                        "description": "The end date for analysis in YYYY-MM-DD format"
+                    }
+                }
+            }
+        },
+        "output_parameters": {
+            "average_price": {
+                "type": "number",
+                "description": "The average stock price during the specified period"
+            },
+            "opening_price": {
+                "type": "number",
+                "description": "The opening stock price on the first day of the specified period"
+            },
+            "closing_price": {
+                "type": "number",
+                "description": "The closing stock price on the last day of the specified period"
+            },
+            "highest_price": {
+                "type": "number",
+                "description": "The highest stock price during the specified period"
+            },
+            "lowest_price": {
+                "type": "number",
+                "description": "The lowest stock price during the specified period"
+            }
+        }
+    },
+    {
+        "name": "calculate_profit",
+        "description": "Calculate the profit from a business transaction",
+        "query_parameters": {
+            "revenue": {
+                "type": "number",
+                "required": true,
+                "description": "Total revenue from the transaction"
+            },
+            "expenses": {
+                "type": "number",
+                "required": true,
+                "description": "Total expenses incurred"
+            }
+        },
+        "output_parameters": {
+            "profit": {
+                "type": "number",
+                "description": "The calculated profit"
+            }
+        }
+    },
+    {
+        "name": "get_random_joke",
+        "description": "Get a random joke from a Joke API",
+        "query_parameters": {},
+        "output_parameters": {
+            "joke": {
+                "type": "string",
+                "description": "The random joke"
+            }
+        }
+    },
+    {
+        "name": "create_invoice",
+        "description": "Create an invoice for a client",
+        "query_parameters": {
+            "client_name": {
+                "type": "string",
+                "required": true,
+                "description": "The name of the client"
+            },
+            "amount": {
+                "type": "number",
+                "required": true,
+                "description": "The amount to be invoiced"
+            },
+            "due_date": {
+                "type": "string",
+                "required": true,
+                "description": "The due date of the invoice"
+            },
+            "description": {
+                "type": "string",
+                "required": true,
+                "description": "A brief description of the invoice"
+            }
+        },
+        "output_parameters": {
+            "invoice_id": {
+                "type": "string",
+                "description": "The unique identifier of the created invoice"
+            }
+        }
+    },
+    {
+        "name": "get_stock_price",
+        "description": "Get the current stock price of a company",
+        "query_parameters": {
+            "company": {
+                "type": "string",
+                "required": true,
+                "description": "The name of the company"
+            },
+            "exchange": {
+                "type": "string",
+                "required": true,
+                "description": "The exchange where the stock is listed"
+            }
+        },
+        "output_parameters": {
+            "stock_price": {
+                "type": "number",
+                "description": "The current stock price of the company"
+            }
+        }
+    },
+    {
+        "name": "search_books",
+        "description": "Search for books based on title or author",
+        "query_parameters": {
+            "query": {
+                "type": "string",
+                "required": true,
+                "description": "The search query (title or author)"
+            },
+            "max_results": {
+                "type": "integer",
+                "required": false,
+                "description": "The maximum number of results to return"
+            }
+        },
+        "output_parameters": {
+            "results": {
+                "type": "array",
+                "description": "The search results"
+            }
+        }
+    },
+    {
+        "name": "calculate_discounted_price",
+        "description": "Calculate the discounted price of a product with multiple discounts",
+        "query_parameters": {
+            "original_price": {
+                "type": "number",
+                "required": true,
+                "description": "The original price of the product"
+            },
+            "discounts": {
+                "type": "array",
+                "required": true,
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of discount (e.g. percentage, amount)"
+                        },
+                        "value": {
+                            "type": "number",
+                            "description": "The value of the discount"
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "output_parameters": {
+            "discounted_price": {
+                "type": "number",
+                "description": "The discounted price of the product"
+            }
+        }
+    },
+    {
+        "name": "execute_program",
+        "description": "Execute a program with specified arguments",
+        "query_parameters": {
+            "program_path": {
+                "type": "string",
+                "required": true,
+                "description": "The path of the program to execute"
+            },
+            "arguments": {
+                "type": "array",
+                "required": false,
+                "items": {
+                    "type": "string"
+                },
+                "description": "The arguments to be passed to the program"
+            }
+        },
+        "output_parameters": {
+            "exit_code": {
+                "type": "integer",
+                "description": "The exit code of the program execution"
+            },
+            "output": {
+                "type": "string",
+                "description": "The output of the program execution"
+            }
+        }
+    },
+    {
+        "name": "create_todo",
+        "description": "Create a new todo list",
+        "query_parameters": {
+            "title": {
+                "type": "string",
+                "required": true,
+                "description": "Title of the todo list"
+            },
+            "description": {
+                "type": "string",
+                "required": false,
+                "description": "Description of the todo list"
+            },
+            "due_date": {
+                "type": "string",
+                "required": true,
+                "format": "date",
+                "description": "Due date of the todo list in YYYY-MM-DD format"
+            },
+            "items": {
+                "type": "array",
+                "required": false,
+                "format": "date",
+                "description": "list of items in the todo list"
+            }
+        },
+        "output_parameters": {
+            "todo_list": {
+                "type": "integer",
+                "description": "The todo list"
+            }
+        }
+    },
+    {
+        "name": "calculate_loan_payment",
+        "description": "Calculate the monthly loan payment amount",
+        "query_parameters": {
+            "principal": {
+                "type": "number",
+                "required": true,
+                "description": "The loan principal amount"
+            },
+            "interest_rate": {
+                "type": "number",
+                "required": true,
+                "description": "The annual interest rate"
+            },
+            "loan_term": {
+                "type": "integer",
+                "required": true,
+                "description": "The loan term in years"
+            }
+        },
+        "output_parameters": {
+            "monthly_payment": {
+                "type": "number",
+                "description": "The monthly loan payment amount"
+            }
+        }
+    },
+    {
+        "name": "check_grammar",
+        "description": "Check the grammar of a sentence",
+        "query_parameters": {
+            "sentence": {
+                "type": "string",
+                "required": true,
+                "description": "The sentence to check"
+            },
+            "language": {
+                "type": "string",
+                "required": false,
+                "description": "The language of the sentence"
+            }
+        },
+        "output_parameters": {
+            "corrected_sentence": {
+                "type": "string",
+                "description": "The corrected sentence"
+            }
+        }
+    },
+    {
+        "name": "get_word_definition",
+        "description": "Get the definition of a word",
+        "query_parameters": {
+            "word": {
+                "type": "string",
+                "required": true,
+                "description": "The word to get the definition for"
+            },
+            "language": {
+                "type": "string",
+                "required": false,
+                "description": "The language of the word (optional)"
+            }
+        },
+        "output_parameters": {
+            "definition": {
+                "type": "string",
+                "description": "The definition of the word"
+            }
+        }
+    },
+    {
+        "name": "calculate_shipping_cost",
+        "description": "Calculate the shipping cost based on weight and distance",
+        "query_parameters": {
+            "weight": {
+                "type": "number",
+                "required": true,
+                "description": "The weight of the package in pounds"
+            },
+            "distance": {
+                "type": "number",
+                "required": true,
+                "description": "The distance of the shipment in miles"
+            }
+        },
+        "output_parameters": {
+            "shipping_cost": {
+                "type": "number",
+                "description": "The calculated shipping cost"
+            }
+        }
+    },
+    {
+        "name": "get_movie_details",
+        "description": "Get details of a movie",
+        "query_parameters": {
+            "title": {
+                "type": "string",
+                "required": true,
+                "description": "The title of the movie"
+            },
+            "release_year": {
+                "type": "integer",
+                "required": true,
+                "description": "The release year of the movie"
+            }
+        },
+        "output_parameters": {
+            "director": {
+                "type": "string",
+                "description": "The director of the movie"
+            },
+            "genre": {
+                "type": "string",
+                "description": "The genre of the movie"
+            },
+            "rating": {
+                "type": "number",
+                "description": "The rating of the movie"
+            }
+        }
+    },
+    {
+        "name": "search_movies",
+        "description": "Search for movies based on given criteria",
+        "query_parameters": {
+            "genre": {
+                "type": "string",
+                "required": true,
+                "description": "The genre of movies to search for"
+            },
+            "release_year": {
+                "type": "integer",
+                "required": false,
+                "description": "The release year of movies to search for"
+            },
+            "rating": {
+                "type": "number",
+                "required": false,
+                "description": "The minimum rating of movies to search for"
+            }
+        },
+        "output_parameters": {
+            "movies": {
+                "type": "array",
+                "description": "The list of movies matching the given criteria"
+            }
+        }
+    },
+    {
+        "name": "search_book_reviews",
+        "description": "Search for book reviews based on keywords",
+        "query_parameters": {
+            "keywords": {
+                "type": "array",
+                "required": true,
+                "items": {
+                    "type": "string"
+                },
+                "description": "Keywords related to the desired book reviews"
+            }
+        },
+        "output_parameters": {
+            "reviews": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "review_id": {
+                            "type": "string"
+                        },
+                        "title": {
+                            "type": "string"
+                        },
+                        "rating": {
+                            "type": "integer"
+                        },
+                        "review_text": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "name": "search_restaurant_reviews",
+        "description": "Search for restaurant reviews based on keywords",
+        "query_parameters": {
+            "keywords": {
+                "type": "array",
+                "required": true,
+                "items": {
+                    "type": "string"
+                },
+                "description": "Keywords related to the desired restaurant reviews"
+            }
+        },
+        "output_parameters": {
+            "reviews": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "review_id": {
+                            "type": "string"
+                        },
+                        "title": {
+                            "type": "string"
+                        },
+                        "rating": {
+                            "type": "integer"
+                        },
+                        "review_text": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "name": "get_news",
+        "description": "Get the latest news headlines",
+        "query_parameters": {
+            "category": {
+                "type": "string",
+                "required": true,
+                "description": "The category of news to retrieve"
+            }
+        },
+        "output_parameters": {
+            "headlines": {
+                "type": "array",
+                "description": "The array of news headlines"
+            }
+        }
+    },
+    {
+        "name": "play_music",
+        "description": "Play music",
+        "query_parameters": {
+            "song": {
+                "type": "string",
+                "required": true,
+                "description": "The name of the song to play"
+            },
+            "artist": {
+                "type": "string",
+                "required": false,
+                "description": "The artist of the song"
+            },
+            "album": {
+                "type": "string",
+                "required": false,
+                "description": "The album of the song"
+            }
+        },
+        "output_parameters": {
+            "status": {
+                "type": "string",
+                "description": "The status of the operation (success/failure)"
+            }
+        }
+    },
+    {
+        "name": "calculate_age",
+        "description": "Calculate the age based on birthdate",
+        "query_parameters": {
+            "birthdate": {
+                "type": "string",
+                "required": true,
+                "format": "date",
+                "description": "The birthdate in yyyy-mm-dd format"
+            }
+        },
+        "output_parameters": {
+            "age": {
+                "type": "integer",
+                "description": "The age based on the birthdate"
+            }
+        }
+    },
+    {
+        "name": "calculate_pace",
+        "description": "Calculate the pace based on distance and time",
+        "query_parameters": {
+            "distance": {
+                "type": "number",
+                "required": true,
+                "description": "The distance in kilometers"
+            },
+            "time": {
+                "type": "number",
+                "required": true,
+                "description": "The time taken in minutes"
+            }
+        },
+        "output_parameters": {
+            "pace": {
+                "type": "number",
+                "description": "The pace in minutes per kilometer"
+            }
+        }
+    },
+    {
+        "name": "calculate_gpa",
+        "description": "Calculate the Grade Point Average (GPA) based on grades and credit hours",
+        "query_parameters": {
+            "grades": {
+                "type": "array",
+                "required": true,
+                "items": {
+                    "type": "number"
+                },
+                "description": "The grades obtained"
+            },
+            "credit_hours": {
+                "type": "array",
+                "required": true,
+                "items": {
+                    "type": "number"
+                },
+                "description": "The credit hours for each course"
+            }
+        },
+        "output_parameters": {
+            "gpa": {
+                "type": "number",
+                "description": "The calculated GPA"
+            }
+        }
+    },
+    {
+        "name": "generate_barcode",
+        "description": "Generate a barcode for a given data",
+        "parameters": {
+            "data": {
+                "type": "string",
+                "required": true,
+                "description": "The data to be encoded in the barcode"
+            },
+            "format": {
+                "type": "string",
+                "required": false,
+                "description": "The format of the barcode"
+            }
+        },
+        "output_parameters": {
+            "barcode": {
+                "type": "string",
+                "description": "The generated barcode data"
+            }
+        }
+    },
+    {
+        "name": "search_song",
+        "description": "Search for a song by title or artist",
+        "parameters": {
+            "query": {
+                "type": "string",
+                "required": true,
+                "description": "The search query for songs"
+            }
+        },
+        "output_parameters": {
+            "artist": {
+                "type": "string",
+                "description": "The artist of the song"
+            },
+            "title": {
+                "type": "string",
+                "description": "The title of the song"
+            }
+        }
+    },
+    {
+        "name": "get_song_lyrics",
+        "description": "Get the lyrics of a song",
+        "parameters": {
+            "artist": {
+                "type": "string",
+                "required": true,
+                "description": "The artist of the song"
+            },
+            "title": {
+                "type": "string",
+                "required": true,
+                "description": "The title of the song"
+            }
+        },
+        "output_parameters": {
+            "lyrics": {
+                "type": "string",
+                "description": "The lyrics of the song"
+            }
+        }
+    },
+    {
+        "name": "calculate_discount",
+        "description": "Calculate the discount amount based on original price and discount percentage",
+        "parameters": {
+            "original_price": {
+                "type": "number",
+                "required": true,
+                "description": "The original price of the item"
+            },
+            "discount_percentage": {
+                "type": "number",
+                "required": true,
+                "description": "The percentage of discount to be applied"
+            }
+        },
+        "output_parameters": {
+            "discount_amount": {
+                "type": "number",
+                "description": "The discount amount to be deducted from the original price"
+            }
+        }
+    },
+    {
+        "name": "calculate_BMI",
+        "description": "Calculate the Body Mass Index (BMI) based on weight and height",
+        "parameters": {
+            "weight": {
+                "type": "number",
+                "required": true,
+                "description": "The weight in kilograms"
+            },
+            "height": {
+                "type": "number",
+                "required": true,
+                "description": "The height in meters"
+            }
+        },
+        "output_parameters": {
+            "BMI": {
+                "type": "number",
+                "description": "The calculated BMI"
+            }
+        }
+    },
+    {
+        "name": "generate_qr_code",
+        "description": "Generate a QR code for a URL",
+        "parameters": {
+            "url": {
+                "type": "string",
+                "required": true,
+                "description": "The URL to generate the QR code for"
+            },
+            "size": {
+                "type": "integer",
+                "required": false,
+                "description": "The size of the QR code"
+            }
+        },
+        "output_parameters": {
+            "qr_code_data": {
+                "type": "string",
+                "description": "The generated QR code data"
+            }
+        }
+    },
+    {
+        "name": "translate_text",
+        "description": "Translate a text from one language to another",
+        "parameters": {
+            "text": {
+                "type": "string",
+                "required": true,
+                "description": "The text to translate"
+            },
+            "source_language": {
+                "type": "string",
+                "required": true,
+                "description": "The source language of the text"
+            },
+            "target_language": {
+                "type": "string",
+                "required": true,
+                "description": "The target language to translate the text"
+            }
+        },
+        "output_parameters": {
+            "translated_text": {
+                "type": "string",
+                "description": "The translated text"
+            }
+        }
+    },
+    {
+        "name": "search_music",
+        "description": "Search for music tracks or albums by artist or genre",
+        "parameters": {
+            "artist": {
+                "type": "string",
+                "required": true,
+                "description": "The name of the artist"
+            },
+            "genre": {
+                "type": "string",
+                "required": false,
+                "description": "The genre of the music"
+            }
+        },
+        "output_parameters": {
+            "search_results": {
+                "type": "array",
+                "description": "An array of search results containing music tracks or albums"
+            }
+        }
+    },
+    {
+        "name": "generate_invoice",
+        "description": "Generate an invoice",
+        "parameters": {
+            "customer_name": {
+                "type": "string",
+                "required": true,
+                "description": "The name of the customer"
+            },
+            "items": {
+                "type": "array",
+                "required": true,
+                "items": {
+                    "type": "string"
+                },
+                "description": "The items to be included in the invoice"
+            }
+        },
+        "output_parameters": {
+            "invoice_number": {
+                "type": "string",
+                "description": "The generated invoice number"
+            },
+            "total_amount": {
+                "type": "number",
+                "description": "The total amount of the invoice"
+            }
+        }
+    },
+    {
+        "name": "create_calendar_event",
+        "description": "Create a new event in the calendar",
+        "parameters": {
+            "title": {
+                "type": "string",
+                "required": true,
+                "description": "The title of the event"
+            },
+            "date": {
+                "type": "string",
+                "required": true,
+                "description": "The date of the event in YYYY-MM-DD format"
+            },
+            "start_time": {
+                "type": "string",
+                "required": true,
+                "description": "The start time of the event in HH:mm format"
+            },
+            "end_time": {
+                "type": "string",
+                "required": true,
+                "description": "The end time of the event in HH:mm format"
+            }
+        },
+        "output_parameters": {
+            "event_id": {
+                "type": "string",
+                "description": "The unique identifier of the created event"
+            }
+        }
+    },
+    {
+        "name": "translate_text",
+        "description": "Translate a text from one language to another",
+        "parameters": {
+            "text": {
+                "type": "string",
+                "required": true,
+                "description": "The text to translate"
+            },
+            "source_language": {
+                "type": "string",
+                "required": true,
+                "description": "The source language of the text"
+            },
+            "target_language": {
+                "type": "string",
+                "required": true,
+                "description": "The target language to translate the text"
+            }
+        },
+        "output_parameters": {
+            "translated_text": {
+                "type": "string",
+                "description": "The translated text"
+            }
+        }
+    },
+    {
+        "name": "schedule_meeting",
+        "description": "Schedule a meeting with participants",
+        "parameters": {
+            "title": {
+                "type": "string",
+                "required": true,
+                "description": "The title of the meeting"
+            },
+            "date": {
+                "type": "string",
+                "required": true,
+                "format": "date",
+                "description": "The date of the meeting"
+            },
+            "participants": {
+                "type": "array",
+                "required": true,
+                "items": {
+                    "type": "string"
+                },
+                "description": "The list of participants"
+            }
+        },
+        "output_parameters": {
+            "meeting_id": {
+                "type": "string",
+                "description": "The unique identifier for the scheduled meeting"
+            }
+        }
+    },
+    {
+        "name": "search_music",
+        "description": "Search for music tracks or albums by artist or genre",
+        "parameters": {
+            "artist": {
+                "type": "string",
+                "required": true,
+                "description": "The name of the artist"
+            },
+            "genre": {
+                "type": "string",
+                "required": false,
+                "description": "The genre of the music"
+            }
+        },
+        "output_parameters": {
+            "search_results": {
+                "type": "array",
+                "description": "An array of search results containing music tracks or albums"
+            }
+        }
+    },
+    {
+        "name": "calculate_loan_emi",
+        "description": "Calculate the Equated Monthly Installment (EMI) for a loan",
+        "parameters": {
+            "loan_amount": {
+                "type": "number",
+                "required": true,
+                "description": "The loan amount"
+            },
+            "interest_rate": {
+                "type": "number",
+                "required": true,
+                "description": "The interest rate in percentage"
+            },
+            "loan_term": {
+                "type": "integer",
+                "required": true,
+                "description": "The loan term in months"
+            }
+        },
+        "output_parameters": {
+            "emi": {
+                "type": "number",
+                "description": "The monthly payment for the loan"
+            }
+        }
+    },
+    {
+        "name": "schedule_meeting",
+        "description": "Schedule a meeting with participants",
+        "parameters": {
+            "title": {
+                "type": "string",
+                "required": true,
+                "description": "The title of the meeting"
+            },
+            "date": {
+                "type": "string",
+                "required": true,
+                "format": "date",
+                "description": "The date of the meeting"
+            },
+            "participants": {
+                "type": "array",
+                "required": true,
+                "items": {
+                    "type": "string"
+                },
+                "description": "The list of participants"
+            }
+        },
+        "output_parameters": {
+            "meeting_id": {
+                "type": "string",
+                "description": "The unique identifier for the scheduled meeting"
+            }
+        }
+    },
+    {
+        "name": "search_product",
+        "description": "Search for a product on an e-commerce website",
+        "parameters": {
+            "query": {
+                "type": "string",
+                "required": true,
+                "description": "The search query"
+            },
+            "category": {
+                "type": "string",
+                "required": false,
+                "description": "The category of the product"
+            },
+            "price_range": {
+                "type": "object",
+                "required": false,
+                "properties": {
+                    "min": {
+                        "type": "number",
+                        "description": "The minimum price"
+                    },
+                    "max": {
+                        "type": "number",
+                        "description": "The maximum price"
+                    }
+                }
+            }
+        },
+        "output_parameters": {
+            "product_results": {
+                "type": "array",
+                "description": "The search results",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "product_id": {
+                            "type": "string"
+                        },
+                        "product_name": {
+                            "type": "string"
+                        },
+                        "product_description": {
+                            "type": "string"
+                        },
+                        "product_price": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "name": "search_movie_reviews",
+        "description": "Search for movie reviews based on keywords",
+        "parameters": {
+            "keywords": {
+                "type": "array",
+                "required": true,
+                "items": {
+                    "type": "string"
+                },
+                "description": "Keywords related to the desired movie reviews"
+            }
+        },
+        "output_parameters": {
+            "reviews": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "review_id": {
+                            "type": "string"
+                        },
+                        "title": {
+                            "type": "string"
+                        },
+                        "rating": {
+                            "type": "integer"
+                        },
+                        "review_text": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "name": "calculate_route",
+        "description": "Calculate the best route between multiple locations",
+        "parameters": {
+            "locations": {
+                "type": "array",
+                "required": true,
+                "items": {
+                    "type": "string"
+                },
+                "description": "The locations to include in the route"
+            },
+            "mode_of_transport": {
+                "type": "string",
+                "required": false,
+                "description": "The mode of transport to consider"
+            },
+            "optimize_route": {
+                "type": "boolean",
+                "required": false,
+                "description": "Optimize the route for time or distance"
+            }
+        },
+        "output_parameters": {
+            "best_route": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "description": "The best route between the locations"
+            },
+            "distance": {
+                "type": "number",
+                "description": "The total distance of the best route"
+            },
+            "time": {
+                "type": "number",
+                "description": "The total time of the best route"
+            }
+        }
+    },
+    {
+        "name": "search_product",
+        "description": "Search for a product on an e-commerce website",
+        "parameters": {
+            "query": {
+                "type": "string",
+                "required": true,
+                "description": "The search query"
+            },
+            "category": {
+                "type": "string",
+                "required": false,
+                "description": "The category of the product"
+            },
+            "price_range": {
+                "type": "object",
+                "required": false,
+                "properties": {
+                    "min": {
+                        "type": "number",
+                        "description": "The minimum price"
+                    },
+                    "max": {
+                        "type": "number",
+                        "description": "The maximum price"
+                    }
+                }
+            }
+        },
+        "output_parameters": {
+            "product_results": {
+                "type": "array",
+                "description": "The search results",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "product_id": {
+                            "type": "string"
+                        },
+                        "product_name": {
+                            "type": "string"
+                        },
+                        "product_description": {
+                            "type": "string"
+                        },
+                        "product_price": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "name": "calculate_mortgage_payment",
+        "description": "Calculate the monthly mortgage payment amount based on the loan amount, interest rate, and loan term",
+        "parameters": {
+            "loan_amount": {
+                "type": "number",
+                "required": true,
+                "description": "The loan amount"
+            },
+            "interest_rate": {
+                "type": "number",
+                "required": true,
+                "description": "The annual interest rate"
+            },
+            "loan_term": {
+                "type": "integer",
+                "required": true,
+                "description": "The term of the loan in years"
+            }
+        },
+        "output_parameters": {
+            "monthly_payment": {
+                "type": "number",
+                "description": "The monthly mortgage payment amount"
+            }
+        }
+    },
+    {
+        "name": "search_product",
+        "description": "Search for a product on an e-commerce website",
+        "parameters": {
+            "query": {
+                "type": "string",
+                "required": true,
+                "description": "The search query"
+            },
+            "category": {
+                "type": "string",
+                "required": false,
+                "description": "The category of the product"
+            },
+            "price_range": {
+                "type": "object",
+                "required": false,
+                "properties": {
+                    "min": {
+                        "type": "number",
+                        "description": "The minimum price"
+                    },
+                    "max": {
+                        "type": "number",
+                        "description": "The maximum price"
+                    }
+                }
+            }
+        },
+        "output_parameters": {
+            "product_results": {
+                "type": "array",
+                "description": "The search results",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "product_id": {
+                            "type": "string"
+                        },
+                        "product_name": {
+                            "type": "string"
+                        },
+                        "product_description": {
+                            "type": "string"
+                        },
+                        "product_price": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "name": "generate_password",
+        "description": "Generate a random password",
+        "parameters": {
+            "length": {
+                "type": "integer",
+                "required": true,
+                "description": "The desired length of the password"
+            },
+            "include_numbers": {
+                "type": "boolean",
+                "required": false,
+                "description": "Whether to include numbers in the password"
+            },
+            "include_special_characters": {
+                "type": "boolean",
+                "required": false,
+                "description": "Whether to include special characters in the password"
+            }
+        },
+        "output_parameters": {
+            "password": {
+                "type": "string",
+                "description": "The generated password"
+            }
+        }
+    },
+    {
+        "name": "generate_password",
+        "description": "Generate a random password",
+        "parameters": {
+            "length": {
+                "type": "integer",
+                "required": true,
+                "description": "The desired length of the password"
+            },
+            "include_numbers": {
+                "type": "boolean",
+                "required": false,
+                "description": "Whether to include numbers in the password"
+            },
+            "include_special_characters": {
+                "type": "boolean",
+                "required": false,
+                "description": "Whether to include special characters in the password"
+            }
+        },
+        "output_parameters": {
+            "password": {
+                "type": "string",
+                "description": "The generated password"
+            }
+        }
+    },
+    {
+        "name": "analyze_website",
+        "description": "Analyze the content and structure of a website",
+        "parameters": {
+            "url": {
+                "type": "string",
+                "required": true,
+                "description": "The URL of the website to analyze"
+            }
+        },
+        "output_parameters": {
+            "content_analysis": {
+                "type": "object",
+                "description": "The analysis of the website content"
+            },
+            "structure_analysis": {
+                "type": "object",
+                "description": "The analysis of the website structure"
+            }
+        }
+    },
+    {
+        "name": "search_restaurants",
+        "description": "Search for restaurants based on a location",
+        "parameters": {
+            "location": {
+                "type": "string",
+                "required": true,
+                "description": "The location to search for restaurants"
+            },
+            "cuisine": {
+                "type": "string",
+                "required": false,
+                "description": "The cuisine type to filter restaurants by"
+            }
+        },
+        "output_parameters": {
+            "restaurants": {
+                "type": "array",
+                "description": "The list of restaurants found"
+            }
+        }
+    },
+    {
+        "name": "validate_email",
+        "description": "Validate an email address",
+        "parameters": {
+            "email": {
+                "type": "string",
+                "required": true,
+                "description": "The email address to be validated"
+            }
+        },
+        "output_parameters": {
+            "valid": {
+                "type": "boolean",
+                "description": "\"True\" if the email address is valid, \"False\" otherwise"
+            }
+        }
+    }
+]
